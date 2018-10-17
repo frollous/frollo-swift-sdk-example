@@ -12,36 +12,112 @@
 		01527CEF20E1D3B000B5042A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01527CED20E1D3B000B5042A /* Main.storyboard */; };
 		01527CF120E1D3B200B5042A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01527CF020E1D3B200B5042A /* Assets.xcassets */; };
 		01527CF420E1D3B200B5042A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01527CF220E1D3B200B5042A /* LaunchScreen.storyboard */; };
-		01527CFF20E1D3B200B5042A /* FrolloSDK_ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01527CFE20E1D3B200B5042A /* FrolloSDK_ExampleTests.swift */; };
 		018B04412176E0A5008C34D7 /* FrolloSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018B043F2176E0A4008C34D7 /* FrolloSDK.framework */; };
 		018B04422176E0A5008C34D7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018B04402176E0A4008C34D7 /* Alamofire.framework */; };
+		018B044A2176E474008C34D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018B04492176E474008C34D7 /* AppDelegate.swift */; };
+		018B044C2176E474008C34D7 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018B044B2176E474008C34D7 /* FirstViewController.swift */; };
+		018B044E2176E474008C34D7 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018B044D2176E474008C34D7 /* SecondViewController.swift */; };
+		018B04512176E474008C34D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 018B044F2176E474008C34D7 /* Main.storyboard */; };
+		018B04532176E476008C34D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 018B04522176E476008C34D7 /* Assets.xcassets */; };
+		018B04872176E540008C34D7 /* FrolloSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018B04852176E540008C34D7 /* FrolloSDK.framework */; };
+		018B04882176E540008C34D7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018B04862176E540008C34D7 /* Alamofire.framework */; };
+		018B049821770F6C008C34D7 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 018B049621770F6C008C34D7 /* Interface.storyboard */; };
+		018B049A21770F6E008C34D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 018B049921770F6E008C34D7 /* Assets.xcassets */; };
+		018B04A121770F6E008C34D7 /* Frollo SDK watchOS Example Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 018B04A021770F6E008C34D7 /* Frollo SDK watchOS Example Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		018B04A621770F6E008C34D7 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018B04A521770F6E008C34D7 /* InterfaceController.swift */; };
+		018B04A821770F6E008C34D7 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018B04A721770F6E008C34D7 /* ExtensionDelegate.swift */; };
+		018B04AA21770F6E008C34D7 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018B04A921770F6E008C34D7 /* NotificationController.swift */; };
+		018B04AC21770F6F008C34D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 018B04AB21770F6F008C34D7 /* Assets.xcassets */; };
+		018B04B121770F6F008C34D7 /* Frollo SDK watchOS Example.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 018B049421770F6C008C34D7 /* Frollo SDK watchOS Example.app */; };
+		018B04BB21770FC9008C34D7 /* FrolloSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018B04BA21770FC9008C34D7 /* FrolloSDK.framework */; };
+		018B04BD21770FD7008C34D7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018B04BC21770FD7008C34D7 /* Alamofire.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		01527CFB20E1D3B200B5042A /* PBXContainerItemProxy */ = {
+		018B04A221770F6E008C34D7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 01527CDE20E1D3B000B5042A /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 01527CE520E1D3B000B5042A;
-			remoteInfo = "FrolloSDK Example";
+			remoteGlobalIDString = 018B049F21770F6E008C34D7;
+			remoteInfo = "Frollo SDK watchOS Example Extension";
+		};
+		018B04AF21770F6F008C34D7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01527CDE20E1D3B000B5042A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 018B049321770F6C008C34D7;
+			remoteInfo = "Frollo SDK watchOS Example";
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		018B04B521770F6F008C34D7 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				018B04A121770F6E008C34D7 /* Frollo SDK watchOS Example Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		018B04B921770F6F008C34D7 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				018B04B121770F6F008C34D7 /* Frollo SDK watchOS Example.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		01527CE620E1D3B000B5042A /* FrolloSDK Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FrolloSDK Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		01527CE620E1D3B000B5042A /* FrolloSDK iOS Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FrolloSDK iOS Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01527CE920E1D3B000B5042A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01527CEB20E1D3B000B5042A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		01527CEE20E1D3B000B5042A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		01527CF020E1D3B200B5042A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01527CF320E1D3B200B5042A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01527CF520E1D3B200B5042A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		01527CFA20E1D3B200B5042A /* FrolloSDK ExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FrolloSDK ExampleTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		01527CFE20E1D3B200B5042A /* FrolloSDK_ExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrolloSDK_ExampleTests.swift; sourceTree = "<group>"; };
-		01527D0020E1D3B200B5042A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		018B043D2176E09A008C34D7 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		018B043E2176E09A008C34D7 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		018B043F2176E0A4008C34D7 /* FrolloSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FrolloSDK.framework; path = Carthage/Build/iOS/FrolloSDK.framework; sourceTree = "<group>"; };
 		018B04402176E0A4008C34D7 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		018B04472176E474008C34D7 /* FrolloSDK tvOS Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FrolloSDK tvOS Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		018B04492176E474008C34D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		018B044B2176E474008C34D7 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		018B044D2176E474008C34D7 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		018B04502176E474008C34D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		018B04522176E476008C34D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		018B04542176E476008C34D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		018B045D2176E4F0008C34D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		018B045F2176E4F1008C34D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		018B04612176E4F1008C34D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		018B046B2176E4F2008C34D7 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		018B046D2176E4F2008C34D7 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		018B046F2176E4F2008C34D7 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		018B04712176E4F2008C34D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		018B04732176E4F2008C34D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		018B04742176E4F2008C34D7 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		018B04852176E540008C34D7 /* FrolloSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FrolloSDK.framework; path = Carthage/Build/tvOS/FrolloSDK.framework; sourceTree = "<group>"; };
+		018B04862176E540008C34D7 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/tvOS/Alamofire.framework; sourceTree = "<group>"; };
+		018B049421770F6C008C34D7 /* Frollo SDK watchOS Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Frollo SDK watchOS Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		018B049721770F6C008C34D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		018B049921770F6E008C34D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		018B049B21770F6E008C34D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		018B04A021770F6E008C34D7 /* Frollo SDK watchOS Example Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Frollo SDK watchOS Example Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		018B04A521770F6E008C34D7 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		018B04A721770F6E008C34D7 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		018B04A921770F6E008C34D7 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		018B04AB21770F6F008C34D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		018B04AD21770F6F008C34D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		018B04AE21770F6F008C34D7 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		018B04BA21770FC9008C34D7 /* FrolloSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FrolloSDK.framework; path = Carthage/Build/watchOS/FrolloSDK.framework; sourceTree = "<group>"; };
+		018B04BC21770FD7008C34D7 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/watchOS/Alamofire.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,10 +130,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		01527CF720E1D3B200B5042A /* Frameworks */ = {
+		018B04442176E474008C34D7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				018B04872176E540008C34D7 /* FrolloSDK.framework in Frameworks */,
+				018B04882176E540008C34D7 /* Alamofire.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		018B049D21770F6E008C34D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				018B04BD21770FD7008C34D7 /* Alamofire.framework in Frameworks */,
+				018B04BB21770FC9008C34D7 /* FrolloSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,8 +156,12 @@
 			children = (
 				018B043D2176E09A008C34D7 /* Cartfile */,
 				018B043E2176E09A008C34D7 /* Package.swift */,
-				01527CE820E1D3B000B5042A /* FrolloSDK Example */,
-				01527CFD20E1D3B200B5042A /* FrolloSDK ExampleTests */,
+				01527CE820E1D3B000B5042A /* FrolloSDK iOS Example */,
+				018B04482176E474008C34D7 /* FrolloSDK tvOS Example */,
+				018B045B2176E4F0008C34D7 /* FrolloSDK watchOS Example */,
+				018B046A2176E4F2008C34D7 /* FrolloSDK watchOS Example Extension */,
+				018B049521770F6C008C34D7 /* Frollo SDK watchOS Example */,
+				018B04A421770F6E008C34D7 /* Frollo SDK watchOS Example Extension */,
 				01527CE720E1D3B000B5042A /* Products */,
 				01527D0A20E20ADC00B5042A /* Frameworks */,
 			);
@@ -79,13 +170,15 @@
 		01527CE720E1D3B000B5042A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				01527CE620E1D3B000B5042A /* FrolloSDK Example.app */,
-				01527CFA20E1D3B200B5042A /* FrolloSDK ExampleTests.xctest */,
+				01527CE620E1D3B000B5042A /* FrolloSDK iOS Example.app */,
+				018B04472176E474008C34D7 /* FrolloSDK tvOS Example.app */,
+				018B049421770F6C008C34D7 /* Frollo SDK watchOS Example.app */,
+				018B04A021770F6E008C34D7 /* Frollo SDK watchOS Example Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		01527CE820E1D3B000B5042A /* FrolloSDK Example */ = {
+		01527CE820E1D3B000B5042A /* FrolloSDK iOS Example */ = {
 			isa = PBXGroup;
 			children = (
 				01527CE920E1D3B000B5042A /* AppDelegate.swift */,
@@ -95,65 +188,156 @@
 				01527CF220E1D3B200B5042A /* LaunchScreen.storyboard */,
 				01527CF520E1D3B200B5042A /* Info.plist */,
 			);
-			path = "FrolloSDK Example";
-			sourceTree = "<group>";
-		};
-		01527CFD20E1D3B200B5042A /* FrolloSDK ExampleTests */ = {
-			isa = PBXGroup;
-			children = (
-				01527CFE20E1D3B200B5042A /* FrolloSDK_ExampleTests.swift */,
-				01527D0020E1D3B200B5042A /* Info.plist */,
-			);
-			path = "FrolloSDK ExampleTests";
+			path = "FrolloSDK iOS Example";
 			sourceTree = "<group>";
 		};
 		01527D0A20E20ADC00B5042A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				018B04BC21770FD7008C34D7 /* Alamofire.framework */,
+				018B04BA21770FC9008C34D7 /* FrolloSDK.framework */,
+				018B04862176E540008C34D7 /* Alamofire.framework */,
+				018B04852176E540008C34D7 /* FrolloSDK.framework */,
 				018B04402176E0A4008C34D7 /* Alamofire.framework */,
 				018B043F2176E0A4008C34D7 /* FrolloSDK.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		018B04482176E474008C34D7 /* FrolloSDK tvOS Example */ = {
+			isa = PBXGroup;
+			children = (
+				018B04492176E474008C34D7 /* AppDelegate.swift */,
+				018B044B2176E474008C34D7 /* FirstViewController.swift */,
+				018B044D2176E474008C34D7 /* SecondViewController.swift */,
+				018B044F2176E474008C34D7 /* Main.storyboard */,
+				018B04522176E476008C34D7 /* Assets.xcassets */,
+				018B04542176E476008C34D7 /* Info.plist */,
+			);
+			path = "FrolloSDK tvOS Example";
+			sourceTree = "<group>";
+		};
+		018B045B2176E4F0008C34D7 /* FrolloSDK watchOS Example */ = {
+			isa = PBXGroup;
+			children = (
+				018B045C2176E4F0008C34D7 /* Interface.storyboard */,
+				018B045F2176E4F1008C34D7 /* Assets.xcassets */,
+				018B04612176E4F1008C34D7 /* Info.plist */,
+			);
+			path = "FrolloSDK watchOS Example";
+			sourceTree = "<group>";
+		};
+		018B046A2176E4F2008C34D7 /* FrolloSDK watchOS Example Extension */ = {
+			isa = PBXGroup;
+			children = (
+				018B046B2176E4F2008C34D7 /* InterfaceController.swift */,
+				018B046D2176E4F2008C34D7 /* ExtensionDelegate.swift */,
+				018B046F2176E4F2008C34D7 /* NotificationController.swift */,
+				018B04712176E4F2008C34D7 /* Assets.xcassets */,
+				018B04732176E4F2008C34D7 /* Info.plist */,
+				018B04742176E4F2008C34D7 /* PushNotificationPayload.apns */,
+			);
+			path = "FrolloSDK watchOS Example Extension";
+			sourceTree = "<group>";
+		};
+		018B049521770F6C008C34D7 /* Frollo SDK watchOS Example */ = {
+			isa = PBXGroup;
+			children = (
+				018B049621770F6C008C34D7 /* Interface.storyboard */,
+				018B049921770F6E008C34D7 /* Assets.xcassets */,
+				018B049B21770F6E008C34D7 /* Info.plist */,
+			);
+			path = "Frollo SDK watchOS Example";
+			sourceTree = "<group>";
+		};
+		018B04A421770F6E008C34D7 /* Frollo SDK watchOS Example Extension */ = {
+			isa = PBXGroup;
+			children = (
+				018B04A521770F6E008C34D7 /* InterfaceController.swift */,
+				018B04A721770F6E008C34D7 /* ExtensionDelegate.swift */,
+				018B04A921770F6E008C34D7 /* NotificationController.swift */,
+				018B04AB21770F6F008C34D7 /* Assets.xcassets */,
+				018B04AD21770F6F008C34D7 /* Info.plist */,
+				018B04AE21770F6F008C34D7 /* PushNotificationPayload.apns */,
+			);
+			path = "Frollo SDK watchOS Example Extension";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		01527CE520E1D3B000B5042A /* FrolloSDK Example */ = {
+		01527CE520E1D3B000B5042A /* FrolloSDK iOS Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 01527D0320E1D3B200B5042A /* Build configuration list for PBXNativeTarget "FrolloSDK Example" */;
+			buildConfigurationList = 01527D0320E1D3B200B5042A /* Build configuration list for PBXNativeTarget "FrolloSDK iOS Example" */;
 			buildPhases = (
 				01527CE220E1D3B000B5042A /* Sources */,
 				01527CE320E1D3B000B5042A /* Frameworks */,
 				01527CE420E1D3B000B5042A /* Resources */,
 				01527D0F20E20BA900B5042A /* Carthage Copy Frameworks */,
+				018B04B921770F6F008C34D7 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				018B04B021770F6F008C34D7 /* PBXTargetDependency */,
 			);
-			name = "FrolloSDK Example";
+			name = "FrolloSDK iOS Example";
 			productName = "FrolloSDK Example";
-			productReference = 01527CE620E1D3B000B5042A /* FrolloSDK Example.app */;
+			productReference = 01527CE620E1D3B000B5042A /* FrolloSDK iOS Example.app */;
 			productType = "com.apple.product-type.application";
 		};
-		01527CF920E1D3B200B5042A /* FrolloSDK ExampleTests */ = {
+		018B04462176E474008C34D7 /* FrolloSDK tvOS Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 01527D0620E1D3B200B5042A /* Build configuration list for PBXNativeTarget "FrolloSDK ExampleTests" */;
+			buildConfigurationList = 018B04552176E476008C34D7 /* Build configuration list for PBXNativeTarget "FrolloSDK tvOS Example" */;
 			buildPhases = (
-				01527CF620E1D3B200B5042A /* Sources */,
-				01527CF720E1D3B200B5042A /* Frameworks */,
-				01527CF820E1D3B200B5042A /* Resources */,
+				018B04432176E474008C34D7 /* Sources */,
+				018B04442176E474008C34D7 /* Frameworks */,
+				018B04452176E474008C34D7 /* Resources */,
+				018B04892176E550008C34D7 /* Copy Carthage Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				01527CFC20E1D3B200B5042A /* PBXTargetDependency */,
 			);
-			name = "FrolloSDK ExampleTests";
-			productName = "FrolloSDK ExampleTests";
-			productReference = 01527CFA20E1D3B200B5042A /* FrolloSDK ExampleTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
+			name = "FrolloSDK tvOS Example";
+			productName = "FrolloSDK tvOS Example";
+			productReference = 018B04472176E474008C34D7 /* FrolloSDK tvOS Example.app */;
+			productType = "com.apple.product-type.application";
+		};
+		018B049321770F6C008C34D7 /* Frollo SDK watchOS Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 018B04B621770F6F008C34D7 /* Build configuration list for PBXNativeTarget "Frollo SDK watchOS Example" */;
+			buildPhases = (
+				018B049221770F6C008C34D7 /* Resources */,
+				018B04B521770F6F008C34D7 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				018B04A321770F6E008C34D7 /* PBXTargetDependency */,
+			);
+			name = "Frollo SDK watchOS Example";
+			productName = "Frollo SDK watchOS Example";
+			productReference = 018B049421770F6C008C34D7 /* Frollo SDK watchOS Example.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		018B049F21770F6E008C34D7 /* Frollo SDK watchOS Example Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 018B04B221770F6F008C34D7 /* Build configuration list for PBXNativeTarget "Frollo SDK watchOS Example Extension" */;
+			buildPhases = (
+				018B049C21770F6E008C34D7 /* Sources */,
+				018B049D21770F6E008C34D7 /* Frameworks */,
+				018B049E21770F6E008C34D7 /* Resources */,
+				018B04BE21770FEA008C34D7 /* Copy Carthage Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Frollo SDK watchOS Example Extension";
+			productName = "Frollo SDK watchOS Example Extension";
+			productReference = 018B04A021770F6E008C34D7 /* Frollo SDK watchOS Example Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -161,17 +345,21 @@
 		01527CDE20E1D3B000B5042A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0940;
+				LastSwiftUpdateCheck = 1000;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = Frollo;
 				TargetAttributes = {
 					01527CE520E1D3B000B5042A = {
 						CreatedOnToolsVersion = 9.4.1;
 					};
-					01527CF920E1D3B200B5042A = {
-						CreatedOnToolsVersion = 9.4.1;
-						LastSwiftMigration = 1000;
-						TestTargetID = 01527CE520E1D3B000B5042A;
+					018B04462176E474008C34D7 = {
+						CreatedOnToolsVersion = 10.0;
+					};
+					018B049321770F6C008C34D7 = {
+						CreatedOnToolsVersion = 10.0;
+					};
+					018B049F21770F6E008C34D7 = {
+						CreatedOnToolsVersion = 10.0;
 					};
 				};
 			};
@@ -188,8 +376,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				01527CE520E1D3B000B5042A /* FrolloSDK Example */,
-				01527CF920E1D3B200B5042A /* FrolloSDK ExampleTests */,
+				01527CE520E1D3B000B5042A /* FrolloSDK iOS Example */,
+				018B04462176E474008C34D7 /* FrolloSDK tvOS Example */,
+				018B049321770F6C008C34D7 /* Frollo SDK watchOS Example */,
+				018B049F21770F6E008C34D7 /* Frollo SDK watchOS Example Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -205,10 +395,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		01527CF820E1D3B200B5042A /* Resources */ = {
+		018B04452176E474008C34D7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				018B04532176E476008C34D7 /* Assets.xcassets in Resources */,
+				018B04512176E474008C34D7 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		018B049221770F6C008C34D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				018B049A21770F6E008C34D7 /* Assets.xcassets in Resources */,
+				018B049821770F6C008C34D7 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		018B049E21770F6E008C34D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				018B04AC21770F6F008C34D7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,6 +440,46 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
+		018B04892176E550008C34D7 /* Copy Carthage Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/tvOS/FrolloSDK.framework",
+				"$(SRCROOT)/Carthage/Build/tvOS/Alamofire.framework",
+			);
+			name = "Copy Carthage Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		018B04BE21770FEA008C34D7 /* Copy Carthage Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/watchOS/FrolloSDK.framework",
+				"$(SRCROOT)/Carthage/Build/watchOS/Alamofire.framework",
+			);
+			name = "Copy Carthage Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -243,21 +492,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		01527CF620E1D3B200B5042A /* Sources */ = {
+		018B04432176E474008C34D7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01527CFF20E1D3B200B5042A /* FrolloSDK_ExampleTests.swift in Sources */,
+				018B044E2176E474008C34D7 /* SecondViewController.swift in Sources */,
+				018B044A2176E474008C34D7 /* AppDelegate.swift in Sources */,
+				018B044C2176E474008C34D7 /* FirstViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		018B049C21770F6E008C34D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				018B04AA21770F6E008C34D7 /* NotificationController.swift in Sources */,
+				018B04A821770F6E008C34D7 /* ExtensionDelegate.swift in Sources */,
+				018B04A621770F6E008C34D7 /* InterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		01527CFC20E1D3B200B5042A /* PBXTargetDependency */ = {
+		018B04A321770F6E008C34D7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 01527CE520E1D3B000B5042A /* FrolloSDK Example */;
-			targetProxy = 01527CFB20E1D3B200B5042A /* PBXContainerItemProxy */;
+			target = 018B049F21770F6E008C34D7 /* Frollo SDK watchOS Example Extension */;
+			targetProxy = 018B04A221770F6E008C34D7 /* PBXContainerItemProxy */;
+		};
+		018B04B021770F6F008C34D7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 018B049321770F6C008C34D7 /* Frollo SDK watchOS Example */;
+			targetProxy = 018B04AF21770F6F008C34D7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -276,6 +542,30 @@
 				01527CF320E1D3B200B5042A /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		018B044F2176E474008C34D7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				018B04502176E474008C34D7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		018B045C2176E4F0008C34D7 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				018B045D2176E4F0008C34D7 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+		018B049621770F6C008C34D7 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				018B049721770F6C008C34D7 /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -400,6 +690,7 @@
 		01527D0420E1D3B200B5042A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MFREL6LQ6B;
@@ -407,7 +698,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "FrolloSDK Example/Info.plist";
+				INFOPLIST_FILE = "FrolloSDK iOS Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -422,6 +713,7 @@
 		01527D0520E1D3B200B5042A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MFREL6LQ6B;
@@ -429,7 +721,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "FrolloSDK Example/Info.plist";
+				INFOPLIST_FILE = "FrolloSDK iOS Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -441,43 +733,152 @@
 			};
 			name = Release;
 		};
-		01527D0720E1D3B200B5042A /* Debug */ = {
+		018B04562176E476008C34D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MFREL6LQ6B;
-				INFOPLIST_FILE = "FrolloSDK ExampleTests/Info.plist";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
+				INFOPLIST_FILE = "FrolloSDK tvOS Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "us.frollo.FrolloSDK-ExampleTests";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "us.frollo.FrolloSDK-tvOS-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FrolloSDK Example.app/FrolloSDK Example";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Debug;
 		};
-		01527D0820E1D3B200B5042A /* Release */ = {
+		018B04572176E476008C34D7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MFREL6LQ6B;
-				INFOPLIST_FILE = "FrolloSDK ExampleTests/Info.plist";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
+				INFOPLIST_FILE = "FrolloSDK tvOS Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "us.frollo.FrolloSDK-ExampleTests";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "us.frollo.FrolloSDK-tvOS-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FrolloSDK Example.app/FrolloSDK Example";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
+			};
+			name = Release;
+		};
+		018B04B321770F6F008C34D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MFREL6LQ6B;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/watchOS",
+				);
+				INFOPLIST_FILE = "Frollo SDK watchOS Example Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "us.frollo.FrolloSDK-Example.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.0;
+			};
+			name = Debug;
+		};
+		018B04B421770F6F008C34D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MFREL6LQ6B;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/watchOS",
+				);
+				INFOPLIST_FILE = "Frollo SDK watchOS Example Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "us.frollo.FrolloSDK-Example.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.0;
+			};
+			name = Release;
+		};
+		018B04B721770F6F008C34D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MFREL6LQ6B;
+				IBSC_MODULE = Frollo_SDK_watchOS_Example_Extension;
+				INFOPLIST_FILE = "Frollo SDK watchOS Example/Info.plist";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "us.frollo.FrolloSDK-Example.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.0;
+			};
+			name = Debug;
+		};
+		018B04B821770F6F008C34D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MFREL6LQ6B;
+				IBSC_MODULE = Frollo_SDK_watchOS_Example_Extension;
+				INFOPLIST_FILE = "Frollo SDK watchOS Example/Info.plist";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "us.frollo.FrolloSDK-Example.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.0;
 			};
 			name = Release;
 		};
@@ -493,7 +894,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		01527D0320E1D3B200B5042A /* Build configuration list for PBXNativeTarget "FrolloSDK Example" */ = {
+		01527D0320E1D3B200B5042A /* Build configuration list for PBXNativeTarget "FrolloSDK iOS Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				01527D0420E1D3B200B5042A /* Debug */,
@@ -502,11 +903,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		01527D0620E1D3B200B5042A /* Build configuration list for PBXNativeTarget "FrolloSDK ExampleTests" */ = {
+		018B04552176E476008C34D7 /* Build configuration list for PBXNativeTarget "FrolloSDK tvOS Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				01527D0720E1D3B200B5042A /* Debug */,
-				01527D0820E1D3B200B5042A /* Release */,
+				018B04562176E476008C34D7 /* Debug */,
+				018B04572176E476008C34D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		018B04B221770F6F008C34D7 /* Build configuration list for PBXNativeTarget "Frollo SDK watchOS Example Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				018B04B321770F6F008C34D7 /* Debug */,
+				018B04B421770F6F008C34D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		018B04B621770F6F008C34D7 /* Build configuration list for PBXNativeTarget "Frollo SDK watchOS Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				018B04B721770F6F008C34D7 /* Debug */,
+				018B04B821770F6F008C34D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
