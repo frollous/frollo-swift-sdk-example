@@ -13,11 +13,18 @@ import FrolloSDK
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    var flowManager: FlowManager?
     var window: UIWindow?
-
+    
+    internal let frolloSDK = FrolloSDK(serverURL: URL(string: "https://api-sandbox.frollo.us/api/v1")!)
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        flowManager = FlowManager(window: window!)
+        
+        let startupViewController = window?.rootViewController as! StartupViewController
+        startupViewController.flowManager = flowManager
+        
         return true
     }
 
