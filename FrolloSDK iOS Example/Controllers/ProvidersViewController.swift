@@ -6,18 +6,36 @@
 //  Copyright © 2018 Frollo. All rights reserved.
 //
 
+import CoreData
 import UIKit
 
-class ProvidersViewController: UITableViewController {
+import FrolloSDK
+
+class ProvidersViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+    
+    private var fetchedResultsController: NSFetchedResultsController<Provider>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        let context = DataManager.shared.frolloSDK.database.viewContext
+        let sortDescriptors = [NSSortDescriptor(key: #keyPath(Provider.popular), ascending: false)]
+        fetchedResultsController = DataManager.shared.frolloSDK.aggregation.providersFetchedResultsController(context: context, sortedBy: sortDescriptors)
+        fetchedResultsController.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        DataManager.shared.frolloSDK.aggregation.refreshProviders { (error) in
+            DispatchQueue.main.async {
+                if let refreshError = error {
+                    print(refreshError.localizedDescription)
+                }
+            }
+        }
+        
+        reloadData()
     }
     
     // MARK: - Interaction
@@ -25,72 +43,96 @@ class ProvidersViewController: UITableViewController {
     @IBAction func cancelPress(sender: UIBarButtonItem) {
         dismiss(animated: true)
     }
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        
+    }
+    
+    // MARK: - Providers
+    
+    private func reloadData() {
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        tableView.reloadData()
+    }
+    
+    // MARK: - Fetched Results Controller
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+        switch type {
+            case .insert:
+                tableView.insertSections(IndexSet(integer: sectionIndex), with: .none)
+            case .delete:
+                tableView.deleteSections(IndexSet(integer: sectionIndex), with: .none)
+            default:
+                return
+        }
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+            case .insert:
+                tableView.insertRows(at: [newIndexPath!], with: .none)
+            case .delete:
+                tableView.deleteRows(at: [indexPath!], with: .none)
+            case .move:
+                tableView.deleteRows(at: [indexPath!], with: .none)
+                tableView.insertRows(at: [newIndexPath!], with: .none)
+            case .update:
+                if let insertIndexPath = newIndexPath {
+                    tableView.deleteRows(at: [indexPath!], with: .none)         // Treating as a move fixes issues with moving cells between sections
+                    tableView.insertRows(at: [insertIndexPath], with: .none)
+                } else {
+                    tableView.reloadRows(at: [indexPath!], with: .none)
+                }
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        guard let sections = fetchedResultsController.sections
+            else {
+                return 0
+        }
+        
+        return sections.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        guard let sections = fetchedResultsController.sections
+            else {
+                return 0
+        }
+        
+        let currentSection = sections[section]
+        return currentSection.numberOfObjects
     }
-
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ProviderCell", for: indexPath)
 
-        // Configure the cell...
+        let provider = fetchedResultsController.object(at: indexPath)
+        
+        cell.textLabel?.text = provider.name
 
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

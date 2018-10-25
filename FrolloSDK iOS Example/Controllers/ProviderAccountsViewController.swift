@@ -11,15 +11,16 @@ import UIKit
 
 import FrolloSDK
 
-class ProviderAccountsViewController: UITableViewController {
+class ProviderAccountsViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     private var fetchedResultsController: NSFetchedResultsController<ProviderAccount>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let context = DataManager.shared.frolloSDK.database.viewContext
         fetchedResultsController = DataManager.shared.frolloSDK.aggregation.providerAccountsFetchedResultsController(context: context)
+        fetchedResultsController.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,19 +30,25 @@ class ProviderAccountsViewController: UITableViewController {
             DispatchQueue.main.async {
                 if let refreshError = error {
                     print(refreshError.localizedDescription)
-                } else {
-                    self.reloadData()
                 }
             }
         }
         
-        //reloadData()
+        reloadData()
     }
 
     // MARK: - Interaction
     
     @IBAction func refreshTriggered(sender: UIRefreshControl) {
-        
+        DataManager.shared.frolloSDK.aggregation.refreshProviderAccounts { (error) in
+            DispatchQueue.main.async {
+                if let refreshError = error {
+                    print(refreshError.localizedDescription)
+                }
+                
+                sender.endRefreshing()
+            }
+        }
     }
     
     // MARK: - Fetch Provider Accounts
@@ -54,6 +61,46 @@ class ProviderAccountsViewController: UITableViewController {
         }
         
         tableView.reloadData()
+    }
+    
+    // MARK: - Fetched Results Controller
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+        switch type {
+            case .insert:
+                tableView.insertSections(IndexSet(integer: sectionIndex), with: .none)
+            case .delete:
+                tableView.deleteSections(IndexSet(integer: sectionIndex), with: .none)
+            default:
+                return
+        }
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+            case .insert:
+                tableView.insertRows(at: [newIndexPath!], with: .none)
+            case .delete:
+                tableView.deleteRows(at: [indexPath!], with: .none)
+            case .move:
+                tableView.deleteRows(at: [indexPath!], with: .none)
+                tableView.insertRows(at: [newIndexPath!], with: .none)
+            case .update:
+                if let insertIndexPath = newIndexPath {
+                    tableView.deleteRows(at: [indexPath!], with: .none)         // Treating as a move fixes issues with moving cells between sections
+                    tableView.insertRows(at: [insertIndexPath], with: .none)
+                } else {
+                    tableView.reloadRows(at: [indexPath!], with: .none)
+                }
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
     }
     
     // MARK: - Table View

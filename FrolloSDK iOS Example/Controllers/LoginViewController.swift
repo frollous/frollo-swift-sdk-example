@@ -11,6 +11,7 @@ import UIKit
 class LoginViewController: UIViewController {
     
     @IBOutlet var spinner: UIActivityIndicatorView!
+    @IBOutlet var loginButton: UIButton!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var usernameTextField: UITextField!
     @IBOutlet var passwordContainerView: UIView!
@@ -42,8 +43,14 @@ class LoginViewController: UIViewController {
             return
         }
         
+        loginButton.isHidden = true
+        spinner.startAnimating()
+        
         DataManager.shared.frolloSDK.authentication.loginUser(method: .email, email: email, password: password) { (error) in
             DispatchQueue.main.async {
+                self.loginButton.isHidden = false
+                self.spinner.stopAnimating()
+                
                 if let loginError = error {
                     let alertController = UIAlertController(title: "Login Failed", message: loginError.localizedDescription, preferredStyle: .alert)
                     let dismissAction = UIAlertAction(title: "OK", style: .cancel)
@@ -52,6 +59,10 @@ class LoginViewController: UIViewController {
                     self.present(alertController, animated: true)
                 } else {
                     self.flowManager?.showMainSplitViewController()
+                    
+                    DispatchQueue.main.async {
+                        DataManager.shared.frolloSDK.refreshData()
+                    }
                 }
             }
         }

@@ -74,12 +74,18 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="uNB-Wf-nPV">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refreshTriggeredWithSender:" destination="ogU-uQ-iMk" eventType="touchUpInside" id="oSx-PO-nng"/>
+                        </connections>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CQY-z8-tqg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1902" y="-561"/>
         </scene>
-        <!--Providers-->
+        <!--Add Provider-->
         <scene sceneID="kcs-Cq-2eR">
             <objects>
                 <tableViewController storyboardIdentifier="ProvidersViewController" id="PPf-JZ-EkH" customClass="ProvidersViewController" customModule="FrolloSDK_iOS_Example" customModuleProvider="target" sceneMemberID="viewController">
@@ -111,7 +117,7 @@
                             <outlet property="delegate" destination="PPf-JZ-EkH" id="J0F-hC-kXv"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Providers" id="mcr-0v-dG5">
+                    <navigationItem key="navigationItem" title="Add Provider" id="mcr-0v-dG5">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Cf5-gc-eNu">
                             <connections>
                                 <action selector="cancelPressWithSender:" destination="PPf-JZ-EkH" id="hlC-ru-GJU"/>
@@ -280,6 +286,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="TXC-XR-WNE"/>
                     <connections>
+                        <outlet property="loginButton" destination="hgd-et-Uqf" id="akD-MW-XHZ"/>
                         <outlet property="passwordContainerView" destination="mrd-6J-tVV" id="bsU-VY-iUP"/>
                         <outlet property="passwordTextField" destination="2Kp-PY-0WR" id="Rut-gP-Feg"/>
                         <outlet property="spinner" destination="Sfa-2R-Ebx" id="Lle-t9-hrF"/>
