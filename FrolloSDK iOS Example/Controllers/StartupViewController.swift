@@ -40,6 +40,10 @@ class StartupViewController: UIViewController {
         
         if DataManager.shared.frolloSDK.authentication.loggedIn {
             flowManager?.showMainSplitViewController()
+            
+            DispatchQueue.main.async {
+                DataManager.shared.frolloSDK.refreshData()
+            }
         } else {
             flowManager?.showLoginViewController()
         }
