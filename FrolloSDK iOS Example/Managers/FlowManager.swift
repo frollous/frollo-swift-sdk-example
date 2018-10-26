@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class FlowManager {
+class FlowManager: UISplitViewControllerDelegate {
     
     let window: UIWindow
     
@@ -18,8 +18,9 @@ class FlowManager {
     }
     
     func showMainSplitViewController() {
-        let splitViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SplitViewController")
+        let splitViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SplitViewController") as! UISplitViewController
         //splitViewController.flowManager = self
+        splitViewController.delegate = self
         window.rootViewController = splitViewController
     }
     
@@ -27,6 +28,12 @@ class FlowManager {
         let loginViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
         loginViewController.flowManager = self
         window.rootViewController = loginViewController
+    }
+    
+    // MARK: - Delegate
+    
+    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
+        return true
     }
     
 }
