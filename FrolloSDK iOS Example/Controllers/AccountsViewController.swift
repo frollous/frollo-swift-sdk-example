@@ -52,6 +52,20 @@ class AccountsViewController: TableViewController {
         reloadData()
     }
     
+    // MARK: - Interaction
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        if segue.identifier == "TransactionSegue",
+            let transactionsViewController = segue.destination as? TransactionsViewController,
+            let cell = sender as? UITableViewCell,
+            let indexPath = tableView.indexPath(for: cell) {
+            let account = fetchedResultsController.object(at: indexPath)
+            transactionsViewController.accountID = account.accountID
+        }
+    }
+    
     // MARK: - Accounts
     
     private func reloadData() {

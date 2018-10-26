@@ -78,6 +78,7 @@
                                     <outlet property="spinner" destination="xIY-BY-qpD" id="huK-Tp-Nr6"/>
                                     <outlet property="statusLabel" destination="gfA-hA-28g" id="1F6-ze-2nN"/>
                                     <outlet property="updatedLabel" destination="3An-mL-Qg0" id="KBg-Zv-vaU"/>
+                                    <segue destination="hkh-h9-lQC" kind="show" identifier="TransactionSegue" id="fHW-Vg-TKI"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -379,38 +380,58 @@
             </objects>
             <point key="canvasLocation" x="-2" y="-229"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Transactions-->
         <scene sceneID="pnt-Sf-Dtz">
             <objects>
-                <tableViewController id="hkh-h9-lQC" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="TransactionsViewController" id="hkh-h9-lQC" customClass="TransactionsViewController" customModule="FrolloSDK_iOS_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="WNO-zg-qAG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="zUb-jY-uap" detailTextLabel="uds-wx-0Ke" style="IBUITableViewCellStyleValue1" id="MvD-xC-0FS">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TransactionCell" rowHeight="61" id="MvD-xC-0FS" customClass="TransactionCell" customModule="FrolloSDK_iOS_Example" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="61"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MvD-xC-0FS" id="ElY-PM-mWp">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zUb-jY-uap">
-                                            <rect key="frame" x="16" y="12" width="33.5" height="20.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transaction Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTE-2W-SyE">
+                                            <rect key="frame" x="16" y="11" width="249" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uds-wx-0Ke">
-                                            <rect key="frame" x="311" y="12" width="48" height="20.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="$1,000,000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WTC-S1-UQd">
+                                            <rect key="frame" x="273" y="21.5" width="86" height="18"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fe1-kx-lM4">
+                                            <rect key="frame" x="16" y="34" width="249" height="16"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="WTC-S1-UQd" firstAttribute="leading" secondItem="hTE-2W-SyE" secondAttribute="trailing" constant="8" id="3OP-wl-wvf"/>
+                                        <constraint firstItem="fe1-kx-lM4" firstAttribute="leading" secondItem="ElY-PM-mWp" secondAttribute="leadingMargin" id="Awp-V5-HpT"/>
+                                        <constraint firstItem="WTC-S1-UQd" firstAttribute="centerY" secondItem="ElY-PM-mWp" secondAttribute="centerY" id="PnG-hi-qpF"/>
+                                        <constraint firstItem="WTC-S1-UQd" firstAttribute="leading" secondItem="fe1-kx-lM4" secondAttribute="trailing" constant="8" id="TOl-Vk-CoZ"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="WTC-S1-UQd" secondAttribute="trailing" id="YEo-PG-hfv"/>
+                                        <constraint firstItem="hTE-2W-SyE" firstAttribute="top" secondItem="ElY-PM-mWp" secondAttribute="topMargin" id="fCo-Qu-okM"/>
+                                        <constraint firstItem="hTE-2W-SyE" firstAttribute="leading" secondItem="ElY-PM-mWp" secondAttribute="leadingMargin" id="fUh-9X-cZe"/>
+                                        <constraint firstItem="fe1-kx-lM4" firstAttribute="top" secondItem="hTE-2W-SyE" secondAttribute="bottom" constant="5" id="r87-V9-dj2"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="fe1-kx-lM4" secondAttribute="bottom" id="rx6-CC-hns"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="amountLabel" destination="WTC-S1-UQd" id="8WA-8g-kl0"/>
+                                    <outlet property="dateLabel" destination="fe1-kx-lM4" id="nHe-9L-UAg"/>
+                                    <outlet property="nameLabel" destination="hTE-2W-SyE" id="QqA-Kk-MS3"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -418,10 +439,11 @@
                             <outlet property="delegate" destination="hkh-h9-lQC" id="HAL-jM-I0B"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Transactions" id="f3z-0w-yGe"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="idT-qn-CxM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1902" y="207"/>
+            <point key="canvasLocation" x="1901.5999999999999" y="207.34632683658174"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

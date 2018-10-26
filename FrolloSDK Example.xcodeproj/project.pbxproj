@@ -27,6 +27,8 @@
 		017E5935218291DA00DC56FF /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017E5934218291DA00DC56FF /* AccountsViewController.swift */; };
 		017E59372182945200DC56FF /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017E59362182945200DC56FF /* TableViewController.swift */; };
 		017E593A2182958900DC56FF /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017E59392182958900DC56FF /* AccountCell.swift */; };
+		017E593C2182D03C00DC56FF /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017E593B2182D03C00DC56FF /* TransactionsViewController.swift */; };
+		017E593E2182D8D100DC56FF /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017E593D2182D8D100DC56FF /* TransactionCell.swift */; };
 		018B04412176E0A5008C34D7 /* FrolloSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018B043F2176E0A4008C34D7 /* FrolloSDK.framework */; };
 		018B04422176E0A5008C34D7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018B04402176E0A4008C34D7 /* Alamofire.framework */; };
 		018B044A2176E474008C34D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018B04492176E474008C34D7 /* AppDelegate.swift */; };
@@ -107,6 +109,8 @@
 		017E5934218291DA00DC56FF /* AccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewController.swift; sourceTree = "<group>"; };
 		017E59362182945200DC56FF /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		017E59392182958900DC56FF /* AccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
+		017E593B2182D03C00DC56FF /* TransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewController.swift; sourceTree = "<group>"; };
+		017E593D2182D8D100DC56FF /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
 		018B043D2176E09A008C34D7 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		018B043E2176E09A008C34D7 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		018B043F2176E0A4008C34D7 /* FrolloSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FrolloSDK.framework; path = Carthage/Build/iOS/FrolloSDK.framework; sourceTree = "<group>"; };
@@ -185,6 +189,7 @@
 				013F1F6821782CC80043BF56 /* StartupViewController.swift */,
 				017E59362182945200DC56FF /* TableViewController.swift */,
 				01527CEB20E1D3B000B5042A /* ViewController.swift */,
+				017E593B2182D03C00DC56FF /* TransactionsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -257,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				017E59392182958900DC56FF /* AccountCell.swift */,
+				017E593D2182D8D100DC56FF /* TransactionCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -546,12 +552,14 @@
 			files = (
 				013F1F7021784CB10043BF56 /* LoginViewController.swift in Sources */,
 				013F1F6921782CC80043BF56 /* StartupViewController.swift in Sources */,
+				017E593C2182D03C00DC56FF /* TransactionsViewController.swift in Sources */,
 				017E58CD217ECC2200DC56FF /* FlowManager.swift in Sources */,
 				017E59372182945200DC56FF /* TableViewController.swift in Sources */,
 				013F1F6D21783A580043BF56 /* DataManager.swift in Sources */,
 				013F1F66217829320043BF56 /* ProviderAccountsViewController.swift in Sources */,
 				015023C82181465100EEB5F2 /* ProvidersViewController.swift in Sources */,
 				01527CEC20E1D3B000B5042A /* ViewController.swift in Sources */,
+				017E593E2182D8D100DC56FF /* TransactionCell.swift in Sources */,
 				017E5935218291DA00DC56FF /* AccountsViewController.swift in Sources */,
 				017E593A2182958900DC56FF /* AccountCell.swift in Sources */,
 				01527CEA20E1D3B000B5042A /* AppDelegate.swift in Sources */,
