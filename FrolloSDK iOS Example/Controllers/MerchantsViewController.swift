@@ -26,6 +26,12 @@ class MerchantsViewController: TableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        DataManager.shared.frolloSDK.aggregation.refreshMerchants { (error) in
+            if let refreshError = error {
+                print(refreshError.localizedDescription)
+            }
+        }
+        
         reloadData()
     }
     
