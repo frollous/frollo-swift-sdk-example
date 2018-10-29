@@ -162,6 +162,12 @@ class TransactionDetailsViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
+        
+        if segue.identifier == "CategoriesSegue" {
+            
+        } else if segue.identifier == "" {
+            
+        }
     }
     
 }

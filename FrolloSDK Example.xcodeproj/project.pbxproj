@@ -30,6 +30,8 @@
 		017E593C2182D03C00DC56FF /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017E593B2182D03C00DC56FF /* TransactionsViewController.swift */; };
 		017E593E2182D8D100DC56FF /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017E593D2182D8D100DC56FF /* TransactionCell.swift */; };
 		017E59402182DD7800DC56FF /* TransactionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017E593F2182DD7800DC56FF /* TransactionDetailsViewController.swift */; };
+		017E59422186906300DC56FF /* MerchantsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017E59412186906300DC56FF /* MerchantsViewController.swift */; };
+		017E59442186907B00DC56FF /* TransactionCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017E59432186907B00DC56FF /* TransactionCategoriesViewController.swift */; };
 		018B04412176E0A5008C34D7 /* FrolloSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018B043F2176E0A4008C34D7 /* FrolloSDK.framework */; };
 		018B04422176E0A5008C34D7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018B04402176E0A4008C34D7 /* Alamofire.framework */; };
 		018B044A2176E474008C34D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018B04492176E474008C34D7 /* AppDelegate.swift */; };
@@ -113,6 +115,8 @@
 		017E593B2182D03C00DC56FF /* TransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewController.swift; sourceTree = "<group>"; };
 		017E593D2182D8D100DC56FF /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
 		017E593F2182DD7800DC56FF /* TransactionDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailsViewController.swift; sourceTree = "<group>"; };
+		017E59412186906300DC56FF /* MerchantsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantsViewController.swift; sourceTree = "<group>"; };
+		017E59432186907B00DC56FF /* TransactionCategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCategoriesViewController.swift; sourceTree = "<group>"; };
 		018B043D2176E09A008C34D7 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		018B043E2176E09A008C34D7 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		018B043F2176E0A4008C34D7 /* FrolloSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FrolloSDK.framework; path = Carthage/Build/iOS/FrolloSDK.framework; sourceTree = "<group>"; };
@@ -193,6 +197,8 @@
 				01527CEB20E1D3B000B5042A /* ViewController.swift */,
 				017E593B2182D03C00DC56FF /* TransactionsViewController.swift */,
 				017E593F2182DD7800DC56FF /* TransactionDetailsViewController.swift */,
+				017E59412186906300DC56FF /* MerchantsViewController.swift */,
+				017E59432186907B00DC56FF /* TransactionCategoriesViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -564,9 +570,11 @@
 				015023C82181465100EEB5F2 /* ProvidersViewController.swift in Sources */,
 				01527CEC20E1D3B000B5042A /* ViewController.swift in Sources */,
 				017E593E2182D8D100DC56FF /* TransactionCell.swift in Sources */,
+				017E59422186906300DC56FF /* MerchantsViewController.swift in Sources */,
 				017E5935218291DA00DC56FF /* AccountsViewController.swift in Sources */,
 				017E593A2182958900DC56FF /* AccountCell.swift in Sources */,
 				01527CEA20E1D3B000B5042A /* AppDelegate.swift in Sources */,
+				017E59442186907B00DC56FF /* TransactionCategoriesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
