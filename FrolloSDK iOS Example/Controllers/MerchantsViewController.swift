@@ -18,15 +18,15 @@ class MerchantsViewController: TableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let context = DataManager.shared.frolloSDK.database.viewContext
+        let context = FrolloSDK.shared.database.viewContext
         let sortDescriptors = [NSSortDescriptor(key: #keyPath(Merchant.name), ascending: true)]
-        fetchedResultsController = DataManager.shared.frolloSDK.aggregation.merchantsFetchedResultsController(context: context, sortedBy: sortDescriptors)
+        fetchedResultsController = FrolloSDK.shared.aggregation.merchantsFetchedResultsController(context: context, sortedBy: sortDescriptors)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        DataManager.shared.frolloSDK.aggregation.refreshMerchants { (error) in
+        FrolloSDK.shared.aggregation.refreshMerchants { (error) in
             if let refreshError = error {
                 print(refreshError.localizedDescription)
             }

@@ -8,6 +8,8 @@
 
 import UIKit
 
+import FrolloSDK
+
 class LoginViewController: UIViewController {
     
     @IBOutlet var spinner: UIActivityIndicatorView!
@@ -46,7 +48,7 @@ class LoginViewController: UIViewController {
         loginButton.isHidden = true
         spinner.startAnimating()
         
-        DataManager.shared.frolloSDK.authentication.loginUser(method: .email, email: email, password: password) { (error) in
+        FrolloSDK.shared.authentication.loginUser(method: .email, email: email, password: password) { (error) in
             DispatchQueue.main.async {
                 self.loginButton.isHidden = false
                 self.spinner.stopAnimating()
@@ -61,7 +63,7 @@ class LoginViewController: UIViewController {
                     self.flowManager?.showMainSplitViewController()
                     
                     DispatchQueue.main.async {
-                        DataManager.shared.frolloSDK.refreshData()
+                        FrolloSDK.shared.refreshData()
                     }
                 }
             }

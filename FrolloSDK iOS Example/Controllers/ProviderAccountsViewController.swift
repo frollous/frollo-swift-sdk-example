@@ -18,15 +18,15 @@ class ProviderAccountsViewController: TableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let context = DataManager.shared.frolloSDK.database.viewContext
-        fetchedResultsController = DataManager.shared.frolloSDK.aggregation.providerAccountsFetchedResultsController(context: context)
+        let context = FrolloSDK.shared.database.viewContext
+        fetchedResultsController = FrolloSDK.shared.aggregation.providerAccountsFetchedResultsController(context: context)
         fetchedResultsController.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        DataManager.shared.frolloSDK.aggregation.refreshProviderAccounts { (error) in
+        FrolloSDK.shared.aggregation.refreshProviderAccounts { (error) in
             DispatchQueue.main.async {
                 if let refreshError = error {
                     print(refreshError.localizedDescription)
@@ -40,7 +40,7 @@ class ProviderAccountsViewController: TableViewController {
     // MARK: - Interaction
     
     @IBAction func refreshTriggered(sender: UIRefreshControl) {
-        DataManager.shared.frolloSDK.aggregation.refreshProviderAccounts { (error) in
+        FrolloSDK.shared.aggregation.refreshProviderAccounts { (error) in
             DispatchQueue.main.async {
                 if let refreshError = error {
                     print(refreshError.localizedDescription)

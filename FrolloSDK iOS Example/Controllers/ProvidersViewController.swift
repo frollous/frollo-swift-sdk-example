@@ -18,16 +18,16 @@ class ProvidersViewController: TableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let context = DataManager.shared.frolloSDK.database.viewContext
+        let context = FrolloSDK.shared.database.viewContext
         let sortDescriptors = [NSSortDescriptor(key: #keyPath(Provider.popular), ascending: false), NSSortDescriptor(key: #keyPath(Provider.name), ascending: true)]
-        fetchedResultsController = DataManager.shared.frolloSDK.aggregation.providersFetchedResultsController(context: context, sortedBy: sortDescriptors)
+        fetchedResultsController = FrolloSDK.shared.aggregation.providersFetchedResultsController(context: context, sortedBy: sortDescriptors)
         fetchedResultsController.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        DataManager.shared.frolloSDK.aggregation.refreshProviders { (error) in
+        FrolloSDK.shared.aggregation.refreshProviders { (error) in
             DispatchQueue.main.async {
                 if let refreshError = error {
                     print(refreshError.localizedDescription)

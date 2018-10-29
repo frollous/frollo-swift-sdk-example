@@ -28,11 +28,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        DataManager.shared.frolloSDK.applicationDidEnterBackground()
+        FrolloSDK.shared.applicationDidEnterBackground()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        DataManager.shared.frolloSDK.applicationWillEnterForeground()
+        FrolloSDK.shared.applicationWillEnterForeground()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {

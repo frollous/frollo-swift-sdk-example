@@ -34,17 +34,17 @@ class TransactionsViewController: TableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let context = DataManager.shared.frolloSDK.database.viewContext
+        let context = FrolloSDK.shared.database.viewContext
         let predicate = NSPredicate(format: #keyPath(Transaction.accountID) + " == %ld", argumentArray: [accountID])
         let sortDescriptors = [NSSortDescriptor(key: #keyPath(Transaction.transactionDateString), ascending: false)]
-        fetchedResultsController = DataManager.shared.frolloSDK.aggregation.transactionsFetchedResultsController(context: context, filteredBy: predicate, sortedBy: sortDescriptors)
+        fetchedResultsController = FrolloSDK.shared.aggregation.transactionsFetchedResultsController(context: context, filteredBy: predicate, sortedBy: sortDescriptors)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         let fromDate = Date().addingTimeInterval(-7776000) //  3 months ago
-        DataManager.shared.frolloSDK.aggregation.refreshTransactions(from: fromDate, to: Date())
+        FrolloSDK.shared.aggregation.refreshTransactions(from: fromDate, to: Date())
         
         reloadData()
     }

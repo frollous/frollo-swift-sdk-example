@@ -11,8 +11,6 @@
 		013F1F67217829320043BF56 /* ProviderAccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F1F65217829320043BF56 /* ProviderAccountsViewController.swift */; };
 		013F1F6921782CC80043BF56 /* StartupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F1F6821782CC80043BF56 /* StartupViewController.swift */; };
 		013F1F6A21782CC80043BF56 /* StartupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F1F6821782CC80043BF56 /* StartupViewController.swift */; };
-		013F1F6D21783A580043BF56 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F1F6C21783A580043BF56 /* DataManager.swift */; };
-		013F1F6E21783A580043BF56 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F1F6C21783A580043BF56 /* DataManager.swift */; };
 		013F1F7021784CB10043BF56 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F1F6F21784CB10043BF56 /* LoginViewController.swift */; };
 		013F1F7121784CB10043BF56 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F1F6F21784CB10043BF56 /* LoginViewController.swift */; };
 		015023C82181465100EEB5F2 /* ProvidersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015023C72181465100EEB5F2 /* ProvidersViewController.swift */; };
@@ -98,7 +96,6 @@
 /* Begin PBXFileReference section */
 		013F1F65217829320043BF56 /* ProviderAccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderAccountsViewController.swift; sourceTree = "<group>"; };
 		013F1F6821782CC80043BF56 /* StartupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupViewController.swift; sourceTree = "<group>"; };
-		013F1F6C21783A580043BF56 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		013F1F6F21784CB10043BF56 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		015023C72181465100EEB5F2 /* ProvidersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvidersViewController.swift; sourceTree = "<group>"; };
 		01527CE620E1D3B000B5042A /* FrolloSDK iOS Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FrolloSDK iOS Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -206,7 +203,6 @@
 		013F1F6B217839D60043BF56 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				013F1F6C21783A580043BF56 /* DataManager.swift */,
 				017E58CC217ECC2200DC56FF /* FlowManager.swift */,
 			);
 			path = Managers;
@@ -564,7 +560,6 @@
 				017E593C2182D03C00DC56FF /* TransactionsViewController.swift in Sources */,
 				017E58CD217ECC2200DC56FF /* FlowManager.swift in Sources */,
 				017E59372182945200DC56FF /* TableViewController.swift in Sources */,
-				013F1F6D21783A580043BF56 /* DataManager.swift in Sources */,
 				017E59402182DD7800DC56FF /* TransactionDetailsViewController.swift in Sources */,
 				013F1F66217829320043BF56 /* ProviderAccountsViewController.swift in Sources */,
 				015023C82181465100EEB5F2 /* ProvidersViewController.swift in Sources */,
@@ -585,7 +580,6 @@
 				013F1F7121784CB10043BF56 /* LoginViewController.swift in Sources */,
 				015023C92181465100EEB5F2 /* ProvidersViewController.swift in Sources */,
 				018B044E2176E474008C34D7 /* SecondViewController.swift in Sources */,
-				013F1F6E21783A580043BF56 /* DataManager.swift in Sources */,
 				013F1F67217829320043BF56 /* ProviderAccountsViewController.swift in Sources */,
 				018B044A2176E474008C34D7 /* AppDelegate.swift in Sources */,
 				018B044C2176E474008C34D7 /* FirstViewController.swift in Sources */,

@@ -21,7 +21,9 @@ class StartupViewController: UIViewController {
         
         spinner.startAnimating()
 
-        DataManager.shared.frolloSDK.setup { (error) in
+        let serverURL = URL(string: "https://api-sandbox.frollo.us/api/v1/")!
+        
+        FrolloSDK.shared.setup(serverURL: serverURL) { (error) in
             if let setupError = error {
                 fatalError(setupError.localizedDescription)
             } else {
@@ -38,11 +40,11 @@ class StartupViewController: UIViewController {
     private func completeStartup() {
         spinner.stopAnimating()
         
-        if DataManager.shared.frolloSDK.authentication.loggedIn {
+        if FrolloSDK.shared.authentication.loggedIn {
             flowManager?.showMainSplitViewController()
             
             DispatchQueue.main.async {
-                DataManager.shared.frolloSDK.refreshData()
+                FrolloSDK.shared.refreshData()
             }
         } else {
             flowManager?.showLoginViewController()

@@ -51,7 +51,7 @@ class TransactionDetailsViewController: UIViewController {
     // MARK: - Transaction
     
     private func fetchTransaction() {
-        let context = DataManager.shared.frolloSDK.database.viewContext
+        let context = FrolloSDK.shared.database.viewContext
         let fetchRequest: NSFetchRequest<Transaction> = Transaction.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "transactionID == %ld", argumentArray: [transactionID])
         
@@ -148,7 +148,7 @@ class TransactionDetailsViewController: UIViewController {
         containerView.isHidden = true
         spinner.startAnimating()
         
-        DataManager.shared.frolloSDK.aggregation.updateTransaction(transactionID: transaction.transactionID) { (error) in
+        FrolloSDK.shared.aggregation.updateTransaction(transactionID: transaction.transactionID) { (error) in
             DispatchQueue.main.async {
                 self.spinner.stopAnimating()
                 self.containerView.isHidden = false

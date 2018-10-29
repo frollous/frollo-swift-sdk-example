@@ -34,16 +34,16 @@ class AccountsViewController: TableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let context = DataManager.shared.frolloSDK.database.viewContext
+        let context = FrolloSDK.shared.database.viewContext
         let predicate = NSPredicate(format: "providerAccountID == %ld", argumentArray: [providerAccountID])
         let sortDescriptors = [NSSortDescriptor(key: #keyPath(Account.accountTypeRawValue), ascending: true), NSSortDescriptor(key: #keyPath(Account.accountName), ascending: true)]
-        fetchedResultsController = DataManager.shared.frolloSDK.aggregation.accountsFetchedResultsController(context: context, filteredBy: predicate, sortedBy: sortDescriptors)
+        fetchedResultsController = FrolloSDK.shared.aggregation.accountsFetchedResultsController(context: context, filteredBy: predicate, sortedBy: sortDescriptors)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        DataManager.shared.frolloSDK.aggregation.refreshAccounts { (error) in
+        FrolloSDK.shared.aggregation.refreshAccounts { (error) in
             if let refreshError = error {
                 print(refreshError.localizedDescription)
             }
