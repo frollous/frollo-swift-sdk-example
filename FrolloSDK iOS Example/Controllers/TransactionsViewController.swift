@@ -49,6 +49,20 @@ class TransactionsViewController: TableViewController {
         reloadData()
     }
     
+    // MARK: - Interaction
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        if segue.identifier == "DetailSegue",
+            let detailsViewController = segue.destination as? TransactionDetailsViewController,
+            let cell = sender as? UITableViewCell,
+            let indexPath = tableView.indexPath(for: cell) {
+            let transaction = fetchedResultsController.object(at: indexPath)
+            detailsViewController.transactionID = transaction.transactionID
+        }
+    }
+    
     // MARK: - Transactions
     
     private func reloadData() {
