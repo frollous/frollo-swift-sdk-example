@@ -13,10 +13,11 @@ import FrolloSDK
 protocol AddProviderChoiceCellDelegate: class {
     
     func cellChoiceChanged(cell: AddProviderChoiceCell, choiceIndex: Int)
+    func cellChoiceFieldValueChanged(sender: AddProviderChoiceCell, fieldIndex: Int, updatedText: String?)
     
 }
 
-class AddProviderChoiceCell: UITableViewCell, AddProviderChoiceViewDelegate {
+class AddProviderChoiceCell: UITableViewCell, UITextFieldDelegate, AddProviderChoiceViewDelegate {
     
     @IBOutlet var choiceLabel: UILabel!
     @IBOutlet var titleLabel: UILabel!
@@ -91,7 +92,7 @@ class AddProviderChoiceCell: UITableViewCell, AddProviderChoiceViewDelegate {
             }
             
             let loginFieldView = UINib(nibName: "AddProviderLoginFieldView", bundle: nil).instantiate(withOwner: nil, options: nil).first as! AddProviderLoginFieldView
-            //loginFieldView.textField.delegate = self
+            loginFieldView.textField.delegate = self
             loginFieldView.textField.tag = tag
             loginFieldView.textField.text = field.value
             loginFieldView.addConstraint(NSLayoutConstraint(item: loginFieldView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: length))
@@ -113,6 +114,27 @@ class AddProviderChoiceCell: UITableViewCell, AddProviderChoiceViewDelegate {
     
     func optionSelected(_ option: AddProviderChoiceView) {
         delegate?.cellChoiceChanged(cell: self, choiceIndex: option.index)
+    }
+    
+    // MARK: - Text Field Delegate
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentString = textField.text as NSString?
+        let proposedString = currentString?.replacingCharacters(in: range, with: string)
+        
+        let fieldIndex = textField.tag - 1
+        
+        if let checkString = proposedString {
+            let maxChars = maxLengths[fieldIndex]
+            
+            if maxChars > 0 && checkString.count > maxChars {
+                return false
+            }
+        }
+        
+        delegate?.cellChoiceFieldValueChanged(sender: self, fieldIndex: fieldIndex, updatedText: proposedString)
+        
+        return true
     }
 
 }

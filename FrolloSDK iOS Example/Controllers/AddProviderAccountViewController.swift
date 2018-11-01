@@ -11,7 +11,7 @@ import UIKit
 
 import FrolloSDK
 
-class AddProviderAccountViewController: UIViewController, UITableViewDataSource, AddProviderChoiceCellDelegate {
+class AddProviderAccountViewController: UIViewController, UITableViewDataSource, UITextFieldDelegate, AddProviderChoiceCellDelegate {
     
     @IBOutlet var spinner: UIActivityIndicatorView!
     @IBOutlet var tableView: UITableView!
@@ -31,6 +31,45 @@ class AddProviderAccountViewController: UIViewController, UITableViewDataSource,
         super.viewWillAppear(animated)
         
         reloadData()
+    }
+    
+    // MARK: - Interaction
+    
+    @IBAction func donePress(sender: UIBarButtonItem) {
+        guard let viewModel = loginFormViewModel,
+            let provider = fetchedProvider
+            else {
+                return
+        }
+        
+        let viewModelValidationResult = viewModel.validateMultipleChoice()
+        
+        guard viewModelValidationResult.0 == true
+            else {
+                return
+        }
+        
+        var filledDataModel = viewModel.dataModel()
+        
+        let validationResult = filledDataModel.validateForm()
+        
+        guard validationResult.0 == true
+            else {
+                return
+        }
+        
+        // Encrypt the fields with the provider public key if available
+        if let encryptionAlias = provider.encryptionAlias, let encryptionKey = provider.encryptionPublicKey {
+            filledDataModel.encryptValues(encryptionKey: encryptionKey, encryptionAlias: encryptionAlias)
+        }
+        
+        FrolloSDK.shared.aggregation.createProviderAccount(providerID: providerID, loginForm: filledDataModel) { (error) in
+            if let createError = error {
+                print(createError.localizedDescription)
+            } else {
+                self.dismiss(animated: true)
+            }
+        }
     }
     
     // MARK: - Provider Login Form
@@ -102,6 +141,30 @@ class AddProviderAccountViewController: UIViewController, UITableViewDataSource,
                 choiceCell.updateChoices(modelCell)
                 
                 cell = choiceCell
+            } else if let row = modelCell.rows.first, let field = row.field.first {
+                let fieldCell = tableView.dequeueReusableCell(withIdentifier: "FieldCell", for: indexPath) as! AddProviderLoginFieldCell
+                
+                fieldCell.titleLabel.text = row.label
+                fieldCell.textField.delegate = self
+                fieldCell.textField.autocorrectionType = .no
+                fieldCell.textField.autocapitalizationType = .none
+                fieldCell.textField.placeholder = row.hint
+                fieldCell.textField.text = field.value
+                
+                switch field.type {
+                    case .password:
+                        fieldCell.textField.keyboardType = .default
+                        fieldCell.textField.isSecureTextEntry = true
+                    
+                    case .text:
+                        fieldCell.textField.keyboardType = .default
+                        fieldCell.textField.isSecureTextEntry = false
+                    
+                    default:
+                        break
+                }
+                
+                cell = fieldCell
             } else {
                 cell = tableView.dequeueReusableCell(withIdentifier: "BlankCell", for: indexPath)
             }
@@ -133,6 +196,42 @@ class AddProviderAccountViewController: UIViewController, UITableViewDataSource,
             
             tableView.reloadRows(at: [indexPath], with: .none)
         }
+    }
+    
+    func cellChoiceFieldValueChanged(sender: AddProviderChoiceCell, fieldIndex: Int, updatedText: String?) {
+        if let indexPath = tableView.indexPath(for: sender), let formCell = loginFormViewModel?.cells[indexPath.row] {
+            var index = 0
+            
+            for row in formCell.rows {
+                if row.id == formCell.selectedRowID! {
+                    loginFormViewModel?.cells[indexPath.row].rows[index].field[fieldIndex].value = updatedText
+                    break
+                }
+                
+                index += 1
+            }
+        }
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentString = textField.text as NSString?
+        let proposedString = currentString?.replacingCharacters(in: range, with: string)
+        
+        let cell = textField.superview?.superview?.superview as! AddProviderLoginFieldCell
+        
+        let indexPath = tableView.indexPath(for: cell)!
+        
+        if let field = loginFormViewModel?.cells[indexPath.row].rows[0].field[0] {
+            if let checkString = proposedString, let maxChars = field.maxLength {
+                if checkString.count > maxChars {
+                    return false
+                }
+            }
+            
+            loginFormViewModel?.cells[indexPath.row].rows[0].field[0].value = proposedString
+        }
+        
+        return true
     }
 
 }

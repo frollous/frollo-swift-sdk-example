@@ -9,6 +9,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Light.ttf">
+            <string>OpenSans-Light</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Accounts-->
         <scene sceneID="Fot-eT-17l">
@@ -281,6 +286,57 @@
                                             <outlet property="titleLabel" destination="HiH-fW-E42" id="SJL-Jf-dpx"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FieldCell" rowHeight="80" id="te5-aH-Xhx" customClass="AddProviderLoginFieldCell" customModule="FrolloSDK_iOS_Example" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="233" width="375" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="te5-aH-Xhx" id="eTv-LK-Rnb">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZXH-Dq-QJE">
+                                                    <rect key="frame" x="20" y="30.5" width="335" height="45"/>
+                                                    <subviews>
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YfO-bQ-kIV">
+                                                            <rect key="frame" x="8" y="2" width="319" height="41"/>
+                                                            <nil key="textColor"/>
+                                                            <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="15"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="YfO-bQ-kIV" firstAttribute="leading" secondItem="ZXH-Dq-QJE" secondAttribute="leading" constant="8" id="9T7-WJ-dGC"/>
+                                                        <constraint firstAttribute="bottom" secondItem="YfO-bQ-kIV" secondAttribute="bottom" constant="2" id="CkR-UB-AST"/>
+                                                        <constraint firstAttribute="height" constant="45" id="XYQ-bn-FP3"/>
+                                                        <constraint firstItem="YfO-bQ-kIV" firstAttribute="top" secondItem="ZXH-Dq-QJE" secondAttribute="top" constant="2" id="eQs-lY-5PD"/>
+                                                        <constraint firstAttribute="trailing" secondItem="YfO-bQ-kIV" secondAttribute="trailing" constant="8" id="p4M-Sd-XIl"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVJ-u1-bRV">
+                                                    <rect key="frame" x="20" y="4" width="335" height="16.5"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="cVJ-u1-bRV" secondAttribute="trailing" constant="20" id="0f8-WU-aEc"/>
+                                                <constraint firstItem="ZXH-Dq-QJE" firstAttribute="trailing" secondItem="cVJ-u1-bRV" secondAttribute="trailing" id="1NV-L0-OL2"/>
+                                                <constraint firstAttribute="bottom" secondItem="ZXH-Dq-QJE" secondAttribute="bottom" constant="4" id="AUa-1D-edy"/>
+                                                <constraint firstItem="cVJ-u1-bRV" firstAttribute="top" secondItem="eTv-LK-Rnb" secondAttribute="top" constant="4" id="Nma-25-aDS"/>
+                                                <constraint firstItem="cVJ-u1-bRV" firstAttribute="leading" secondItem="eTv-LK-Rnb" secondAttribute="leading" constant="20" id="R7q-nj-htv"/>
+                                                <constraint firstItem="ZXH-Dq-QJE" firstAttribute="leading" secondItem="cVJ-u1-bRV" secondAttribute="leading" id="dvE-uw-wEN"/>
+                                                <constraint firstItem="ZXH-Dq-QJE" firstAttribute="top" secondItem="cVJ-u1-bRV" secondAttribute="bottom" constant="10" id="nP5-er-6rQ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="textField" destination="YfO-bQ-kIV" id="BHL-9B-HXP"/>
+                                            <outlet property="textFieldContainerView" destination="ZXH-Dq-QJE" id="gfT-e4-pK9"/>
+                                            <outlet property="titleLabel" destination="cVJ-u1-bRV" id="QNO-hC-sxE"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="4fE-bN-gAx" id="DRR-11-Qjr"/>
@@ -298,7 +354,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zfc-75-LMH"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Add Account" id="Rkk-h2-k3q"/>
+                    <navigationItem key="navigationItem" title="Add Account" id="Rkk-h2-k3q">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="mVn-8R-cz3">
+                            <connections>
+                                <action selector="donePressWithSender:" destination="4fE-bN-gAx" id="GtZ-Gq-AVZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="spinner" destination="Zcr-F0-mAy" id="cXC-Rk-pQI"/>
                         <outlet property="tableView" destination="azV-lU-W3G" id="dNd-qV-puH"/>

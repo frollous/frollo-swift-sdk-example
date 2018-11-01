@@ -26,6 +26,7 @@
 		01527CEF20E1D3B000B5042A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01527CED20E1D3B000B5042A /* Main.storyboard */; };
 		01527CF120E1D3B200B5042A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01527CF020E1D3B200B5042A /* Assets.xcassets */; };
 		01527CF420E1D3B200B5042A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01527CF220E1D3B200B5042A /* LaunchScreen.storyboard */; };
+		01568799218AB0B100C961B3 /* AddProviderLoginFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01568798218AB0B100C961B3 /* AddProviderLoginFieldCell.swift */; };
 		017E58CD217ECC2200DC56FF /* FlowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017E58CC217ECC2200DC56FF /* FlowManager.swift */; };
 		017E58CE217ECC2200DC56FF /* FlowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017E58CC217ECC2200DC56FF /* FlowManager.swift */; };
 		017E5935218291DA00DC56FF /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017E5934218291DA00DC56FF /* AccountsViewController.swift */; };
@@ -117,6 +118,7 @@
 		01527CF020E1D3B200B5042A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01527CF320E1D3B200B5042A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01527CF520E1D3B200B5042A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01568798218AB0B100C961B3 /* AddProviderLoginFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProviderLoginFieldCell.swift; sourceTree = "<group>"; };
 		017E58CC217ECC2200DC56FF /* FlowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowManager.swift; sourceTree = "<group>"; };
 		017E5934218291DA00DC56FF /* AccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewController.swift; sourceTree = "<group>"; };
 		017E59362182945200DC56FF /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 				013BC1E6218AA0C2005A2714 /* AddProviderChoiceCell.swift */,
 				013BC1E8218AA30A005A2714 /* AddProviderChoiceView.swift */,
 				013BC1EE218AA657005A2714 /* AddProviderLoginFieldView.swift */,
+				01568798218AB0B100C961B3 /* AddProviderLoginFieldCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 				013BC1E7218AA0C2005A2714 /* AddProviderChoiceCell.swift in Sources */,
 				017E593C2182D03C00DC56FF /* TransactionsViewController.swift in Sources */,
 				017E58CD217ECC2200DC56FF /* FlowManager.swift in Sources */,
+				01568799218AB0B100C961B3 /* AddProviderLoginFieldCell.swift in Sources */,
 				017E59372182945200DC56FF /* TableViewController.swift in Sources */,
 				017E59402182DD7800DC56FF /* TransactionDetailsViewController.swift in Sources */,
 				013BC1E9218AA30A005A2714 /* AddProviderChoiceView.swift in Sources */,
