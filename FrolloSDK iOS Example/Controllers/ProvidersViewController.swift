@@ -49,7 +49,13 @@ class ProvidersViewController: TableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
-        
+        if segue.identifier == "AddAccountSegue",
+            let addAccountViewController = segue.destination as? AddProviderAccountViewController,
+            let cell = sender as? UITableViewCell,
+            let indexPath = tableView.indexPath(for: cell) {
+            let provider = fetchedResultsController.object(at: indexPath)
+            addAccountViewController.providerID = provider.providerID
+        }
     }
     
     // MARK: - Providers

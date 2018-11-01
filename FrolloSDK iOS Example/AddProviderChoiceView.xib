@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Light.ttf">
+            <string>OpenSans-Light</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="pb6-kq-LsB" customClass="AddProviderChoiceView" customModule="FrolloSDK_iOS_Example" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PrF-Rz-cq0">
+                    <rect key="frame" x="8" y="10" width="20" height="20"/>
+                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="20" id="8RK-rA-ZXg"/>
+                        <constraint firstAttribute="height" constant="20" id="sll-9U-388"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbL-o2-3ff">
+                    <rect key="frame" x="43" y="11.5" width="324" height="17.5"/>
+                    <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sw2-mD-vPD">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                    <connections>
+                        <action selector="optionTappedWithSender:" destination="pb6-kq-LsB" eventType="touchUpInside" id="YXC-U8-FUd"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="PrF-Rz-cq0" firstAttribute="centerY" secondItem="pb6-kq-LsB" secondAttribute="centerY" id="9x4-V9-p4m"/>
+                <constraint firstAttribute="bottom" secondItem="Sw2-mD-vPD" secondAttribute="bottom" id="CsY-zB-Fuc"/>
+                <constraint firstItem="jbL-o2-3ff" firstAttribute="centerY" secondItem="pb6-kq-LsB" secondAttribute="centerY" id="Fhs-Px-XQb"/>
+                <constraint firstItem="jbL-o2-3ff" firstAttribute="leading" secondItem="PrF-Rz-cq0" secondAttribute="trailing" constant="15" id="INp-kS-UVX"/>
+                <constraint firstItem="PrF-Rz-cq0" firstAttribute="leading" secondItem="pb6-kq-LsB" secondAttribute="leading" constant="8" id="Le1-dv-RJW"/>
+                <constraint firstItem="Sw2-mD-vPD" firstAttribute="top" secondItem="pb6-kq-LsB" secondAttribute="top" id="LiF-vH-5OR"/>
+                <constraint firstItem="Sw2-mD-vPD" firstAttribute="leading" secondItem="pb6-kq-LsB" secondAttribute="leading" id="MMF-bo-g2S"/>
+                <constraint firstItem="PrF-Rz-cq0" firstAttribute="top" secondItem="pb6-kq-LsB" secondAttribute="top" constant="10" id="SN4-db-crX"/>
+                <constraint firstAttribute="bottom" secondItem="PrF-Rz-cq0" secondAttribute="bottom" constant="10" id="SmZ-Il-zH8"/>
+                <constraint firstAttribute="trailing" secondItem="jbL-o2-3ff" secondAttribute="trailing" constant="8" id="bQx-V1-S1h"/>
+                <constraint firstAttribute="trailing" secondItem="Sw2-mD-vPD" secondAttribute="trailing" id="gUm-gv-sKk"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="Nwb-t4-k6J"/>
+            <connections>
+                <outlet property="nameLabel" destination="jbL-o2-3ff" id="e53-ht-k7j"/>
+                <outlet property="tickContainerView" destination="PrF-Rz-cq0" id="fDE-lQ-FqF"/>
+            </connections>
+            <point key="canvasLocation" x="25.5" y="-251"/>
+        </view>
+    </objects>
+</document>

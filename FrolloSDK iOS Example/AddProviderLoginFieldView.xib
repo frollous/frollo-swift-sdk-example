@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Wg0-7w-UTQ" customClass="AddProviderLoginFieldView" customModule="FrolloSDK_iOS_Example" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="196" height="45"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YHw-ue-Tn1">
+                    <rect key="frame" x="8" y="2" width="180" height="41"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="41" id="Np1-ug-4Bo"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="YHw-ue-Tn1" firstAttribute="top" secondItem="Wg0-7w-UTQ" secondAttribute="top" constant="2" id="Kaq-TG-Hp9"/>
+                <constraint firstAttribute="trailing" secondItem="YHw-ue-Tn1" secondAttribute="trailing" constant="8" id="Tfc-gD-tsp"/>
+                <constraint firstItem="YHw-ue-Tn1" firstAttribute="leading" secondItem="Wg0-7w-UTQ" secondAttribute="leading" constant="8" id="mds-80-STy"/>
+                <constraint firstAttribute="bottom" secondItem="YHw-ue-Tn1" secondAttribute="bottom" constant="2" id="ryj-8U-bD9"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="BxL-ag-OtR"/>
+            <connections>
+                <outlet property="textField" destination="YHw-ue-Tn1" id="W8Q-RN-Hxi"/>
+            </connections>
+            <point key="canvasLocation" x="147" y="118"/>
+        </view>
+    </objects>
+</document>
