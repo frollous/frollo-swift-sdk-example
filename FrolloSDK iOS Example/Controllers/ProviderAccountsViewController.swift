@@ -39,6 +39,7 @@ class ProviderAccountsViewController: TableViewController {
 
     // MARK: - Interaction
     
+    @available(tvOS, unavailable)
     @IBAction func refreshTriggered(sender: UIRefreshControl) {
         FrolloSDK.shared.aggregation.refreshProviderAccounts { (error) in
             DispatchQueue.main.async {
@@ -97,17 +98,17 @@ class ProviderAccountsViewController: TableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AccountCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AccountCell", for: indexPath) as! ProviderAccountCell
         
         let providerAccount = fetchedResultsController.object(at: indexPath)
         
-        cell.textLabel?.text = providerAccount.provider?.name ?? "Unknown Provider Account"
+        cell.nameLabel.text = providerAccount.provider?.name ?? "Unknown Provider Account"
         
         if let accountCount = providerAccount.accounts?.count {
-            cell.detailTextLabel?.isHidden = false
-            cell.detailTextLabel?.text = String(format: "%ld Accounts", arguments: [accountCount])
+            cell.accountsLabel.isHidden = false
+            cell.accountsLabel.text = String(format: "%ld Accounts", arguments: [accountCount])
         } else {
-            cell.detailTextLabel?.isHidden = true
+            cell.accountsLabel.isHidden = true
         }
         
         return cell

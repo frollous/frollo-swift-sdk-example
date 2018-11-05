@@ -78,10 +78,10 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="balanceLabel" destination="6qn-J6-kBJ" id="bTc-hN-erI"/>
-                                    <outlet property="nameLabel" destination="lzg-zy-bLW" id="LeE-PO-Vlg"/>
+                                    <outlet property="balanceLabel" destination="6qn-J6-kBJ" id="8Df-HB-fKp"/>
+                                    <outlet property="nameLabel" destination="lzg-zy-bLW" id="ubR-Ty-PtH"/>
                                     <outlet property="spinner" destination="xIY-BY-qpD" id="huK-Tp-Nr6"/>
-                                    <outlet property="statusLabel" destination="gfA-hA-28g" id="1F6-ze-2nN"/>
+                                    <outlet property="statusLabel" destination="gfA-hA-28g" id="oJo-Qq-N7q"/>
                                     <outlet property="updatedLabel" destination="3An-mL-Qg0" id="KBg-Zv-vaU"/>
                                     <segue destination="hkh-h9-lQC" kind="show" identifier="TransactionSegue" id="fHW-Vg-TKI"/>
                                 </connections>
@@ -107,30 +107,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AccountCell" textLabel="rRw-4I-Hx6" detailTextLabel="1cq-ca-9k1" style="IBUITableViewCellStyleSubtitle" id="amf-e7-3cq">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AccountCell" rowHeight="49" id="amf-e7-3cq" customClass="ProviderAccountCell" customModule="FrolloSDK_iOS_Example" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="49"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="amf-e7-3cq" id="3t0-Ge-9TG">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="48.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rRw-4I-Hx6">
-                                            <rect key="frame" x="16" y="5" width="33.5" height="20.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="254" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WRJ-lH-KI1">
+                                            <rect key="frame" x="16" y="2" width="343" height="21"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1cq-ca-9k1">
-                                            <rect key="frame" x="16" y="25.5" width="44" height="14.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4I-vu-U2z">
+                                            <rect key="frame" x="16" y="23" width="343" height="23.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="WRJ-lH-KI1" firstAttribute="top" secondItem="3t0-Ge-9TG" secondAttribute="top" constant="2" id="Bc7-ef-pQ0"/>
+                                        <constraint firstAttribute="trailing" secondItem="WRJ-lH-KI1" secondAttribute="trailing" constant="16" id="I7c-rA-clc"/>
+                                        <constraint firstAttribute="trailing" secondItem="a4I-vu-U2z" secondAttribute="trailing" constant="16" id="Ifr-72-ym4"/>
+                                        <constraint firstAttribute="bottom" secondItem="a4I-vu-U2z" secondAttribute="bottom" constant="2" id="V52-8E-adB"/>
+                                        <constraint firstItem="a4I-vu-U2z" firstAttribute="top" secondItem="WRJ-lH-KI1" secondAttribute="bottom" id="ipt-vp-G3c"/>
+                                        <constraint firstItem="a4I-vu-U2z" firstAttribute="leading" secondItem="3t0-Ge-9TG" secondAttribute="leading" constant="16" id="l0b-OY-KrV"/>
+                                        <constraint firstItem="WRJ-lH-KI1" firstAttribute="leading" secondItem="3t0-Ge-9TG" secondAttribute="leading" constant="16" id="vtr-RE-aI8"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="accountsLabel" destination="a4I-vu-U2z" id="6GZ-95-aRs"/>
+                                    <outlet property="nameLabel" destination="WRJ-lH-KI1" id="2wE-lD-rTC"/>
                                     <segue destination="zcF-fv-fit" kind="showDetail" identifier="AccountSegue" id="Y4U-KU-SAB"/>
                                 </connections>
                             </tableViewCell>

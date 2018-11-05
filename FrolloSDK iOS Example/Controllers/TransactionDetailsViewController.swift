@@ -21,8 +21,10 @@ class TransactionDetailsViewController: UIViewController {
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var detailsLabel: UILabel!
     @IBOutlet var nameLabel: UILabel!
-    @IBOutlet var excludedSwitch: UISwitch!
     @IBOutlet var containerView: UIView!
+    
+    @available(tvOS, unavailable)
+    @IBOutlet var excludedSwitch: UISwitch!
     
     public var transactionID: Int64 = -1
     
@@ -101,7 +103,9 @@ class TransactionDetailsViewController: UIViewController {
             amountLabel.isHidden = true
         }
         
-        excludedSwitch.isOn = !transaction.included
+        #if os(iOS)
+            excludedSwitch.isOn = !transaction.included
+        #endif
     }
     
     // MARK: - Interaction
@@ -135,6 +139,7 @@ class TransactionDetailsViewController: UIViewController {
         present(alertController, animated: true)
     }
     
+    @available(tvOS, unavailable)
     @IBAction func excludedSwitched(sender: UISwitch) {
         fetchedTransaction?.included = !sender.isOn
     }

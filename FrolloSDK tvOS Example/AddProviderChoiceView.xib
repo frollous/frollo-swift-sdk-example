@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.AppleTV.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="appleTV" orientation="landscape">
+        <adaptation id="light"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="AgN-7J-ITN" customClass="AddProviderChoiceView" customModule="FrolloSDK_tvOS_Example" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="1920" height="40"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bKR-PE-nBL">
+                    <rect key="frame" x="10" y="10" width="20" height="20"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="N0A-H3-g8F"/>
+                        <constraint firstAttribute="width" constant="20" id="zOw-3m-3Tw"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7cu-AX-2yp">
+                    <rect key="frame" x="45" y="11" width="1867" height="18"/>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VvW-Xl-hGc">
+                    <rect key="frame" x="0.0" y="0.0" width="1920" height="40"/>
+                    <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                    <connections>
+                        <action selector="optionTappedWithSender:" destination="AgN-7J-ITN" eventType="touchUpInside" id="ChJ-H8-S08"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="7cu-AX-2yp" secondAttribute="trailing" constant="8" id="4kH-Ax-VGT"/>
+                <constraint firstItem="7cu-AX-2yp" firstAttribute="leading" secondItem="bKR-PE-nBL" secondAttribute="trailing" constant="15" id="GBa-85-fND"/>
+                <constraint firstItem="VvW-Xl-hGc" firstAttribute="top" secondItem="AgN-7J-ITN" secondAttribute="top" id="NJw-QC-zFp"/>
+                <constraint firstItem="bKR-PE-nBL" firstAttribute="top" secondItem="AgN-7J-ITN" secondAttribute="top" constant="10" id="O9Z-4m-nCg"/>
+                <constraint firstAttribute="trailing" secondItem="VvW-Xl-hGc" secondAttribute="trailing" id="RUS-2S-MAx"/>
+                <constraint firstItem="VvW-Xl-hGc" firstAttribute="leading" secondItem="AgN-7J-ITN" secondAttribute="leading" id="T7o-lS-ooM"/>
+                <constraint firstItem="bKR-PE-nBL" firstAttribute="leading" secondItem="AgN-7J-ITN" secondAttribute="leading" constant="10" id="YfI-Gr-sdb"/>
+                <constraint firstAttribute="bottom" secondItem="VvW-Xl-hGc" secondAttribute="bottom" id="gaP-CI-zYj"/>
+                <constraint firstAttribute="bottom" secondItem="bKR-PE-nBL" secondAttribute="bottom" constant="10" id="hYY-dH-8If"/>
+                <constraint firstItem="7cu-AX-2yp" firstAttribute="centerY" secondItem="AgN-7J-ITN" secondAttribute="centerY" id="mSW-2I-OOl"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="SjN-Gh-uK0"/>
+            <connections>
+                <outlet property="nameLabel" destination="7cu-AX-2yp" id="VGx-nG-6YW"/>
+                <outlet property="tickContainerView" destination="bKR-PE-nBL" id="vn7-cy-7Y4"/>
+            </connections>
+            <point key="canvasLocation" x="5" y="49"/>
+        </view>
+    </objects>
+</document>

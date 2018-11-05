@@ -10,7 +10,6 @@
 		011A7BCF2189330600E2CEF1 /* AddProviderAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011A7BCE2189330600E2CEF1 /* AddProviderAccountViewController.swift */; };
 		013BC1E7218AA0C2005A2714 /* AddProviderChoiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013BC1E6218AA0C2005A2714 /* AddProviderChoiceCell.swift */; };
 		013BC1E9218AA30A005A2714 /* AddProviderChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013BC1E8218AA30A005A2714 /* AddProviderChoiceView.swift */; };
-		013BC1EB218AA3C0005A2714 /* AddProviderChoiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 013BC1EA218AA3C0005A2714 /* AddProviderChoiceView.xib */; };
 		013BC1ED218AA62D005A2714 /* AddProviderLoginFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 013BC1EC218AA62D005A2714 /* AddProviderLoginFieldView.xib */; };
 		013BC1EF218AA657005A2714 /* AddProviderLoginFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013BC1EE218AA657005A2714 /* AddProviderLoginFieldView.swift */; };
 		013F1F66217829320043BF56 /* ProviderAccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F1F65217829320043BF56 /* ProviderAccountsViewController.swift */; };
@@ -27,6 +26,27 @@
 		01527CF120E1D3B200B5042A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01527CF020E1D3B200B5042A /* Assets.xcassets */; };
 		01527CF420E1D3B200B5042A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01527CF220E1D3B200B5042A /* LaunchScreen.storyboard */; };
 		01568799218AB0B100C961B3 /* AddProviderLoginFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01568798218AB0B100C961B3 /* AddProviderLoginFieldCell.swift */; };
+		0156879B218BD57900C961B3 /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017E5934218291DA00DC56FF /* AccountsViewController.swift */; };
+		0156879C218BD57C00C961B3 /* AddProviderAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011A7BCE2189330600E2CEF1 /* AddProviderAccountViewController.swift */; };
+		0156879D218BD58000C961B3 /* MerchantsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017E59412186906300DC56FF /* MerchantsViewController.swift */; };
+		0156879E218BD58B00C961B3 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017E59362182945200DC56FF /* TableViewController.swift */; };
+		0156879F218BD58F00C961B3 /* TransactionCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017E59432186907B00DC56FF /* TransactionCategoriesViewController.swift */; };
+		015687A0218BD59100C961B3 /* TransactionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017E593F2182DD7800DC56FF /* TransactionDetailsViewController.swift */; };
+		015687A1218BD59400C961B3 /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017E593B2182D03C00DC56FF /* TransactionsViewController.swift */; };
+		015687A2218BD5A800C961B3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01527CEB20E1D3B000B5042A /* ViewController.swift */; };
+		015687A3218BD5B900C961B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01527CE920E1D3B000B5042A /* AppDelegate.swift */; };
+		015687A4218BD5D400C961B3 /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017E59392182958900DC56FF /* AccountCell.swift */; };
+		015687A5218BD5D600C961B3 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017E593D2182D8D100DC56FF /* TransactionCell.swift */; };
+		015687A6218BD5D800C961B3 /* AddProviderChoiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013BC1E6218AA0C2005A2714 /* AddProviderChoiceCell.swift */; };
+		015687A7218BD5DB00C961B3 /* AddProviderChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013BC1E8218AA30A005A2714 /* AddProviderChoiceView.swift */; };
+		015687A8218BD5DD00C961B3 /* AddProviderLoginFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013BC1EE218AA657005A2714 /* AddProviderLoginFieldView.swift */; };
+		015687A9218BD5DF00C961B3 /* AddProviderLoginFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01568798218AB0B100C961B3 /* AddProviderLoginFieldCell.swift */; };
+		015687B0218BD8BF00C961B3 /* AddProviderChoiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 013BC1EA218AA3C0005A2714 /* AddProviderChoiceView.xib */; };
+		015687B1218BF01C00C961B3 /* AddProviderLoginFieldView.xib in Sources */ = {isa = PBXBuildFile; fileRef = 015687AC218BD7B700C961B3 /* AddProviderLoginFieldView.xib */; };
+		015687B2218BF01C00C961B3 /* AddProviderChoiceView.xib in Sources */ = {isa = PBXBuildFile; fileRef = 015687AE218BD8A900C961B3 /* AddProviderChoiceView.xib */; };
+		015687B3218C152400C961B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 018B044F2176E474008C34D7 /* Main.storyboard */; };
+		015687B5218C1F4300C961B3 /* ProviderAccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015687B4218C1F4300C961B3 /* ProviderAccountCell.swift */; };
+		015687B6218C1F4300C961B3 /* ProviderAccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015687B4218C1F4300C961B3 /* ProviderAccountCell.swift */; };
 		017E58CD217ECC2200DC56FF /* FlowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017E58CC217ECC2200DC56FF /* FlowManager.swift */; };
 		017E58CE217ECC2200DC56FF /* FlowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017E58CC217ECC2200DC56FF /* FlowManager.swift */; };
 		017E5935218291DA00DC56FF /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017E5934218291DA00DC56FF /* AccountsViewController.swift */; };
@@ -39,10 +59,6 @@
 		017E59442186907B00DC56FF /* TransactionCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017E59432186907B00DC56FF /* TransactionCategoriesViewController.swift */; };
 		018B04412176E0A5008C34D7 /* FrolloSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018B043F2176E0A4008C34D7 /* FrolloSDK.framework */; };
 		018B04422176E0A5008C34D7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018B04402176E0A4008C34D7 /* Alamofire.framework */; };
-		018B044A2176E474008C34D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018B04492176E474008C34D7 /* AppDelegate.swift */; };
-		018B044C2176E474008C34D7 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018B044B2176E474008C34D7 /* FirstViewController.swift */; };
-		018B044E2176E474008C34D7 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018B044D2176E474008C34D7 /* SecondViewController.swift */; };
-		018B04512176E474008C34D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 018B044F2176E474008C34D7 /* Main.storyboard */; };
 		018B04532176E476008C34D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 018B04522176E476008C34D7 /* Assets.xcassets */; };
 		018B04872176E540008C34D7 /* FrolloSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018B04852176E540008C34D7 /* FrolloSDK.framework */; };
 		018B04882176E540008C34D7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018B04862176E540008C34D7 /* Alamofire.framework */; };
@@ -119,6 +135,9 @@
 		01527CF320E1D3B200B5042A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01527CF520E1D3B200B5042A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01568798218AB0B100C961B3 /* AddProviderLoginFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProviderLoginFieldCell.swift; sourceTree = "<group>"; };
+		015687AC218BD7B700C961B3 /* AddProviderLoginFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddProviderLoginFieldView.xib; sourceTree = "<group>"; };
+		015687AE218BD8A900C961B3 /* AddProviderChoiceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = AddProviderChoiceView.xib; path = "FrolloSDK tvOS Example/AddProviderChoiceView.xib"; sourceTree = SOURCE_ROOT; };
+		015687B4218C1F4300C961B3 /* ProviderAccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderAccountCell.swift; sourceTree = "<group>"; };
 		017E58CC217ECC2200DC56FF /* FlowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowManager.swift; sourceTree = "<group>"; };
 		017E5934218291DA00DC56FF /* AccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewController.swift; sourceTree = "<group>"; };
 		017E59362182945200DC56FF /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
@@ -289,6 +308,7 @@
 				013BC1E8218AA30A005A2714 /* AddProviderChoiceView.swift */,
 				013BC1EE218AA657005A2714 /* AddProviderLoginFieldView.swift */,
 				01568798218AB0B100C961B3 /* AddProviderLoginFieldCell.swift */,
+				015687B4218C1F4300C961B3 /* ProviderAccountCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -302,6 +322,8 @@
 				018B044F2176E474008C34D7 /* Main.storyboard */,
 				018B04522176E476008C34D7 /* Assets.xcassets */,
 				018B04542176E476008C34D7 /* Info.plist */,
+				015687AC218BD7B700C961B3 /* AddProviderLoginFieldView.xib */,
+				015687AE218BD8A900C961B3 /* AddProviderChoiceView.xib */,
 			);
 			path = "FrolloSDK tvOS Example";
 			sourceTree = "<group>";
@@ -478,11 +500,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				013BC1EB218AA3C0005A2714 /* AddProviderChoiceView.xib in Resources */,
 				01527CF420E1D3B200B5042A /* LaunchScreen.storyboard in Resources */,
 				013BC1ED218AA62D005A2714 /* AddProviderLoginFieldView.xib in Resources */,
 				01527CF120E1D3B200B5042A /* Assets.xcassets in Resources */,
 				01527CEF20E1D3B000B5042A /* Main.storyboard in Resources */,
+				015687B0218BD8BF00C961B3 /* AddProviderChoiceView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,8 +512,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				015687B3218C152400C961B3 /* Main.storyboard in Resources */,
 				018B04532176E476008C34D7 /* Assets.xcassets in Resources */,
-				018B04512176E474008C34D7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,6 +619,7 @@
 				017E5935218291DA00DC56FF /* AccountsViewController.swift in Sources */,
 				017E593A2182958900DC56FF /* AccountCell.swift in Sources */,
 				01527CEA20E1D3B000B5042A /* AppDelegate.swift in Sources */,
+				015687B5218C1F4300C961B3 /* ProviderAccountCell.swift in Sources */,
 				017E59442186907B00DC56FF /* TransactionCategoriesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -605,14 +628,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				015687B1218BF01C00C961B3 /* AddProviderLoginFieldView.xib in Sources */,
+				015687B2218BF01C00C961B3 /* AddProviderChoiceView.xib in Sources */,
 				013F1F7121784CB10043BF56 /* LoginViewController.swift in Sources */,
+				015687A8218BD5DD00C961B3 /* AddProviderLoginFieldView.swift in Sources */,
 				015023C92181465100EEB5F2 /* ProvidersViewController.swift in Sources */,
-				018B044E2176E474008C34D7 /* SecondViewController.swift in Sources */,
 				013F1F67217829320043BF56 /* ProviderAccountsViewController.swift in Sources */,
-				018B044A2176E474008C34D7 /* AppDelegate.swift in Sources */,
-				018B044C2176E474008C34D7 /* FirstViewController.swift in Sources */,
+				015687A6218BD5D800C961B3 /* AddProviderChoiceCell.swift in Sources */,
+				0156879D218BD58000C961B3 /* MerchantsViewController.swift in Sources */,
+				015687A0218BD59100C961B3 /* TransactionDetailsViewController.swift in Sources */,
+				015687A9218BD5DF00C961B3 /* AddProviderLoginFieldCell.swift in Sources */,
+				0156879E218BD58B00C961B3 /* TableViewController.swift in Sources */,
+				015687A5218BD5D600C961B3 /* TransactionCell.swift in Sources */,
+				015687A7218BD5DB00C961B3 /* AddProviderChoiceView.swift in Sources */,
 				013F1F6A21782CC80043BF56 /* StartupViewController.swift in Sources */,
+				0156879B218BD57900C961B3 /* AccountsViewController.swift in Sources */,
 				017E58CE217ECC2200DC56FF /* FlowManager.swift in Sources */,
+				0156879F218BD58F00C961B3 /* TransactionCategoriesViewController.swift in Sources */,
+				0156879C218BD57C00C961B3 /* AddProviderAccountViewController.swift in Sources */,
+				015687A4218BD5D400C961B3 /* AccountCell.swift in Sources */,
+				015687B6218C1F4300C961B3 /* ProviderAccountCell.swift in Sources */,
+				015687A2218BD5A800C961B3 /* ViewController.swift in Sources */,
+				015687A3218BD5B900C961B3 /* AppDelegate.swift in Sources */,
+				015687A1218BD59400C961B3 /* TransactionsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
