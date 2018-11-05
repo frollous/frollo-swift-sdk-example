@@ -58,12 +58,18 @@ class AddProviderAccountViewController: UIViewController, UITableViewDataSource,
                 return
         }
         
+        spinner.startAnimating()
+        tableView.isHidden = true
+        
         // Encrypt the fields with the provider public key if available
         if let encryptionAlias = provider.encryptionAlias, let encryptionKey = provider.encryptionPublicKey {
             filledDataModel.encryptValues(encryptionKey: encryptionKey, encryptionAlias: encryptionAlias)
         }
         
         FrolloSDK.shared.aggregation.createProviderAccount(providerID: providerID, loginForm: filledDataModel) { (error) in
+            self.tableView.isHidden = false
+            self.spinner.stopAnimating()
+            
             if let createError = error {
                 print(createError.localizedDescription)
             } else {
