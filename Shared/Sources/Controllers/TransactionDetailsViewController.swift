@@ -91,11 +91,11 @@ class TransactionDetailsViewController: UIViewController {
                 budgetCategoryButton.setTitle("Savings", for: .normal)
         }
         
-        if let currency = transaction.currency, let amount = transaction.amount as Decimal? {
+        if let amount = transaction.amount as Decimal? {
             let currencyFormatter = NumberFormatter()
             currencyFormatter.locale = Locale.autoupdatingCurrent
             currencyFormatter.numberStyle = .currency
-            currencyFormatter.currencyCode = currency
+            currencyFormatter.currencyCode = transaction.currency
             
             amountLabel.isHidden = false
             amountLabel.text = currencyFormatter.string(for: amount)
@@ -154,13 +154,11 @@ class TransactionDetailsViewController: UIViewController {
         spinner.startAnimating()
         
         FrolloSDK.shared.aggregation.updateTransaction(transactionID: transaction.transactionID) { (error) in
-            DispatchQueue.main.async {
-                self.spinner.stopAnimating()
-                self.containerView.isHidden = false
-                
-                if let updateError = error {
-                    print(updateError.localizedDescription)
-                }
+            self.spinner.stopAnimating()
+            self.containerView.isHidden = false
+            
+            if let updateError = error {
+                print(updateError.localizedDescription)
             }
         }
     }

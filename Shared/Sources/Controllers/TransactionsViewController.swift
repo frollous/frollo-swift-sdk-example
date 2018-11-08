@@ -105,10 +105,8 @@ class TransactionsViewController: TableViewController {
             cell.nameLabel.text = customName
         } else if let simpleName = transaction.simpleDescription {
             cell.nameLabel.text = simpleName
-        } else if let originalName = transaction.originalDescription {
-            cell.nameLabel.text = originalName
         } else {
-            cell.nameLabel.text = "Unnamed Transaction"
+            cell.nameLabel.text = transaction.originalDescription
         }
         
         if let amount = transaction.amount as Decimal? {

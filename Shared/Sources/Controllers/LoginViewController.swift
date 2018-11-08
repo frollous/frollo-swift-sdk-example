@@ -49,22 +49,20 @@ class LoginViewController: UIViewController {
         spinner.startAnimating()
         
         FrolloSDK.shared.authentication.loginUser(method: .email, email: email, password: password) { (error) in
-            DispatchQueue.main.async {
-                self.loginButton.isHidden = false
-                self.spinner.stopAnimating()
+            self.loginButton.isHidden = false
+            self.spinner.stopAnimating()
+            
+            if let loginError = error {
+                let alertController = UIAlertController(title: "Login Failed", message: loginError.localizedDescription, preferredStyle: .alert)
+                let dismissAction = UIAlertAction(title: "OK", style: .cancel)
+                alertController.addAction(dismissAction)
                 
-                if let loginError = error {
-                    let alertController = UIAlertController(title: "Login Failed", message: loginError.localizedDescription, preferredStyle: .alert)
-                    let dismissAction = UIAlertAction(title: "OK", style: .cancel)
-                    alertController.addAction(dismissAction)
-                    
-                    self.present(alertController, animated: true)
-                } else {
-                    self.flowManager?.showMainSplitViewController()
-                    
-                    DispatchQueue.main.async {
-                        FrolloSDK.shared.refreshData()
-                    }
+                self.present(alertController, animated: true)
+            } else {
+                self.flowManager?.showMainSplitViewController()
+                
+                DispatchQueue.main.async {
+                    FrolloSDK.shared.refreshData()
                 }
             }
         }

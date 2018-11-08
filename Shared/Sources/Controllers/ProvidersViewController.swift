@@ -28,10 +28,8 @@ class ProvidersViewController: TableViewController {
         super.viewWillAppear(animated)
         
         FrolloSDK.shared.aggregation.refreshProviders { (error) in
-            DispatchQueue.main.async {
-                if let refreshError = error {
-                    print(refreshError.localizedDescription)
-                }
+            if let refreshError = error {
+                print(refreshError.localizedDescription)
             }
         }
         

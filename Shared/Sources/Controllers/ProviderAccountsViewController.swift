@@ -27,10 +27,8 @@ class ProviderAccountsViewController: TableViewController {
         super.viewWillAppear(animated)
         
         FrolloSDK.shared.aggregation.refreshProviderAccounts { (error) in
-            DispatchQueue.main.async {
-                if let refreshError = error {
-                    print(refreshError.localizedDescription)
-                }
+            if let refreshError = error {
+                print(refreshError.localizedDescription)
             }
         }
         
@@ -42,13 +40,11 @@ class ProviderAccountsViewController: TableViewController {
     @available(tvOS, unavailable)
     @IBAction func refreshTriggered(sender: UIRefreshControl) {
         FrolloSDK.shared.aggregation.refreshProviderAccounts { (error) in
-            DispatchQueue.main.async {
-                if let refreshError = error {
-                    print(refreshError.localizedDescription)
-                }
-                
-                sender.endRefreshing()
+            if let refreshError = error {
+                print(refreshError.localizedDescription)
             }
+                
+            sender.endRefreshing()
         }
     }
     
