@@ -6,6 +6,7 @@
 //  Copyright © 2018 Frollo. All rights reserved.
 //
 
+import UserNotifications
 import UIKit
 
 import FrolloSDK
@@ -61,9 +62,21 @@ class LoginViewController: UIViewController {
             } else {
                 self.flowManager?.showMainSplitViewController()
                 
+                self.registerForPushNotifications()
+                
                 DispatchQueue.main.async {
                     FrolloSDK.shared.refreshData()
                 }
+            }
+        }
+    }
+    
+    // MARK: - Push Notifications
+    
+    private func registerForPushNotifications() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (success, error) in
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
             }
         }
     }

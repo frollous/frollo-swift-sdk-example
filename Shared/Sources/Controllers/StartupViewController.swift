@@ -43,6 +43,8 @@ class StartupViewController: UIViewController {
         if FrolloSDK.shared.authentication.loggedIn {
             flowManager?.showMainSplitViewController()
             
+            UIApplication.shared.registerForRemoteNotifications()
+            
             DispatchQueue.main.async {
                 FrolloSDK.shared.refreshData()
             }
