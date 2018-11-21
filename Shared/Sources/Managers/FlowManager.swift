@@ -26,10 +26,13 @@ class FlowManager: UISplitViewControllerDelegate {
     }
     
     func showMainSplitViewController() {
-        let splitViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SplitViewController") as! UISplitViewController
-        //splitViewController.flowManager = self
-        splitViewController.delegate = self
-        window.rootViewController = splitViewController
+        let tabBarViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarController") as! UITabBarController
+        
+        if let splitViewController = tabBarViewController.viewControllers?.first as? UISplitViewController {
+            splitViewController.delegate = self
+        }
+        
+        window.rootViewController = tabBarViewController
     }
     
     func showLoginViewController() {

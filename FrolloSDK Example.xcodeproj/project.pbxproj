@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		011A7BCF2189330600E2CEF1 /* AddProviderAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011A7BCE2189330600E2CEF1 /* AddProviderAccountViewController.swift */; };
+		0135D31F21A526B200318142 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0135D31E21A526B200318142 /* MessagesViewController.swift */; };
+		0135D32021A526B200318142 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0135D31E21A526B200318142 /* MessagesViewController.swift */; };
 		013BC1E7218AA0C2005A2714 /* AddProviderChoiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013BC1E6218AA0C2005A2714 /* AddProviderChoiceCell.swift */; };
 		013BC1E9218AA30A005A2714 /* AddProviderChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013BC1E8218AA30A005A2714 /* AddProviderChoiceView.swift */; };
 		013BC1ED218AA62D005A2714 /* AddProviderLoginFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 013BC1EC218AA62D005A2714 /* AddProviderLoginFieldView.xib */; };
@@ -67,6 +69,7 @@
 /* Begin PBXFileReference section */
 		011A7BCE2189330600E2CEF1 /* AddProviderAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProviderAccountViewController.swift; sourceTree = "<group>"; };
 		0135D31D21A50D0E00318142 /* FrolloSDK iOS Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "FrolloSDK iOS Example.entitlements"; sourceTree = "<group>"; };
+		0135D31E21A526B200318142 /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		013BC1E6218AA0C2005A2714 /* AddProviderChoiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProviderChoiceCell.swift; sourceTree = "<group>"; };
 		013BC1E8218AA30A005A2714 /* AddProviderChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProviderChoiceView.swift; sourceTree = "<group>"; };
 		013BC1EA218AA3C0005A2714 /* AddProviderChoiceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddProviderChoiceView.xib; sourceTree = "<group>"; };
@@ -146,6 +149,7 @@
 				017E593F2182DD7800DC56FF /* TransactionDetailsViewController.swift */,
 				017E593B2182D03C00DC56FF /* TransactionsViewController.swift */,
 				01527CEB20E1D3B000B5042A /* ViewController.swift */,
+				0135D31E21A526B200318142 /* MessagesViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -444,6 +448,7 @@
 				017E593A2182958900DC56FF /* AccountCell.swift in Sources */,
 				01527CEA20E1D3B000B5042A /* AppDelegate.swift in Sources */,
 				015687B5218C1F4300C961B3 /* ProviderAccountCell.swift in Sources */,
+				0135D31F21A526B200318142 /* MessagesViewController.swift in Sources */,
 				017E59442186907B00DC56FF /* TransactionCategoriesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -458,6 +463,7 @@
 				015687A8218BD5DD00C961B3 /* AddProviderLoginFieldView.swift in Sources */,
 				015023C92181465100EEB5F2 /* ProvidersViewController.swift in Sources */,
 				013F1F67217829320043BF56 /* ProviderAccountsViewController.swift in Sources */,
+				0135D32021A526B200318142 /* MessagesViewController.swift in Sources */,
 				015687A6218BD5D800C961B3 /* AddProviderChoiceCell.swift in Sources */,
 				0156879D218BD58000C961B3 /* MerchantsViewController.swift in Sources */,
 				015687A0218BD59100C961B3 /* TransactionDetailsViewController.swift in Sources */,
