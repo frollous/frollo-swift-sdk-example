@@ -50,6 +50,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         FrolloSDK.shared.notifications.registerPushNotificationToken(deviceToken)
     }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        FrolloSDK.shared.notifications.handlePushNotification(userInfo: userInfo)
+        
+        completionHandler(.newData)
+    }
 
 }
 

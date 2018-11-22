@@ -21,7 +21,7 @@ class StartupViewController: UIViewController {
         
         spinner.startAnimating()
 
-        let serverURL = URL(string: "https://api-sandbox.frollo.us/api/v1/")!
+        let serverURL = URL(string: "https://api-sandbox.frollo.us/api/v2/")!
         
         FrolloSDK.shared.setup(serverURL: serverURL, publicKeyPinningEnabled: false) { (error) in 
             if let setupError = error {
