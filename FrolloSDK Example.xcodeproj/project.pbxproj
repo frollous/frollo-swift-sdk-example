@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		011A7BCF2189330600E2CEF1 /* AddProviderAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011A7BCE2189330600E2CEF1 /* AddProviderAccountViewController.swift */; };
+		011C199521E6C25500490EDD /* BillCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 011C199421E6C25500490EDD /* BillCell.xib */; };
+		011C199721E6C4E500490EDD /* BillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011C199621E6C4E500490EDD /* BillCell.swift */; };
+		011C199821E6C4EE00490EDD /* BillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011C199621E6C4E500490EDD /* BillCell.swift */; };
+		011C199A21E6C8CE00490EDD /* BillsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011C199921E6C8CE00490EDD /* BillsViewController.swift */; };
+		011C199B21E6C8CE00490EDD /* BillsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011C199921E6C8CE00490EDD /* BillsViewController.swift */; };
 		0135D31F21A526B200318142 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0135D31E21A526B200318142 /* MessagesViewController.swift */; };
 		0135D32021A526B200318142 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0135D31E21A526B200318142 /* MessagesViewController.swift */; };
 		0135D32221A609BD00318142 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0135D32121A609BD00318142 /* MessageCell.swift */; };
@@ -70,6 +75,9 @@
 
 /* Begin PBXFileReference section */
 		011A7BCE2189330600E2CEF1 /* AddProviderAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProviderAccountViewController.swift; sourceTree = "<group>"; };
+		011C199421E6C25500490EDD /* BillCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BillCell.xib; sourceTree = "<group>"; };
+		011C199621E6C4E500490EDD /* BillCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillCell.swift; sourceTree = "<group>"; };
+		011C199921E6C8CE00490EDD /* BillsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillsViewController.swift; sourceTree = "<group>"; };
 		0135D31D21A50D0E00318142 /* FrolloSDK iOS Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "FrolloSDK iOS Example.entitlements"; sourceTree = "<group>"; };
 		0135D31E21A526B200318142 /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		0135D32121A609BD00318142 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
@@ -142,6 +150,7 @@
 			children = (
 				017E5934218291DA00DC56FF /* AccountsViewController.swift */,
 				011A7BCE2189330600E2CEF1 /* AddProviderAccountViewController.swift */,
+				011C199921E6C8CE00490EDD /* BillsViewController.swift */,
 				013F1F6F21784CB10043BF56 /* LoginViewController.swift */,
 				017E59412186906300DC56FF /* MerchantsViewController.swift */,
 				0135D31E21A526B200318142 /* MessagesViewController.swift */,
@@ -245,6 +254,7 @@
 				013BC1EC218AA62D005A2714 /* AddProviderLoginFieldView.xib */,
 				01527CF220E1D3B200B5042A /* LaunchScreen.storyboard */,
 				01527CED20E1D3B000B5042A /* Main.storyboard */,
+				011C199421E6C25500490EDD /* BillCell.xib */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -268,6 +278,7 @@
 				013BC1E8218AA30A005A2714 /* AddProviderChoiceView.swift */,
 				01568798218AB0B100C961B3 /* AddProviderLoginFieldCell.swift */,
 				013BC1EE218AA657005A2714 /* AddProviderLoginFieldView.swift */,
+				011C199621E6C4E500490EDD /* BillCell.swift */,
 				0135D32121A609BD00318142 /* MessageCell.swift */,
 				015687B4218C1F4300C961B3 /* ProviderAccountCell.swift */,
 				017E593D2182D8D100DC56FF /* TransactionCell.swift */,
@@ -335,6 +346,9 @@
 					01527CE520E1D3B000B5042A = {
 						CreatedOnToolsVersion = 9.4.1;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -342,6 +356,11 @@
 					};
 					018B04462176E474008C34D7 = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.BackgroundModes.appletvos = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -371,6 +390,7 @@
 			files = (
 				01527CF420E1D3B200B5042A /* LaunchScreen.storyboard in Resources */,
 				013BC1ED218AA62D005A2714 /* AddProviderLoginFieldView.xib in Resources */,
+				011C199521E6C25500490EDD /* BillCell.xib in Resources */,
 				01527CF120E1D3B200B5042A /* Assets.xcassets in Resources */,
 				01527CEF20E1D3B000B5042A /* Main.storyboard in Resources */,
 				015687B0218BD8BF00C961B3 /* AddProviderChoiceView.xib in Resources */,
@@ -444,10 +464,12 @@
 				017E59372182945200DC56FF /* TableViewController.swift in Sources */,
 				017E59402182DD7800DC56FF /* TransactionDetailsViewController.swift in Sources */,
 				013BC1E9218AA30A005A2714 /* AddProviderChoiceView.swift in Sources */,
+				011C199721E6C4E500490EDD /* BillCell.swift in Sources */,
 				013F1F66217829320043BF56 /* ProviderAccountsViewController.swift in Sources */,
 				015023C82181465100EEB5F2 /* ProvidersViewController.swift in Sources */,
 				01527CEC20E1D3B000B5042A /* ViewController.swift in Sources */,
 				017E593E2182D8D100DC56FF /* TransactionCell.swift in Sources */,
+				011C199A21E6C8CE00490EDD /* BillsViewController.swift in Sources */,
 				017E59422186906300DC56FF /* MerchantsViewController.swift in Sources */,
 				017E5935218291DA00DC56FF /* AccountsViewController.swift in Sources */,
 				017E593A2182958900DC56FF /* AccountCell.swift in Sources */,
@@ -474,12 +496,14 @@
 				015687A0218BD59100C961B3 /* TransactionDetailsViewController.swift in Sources */,
 				015687A9218BD5DF00C961B3 /* AddProviderLoginFieldCell.swift in Sources */,
 				0135D32321A609BD00318142 /* MessageCell.swift in Sources */,
+				011C199B21E6C8CE00490EDD /* BillsViewController.swift in Sources */,
 				0156879E218BD58B00C961B3 /* TableViewController.swift in Sources */,
 				015687A5218BD5D600C961B3 /* TransactionCell.swift in Sources */,
 				015687A7218BD5DB00C961B3 /* AddProviderChoiceView.swift in Sources */,
 				013F1F6A21782CC80043BF56 /* StartupViewController.swift in Sources */,
 				0156879B218BD57900C961B3 /* AccountsViewController.swift in Sources */,
 				017E58CE217ECC2200DC56FF /* FlowManager.swift in Sources */,
+				011C199821E6C4EE00490EDD /* BillCell.swift in Sources */,
 				0156879F218BD58F00C961B3 /* TransactionCategoriesViewController.swift in Sources */,
 				0156879C218BD57C00C961B3 /* AddProviderAccountViewController.swift in Sources */,
 				015687A4218BD5D400C961B3 /* AccountCell.swift in Sources */,

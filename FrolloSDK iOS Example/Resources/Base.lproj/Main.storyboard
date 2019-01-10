@@ -563,6 +563,7 @@
                     <connections>
                         <segue destination="VDW-06-R6I" kind="relationship" relationship="viewControllers" id="dv0-ED-y9E"/>
                         <segue destination="txs-hE-r0s" kind="relationship" relationship="viewControllers" id="gsE-tO-oq8"/>
+                        <segue destination="3qc-mR-yRf" kind="relationship" relationship="viewControllers" id="thZ-0Q-m5f"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jLo-ze-tsG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -573,7 +574,7 @@
         <scene sceneID="6Z2-6E-oLx">
             <objects>
                 <splitViewController storyboardIdentifier="SplitViewController" id="VDW-06-R6I" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Accounts" id="oKu-PX-5vL"/>
+                    <tabBarItem key="tabBarItem" title="Accounts" image="accounts" id="oKu-PX-5vL"/>
                     <connections>
                         <segue destination="Ahz-Tt-IGg" kind="relationship" relationship="masterViewController" id="6xO-YV-rxh"/>
                         <segue destination="zcF-fv-fit" kind="relationship" relationship="detailViewController" id="crT-1I-a7E"/>
@@ -949,11 +950,47 @@
             </objects>
             <point key="canvasLocation" x="949.60000000000002" y="976.46176911544239"/>
         </scene>
+        <!--Bills-->
+        <scene sceneID="eqp-jY-0VJ">
+            <objects>
+                <tableViewController storyboardIdentifier="BillsViewController" id="L7T-Vt-eBc" customClass="BillsViewController" customModule="FrolloSDK_iOS_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="iSg-vr-G50">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <connections>
+                            <outlet property="dataSource" destination="L7T-Vt-eBc" id="G50-Jx-M65"/>
+                            <outlet property="delegate" destination="L7T-Vt-eBc" id="iwj-sZ-NS0"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Bills" id="MoL-ZJ-oCv"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yI5-kL-wlE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="949.60000000000002" y="1696.1019490254873"/>
+        </scene>
+        <!--Bills-->
+        <scene sceneID="Nn5-eZ-5qp">
+            <objects>
+                <navigationController id="3qc-mR-yRf" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Bills" image="bill" id="qNn-Op-Kh8"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="seC-f6-x7a">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="L7T-Vt-eBc" kind="relationship" relationship="rootViewController" id="LJO-eI-Tye"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Np1-Cc-aS3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2" y="1697"/>
+        </scene>
         <!--Messages-->
         <scene sceneID="i6E-rK-bKi">
             <objects>
                 <navigationController id="txs-hE-r0s" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Messages" id="YRR-kt-Td3"/>
+                    <tabBarItem key="tabBarItem" title="Messages" image="mail" id="YRR-kt-Td3"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qiv-RC-nBZ">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -967,6 +1004,11 @@
             <point key="canvasLocation" x="-2" y="977"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="accounts" width="28" height="27"/>
+        <image name="bill" width="32" height="32"/>
+        <image name="mail" width="28" height="28"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="crT-1I-a7E"/>
     </inferredMetricsTieBreakers>

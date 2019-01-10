@@ -23,7 +23,7 @@ class StartupViewController: UIViewController {
 
         let serverURL = URL(string: "https://api-sandbox.frollo.us/api/v2/")!
         
-        FrolloSDK.shared.setup(serverURL: serverURL, publicKeyPinningEnabled: false) { (error) in 
+        FrolloSDK.shared.setup(serverURL: serverURL, logLevel: .debug, publicKeyPinningEnabled: false) { (error) in 
             if let setupError = error {
                 fatalError(setupError.localizedDescription)
             } else {
