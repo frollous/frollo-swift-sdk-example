@@ -11,7 +11,7 @@ import UIKit
 
 import FrolloSDK
 
-class BillsViewController: UITableViewController {
+class BillsViewController: TableViewController {
     
     private let currencyFormatter: NumberFormatter = {
         let numberFormatter = NumberFormatter()
@@ -37,6 +37,7 @@ class BillsViewController: UITableViewController {
         let context = FrolloSDK.shared.database.viewContext
         let sortDescriptors = [NSSortDescriptor(key: #keyPath(Bill.statusRawValue), ascending: false), NSSortDescriptor(key: #keyPath(Bill.name), ascending: true)]
         fetchedResultsController = FrolloSDK.shared.bills.billsFetchedResultsController(context: context, sortedBy: sortDescriptors)
+        fetchedResultsController.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -90,7 +91,7 @@ class BillsViewController: UITableViewController {
         let bill = fetchedResultsController.object(at: indexPath)
         
         cell.nameLabel.text = bill.name
-        cell.dateLabel.text = "Next due: " + dateFormatter.string(from: bill.nextPaymentDate!)
+        cell.dateLabel.text = "Next due: " + dateFormatter.string(from: bill.nextPaymentDate)
         cell.detailsLabel.text = bill.transactionCategory?.name
         cell.amountLabel.text  = currencyFormatter.string(from: bill.dueAmount)
         
@@ -116,6 +117,14 @@ class BillsViewController: UITableViewController {
         }
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let bill = fetchedResultsController.object(at: indexPath)
+        
+        let billPaymentsViewController = storyboard?.instantiateViewController(withIdentifier: "BillPaymentsViewController") as! BillPaymentsViewController
+        billPaymentsViewController.billID = bill.billID
+        navigationController?.pushViewController(billPaymentsViewController, animated: true)
     }
 
 }

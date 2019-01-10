@@ -13,6 +13,8 @@
 		011C199821E6C4EE00490EDD /* BillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011C199621E6C4E500490EDD /* BillCell.swift */; };
 		011C199A21E6C8CE00490EDD /* BillsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011C199921E6C8CE00490EDD /* BillsViewController.swift */; };
 		011C199B21E6C8CE00490EDD /* BillsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011C199921E6C8CE00490EDD /* BillsViewController.swift */; };
+		011C199D21E6EDFE00490EDD /* BillPaymentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011C199C21E6EDFE00490EDD /* BillPaymentsViewController.swift */; };
+		011C199E21E6EDFE00490EDD /* BillPaymentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011C199C21E6EDFE00490EDD /* BillPaymentsViewController.swift */; };
 		0135D31F21A526B200318142 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0135D31E21A526B200318142 /* MessagesViewController.swift */; };
 		0135D32021A526B200318142 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0135D31E21A526B200318142 /* MessagesViewController.swift */; };
 		0135D32221A609BD00318142 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0135D32121A609BD00318142 /* MessageCell.swift */; };
@@ -78,6 +80,7 @@
 		011C199421E6C25500490EDD /* BillCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BillCell.xib; sourceTree = "<group>"; };
 		011C199621E6C4E500490EDD /* BillCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillCell.swift; sourceTree = "<group>"; };
 		011C199921E6C8CE00490EDD /* BillsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillsViewController.swift; sourceTree = "<group>"; };
+		011C199C21E6EDFE00490EDD /* BillPaymentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillPaymentsViewController.swift; sourceTree = "<group>"; };
 		0135D31D21A50D0E00318142 /* FrolloSDK iOS Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "FrolloSDK iOS Example.entitlements"; sourceTree = "<group>"; };
 		0135D31E21A526B200318142 /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		0135D32121A609BD00318142 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
@@ -151,6 +154,7 @@
 				017E5934218291DA00DC56FF /* AccountsViewController.swift */,
 				011A7BCE2189330600E2CEF1 /* AddProviderAccountViewController.swift */,
 				011C199921E6C8CE00490EDD /* BillsViewController.swift */,
+				011C199C21E6EDFE00490EDD /* BillPaymentsViewController.swift */,
 				013F1F6F21784CB10043BF56 /* LoginViewController.swift */,
 				017E59412186906300DC56FF /* MerchantsViewController.swift */,
 				0135D31E21A526B200318142 /* MessagesViewController.swift */,
@@ -468,6 +472,7 @@
 				013F1F66217829320043BF56 /* ProviderAccountsViewController.swift in Sources */,
 				015023C82181465100EEB5F2 /* ProvidersViewController.swift in Sources */,
 				01527CEC20E1D3B000B5042A /* ViewController.swift in Sources */,
+				011C199D21E6EDFE00490EDD /* BillPaymentsViewController.swift in Sources */,
 				017E593E2182D8D100DC56FF /* TransactionCell.swift in Sources */,
 				011C199A21E6C8CE00490EDD /* BillsViewController.swift in Sources */,
 				017E59422186906300DC56FF /* MerchantsViewController.swift in Sources */,
@@ -500,6 +505,7 @@
 				0156879E218BD58B00C961B3 /* TableViewController.swift in Sources */,
 				015687A5218BD5D600C961B3 /* TransactionCell.swift in Sources */,
 				015687A7218BD5DB00C961B3 /* AddProviderChoiceView.swift in Sources */,
+				011C199E21E6EDFE00490EDD /* BillPaymentsViewController.swift in Sources */,
 				013F1F6A21782CC80043BF56 /* StartupViewController.swift in Sources */,
 				0156879B218BD57900C961B3 /* AccountsViewController.swift in Sources */,
 				017E58CE217ECC2200DC56FF /* FlowManager.swift in Sources */,

@@ -1003,6 +1003,26 @@
             </objects>
             <point key="canvasLocation" x="-2" y="977"/>
         </scene>
+        <!--Bill Payments-->
+        <scene sceneID="nNk-HD-arK">
+            <objects>
+                <tableViewController storyboardIdentifier="BillPaymentsViewController" id="03s-pY-zhr" customClass="BillPaymentsViewController" customModule="FrolloSDK_iOS_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="NZJ-Bl-OL9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <connections>
+                            <outlet property="dataSource" destination="03s-pY-zhr" id="EZ1-wB-qTY"/>
+                            <outlet property="delegate" destination="03s-pY-zhr" id="4Zg-Pb-NVg"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Bill Payments" id="qLg-tQ-Acw"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Elb-VN-Cdg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1902" y="1696"/>
+        </scene>
     </scenes>
     <resources>
         <image name="accounts" width="28" height="27"/>
