@@ -49,7 +49,7 @@ class ProviderAccountsViewController: TableViewController {
     }
     
     @IBAction func logoutPress(sender: UIBarButtonItem) {
-        FrolloSDK.shared.logout()
+        FrolloSDK.shared.authentication.logoutUser()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
