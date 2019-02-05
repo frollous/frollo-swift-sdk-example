@@ -151,21 +151,12 @@
 		013F1F64217829010043BF56 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				017E5934218291DA00DC56FF /* AccountsViewController.swift */,
-				011A7BCE2189330600E2CEF1 /* AddProviderAccountViewController.swift */,
-				011C199921E6C8CE00490EDD /* BillsViewController.swift */,
-				011C199C21E6EDFE00490EDD /* BillPaymentsViewController.swift */,
-				013F1F6F21784CB10043BF56 /* LoginViewController.swift */,
-				017E59412186906300DC56FF /* MerchantsViewController.swift */,
-				0135D31E21A526B200318142 /* MessagesViewController.swift */,
-				013F1F65217829320043BF56 /* ProviderAccountsViewController.swift */,
-				015023C72181465100EEB5F2 /* ProvidersViewController.swift */,
+				018501F1220A461000069D87 /* Aggregation */,
+				018501F3220A461C00069D87 /* Bills */,
+				018501F2220A461700069D87 /* Login */,
+				018501F5220A462700069D87 /* Messages */,
+				018501F6220A464200069D87 /* Shared */,
 				013F1F6821782CC80043BF56 /* StartupViewController.swift */,
-				017E59362182945200DC56FF /* TableViewController.swift */,
-				017E59432186907B00DC56FF /* TransactionCategoriesViewController.swift */,
-				017E593F2182DD7800DC56FF /* TransactionDetailsViewController.swift */,
-				017E593B2182D03C00DC56FF /* TransactionsViewController.swift */,
-				01527CEB20E1D3B000B5042A /* ViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -277,17 +268,90 @@
 		017E59382182957100DC56FF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				018501F7220A468400069D87 /* Aggregation */,
+				018501F9220A469300069D87 /* Bills */,
+				018501F8220A468B00069D87 /* Messages */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		018501F1220A461000069D87 /* Aggregation */ = {
+			isa = PBXGroup;
+			children = (
+				017E5934218291DA00DC56FF /* AccountsViewController.swift */,
+				011A7BCE2189330600E2CEF1 /* AddProviderAccountViewController.swift */,
+				017E59412186906300DC56FF /* MerchantsViewController.swift */,
+				013F1F65217829320043BF56 /* ProviderAccountsViewController.swift */,
+				015023C72181465100EEB5F2 /* ProvidersViewController.swift */,
+				017E59432186907B00DC56FF /* TransactionCategoriesViewController.swift */,
+				017E593F2182DD7800DC56FF /* TransactionDetailsViewController.swift */,
+				017E593B2182D03C00DC56FF /* TransactionsViewController.swift */,
+			);
+			path = Aggregation;
+			sourceTree = "<group>";
+		};
+		018501F2220A461700069D87 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				013F1F6F21784CB10043BF56 /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		018501F3220A461C00069D87 /* Bills */ = {
+			isa = PBXGroup;
+			children = (
+				011C199921E6C8CE00490EDD /* BillsViewController.swift */,
+				011C199C21E6EDFE00490EDD /* BillPaymentsViewController.swift */,
+			);
+			path = Bills;
+			sourceTree = "<group>";
+		};
+		018501F5220A462700069D87 /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				0135D31E21A526B200318142 /* MessagesViewController.swift */,
+			);
+			path = Messages;
+			sourceTree = "<group>";
+		};
+		018501F6220A464200069D87 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				017E59362182945200DC56FF /* TableViewController.swift */,
+				01527CEB20E1D3B000B5042A /* ViewController.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		018501F7220A468400069D87 /* Aggregation */ = {
+			isa = PBXGroup;
+			children = (
 				017E59392182958900DC56FF /* AccountCell.swift */,
 				013BC1E6218AA0C2005A2714 /* AddProviderChoiceCell.swift */,
 				013BC1E8218AA30A005A2714 /* AddProviderChoiceView.swift */,
 				01568798218AB0B100C961B3 /* AddProviderLoginFieldCell.swift */,
 				013BC1EE218AA657005A2714 /* AddProviderLoginFieldView.swift */,
-				011C199621E6C4E500490EDD /* BillCell.swift */,
-				0135D32121A609BD00318142 /* MessageCell.swift */,
 				015687B4218C1F4300C961B3 /* ProviderAccountCell.swift */,
 				017E593D2182D8D100DC56FF /* TransactionCell.swift */,
 			);
-			path = Views;
+			path = Aggregation;
+			sourceTree = "<group>";
+		};
+		018501F8220A468B00069D87 /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				0135D32121A609BD00318142 /* MessageCell.swift */,
+			);
+			path = Messages;
+			sourceTree = "<group>";
+		};
+		018501F9220A469300069D87 /* Bills */ = {
+			isa = PBXGroup;
+			children = (
+				011C199621E6C4E500490EDD /* BillCell.swift */,
+			);
+			path = Bills;
 			sourceTree = "<group>";
 		};
 		018B04482176E474008C34D7 /* FrolloSDK tvOS Example */ = {
