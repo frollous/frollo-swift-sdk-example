@@ -153,12 +153,15 @@ class TransactionDetailsViewController: UIViewController {
         containerView.isHidden = true
         spinner.startAnimating()
         
-        FrolloSDK.shared.aggregation.updateTransaction(transactionID: transaction.transactionID) { (error) in
+        FrolloSDK.shared.aggregation.updateTransaction(transactionID: transaction.transactionID) { (result) in
             self.spinner.stopAnimating()
             self.containerView.isHidden = false
             
-            if let updateError = error {
-                print(updateError.localizedDescription)
+            switch result {
+                case .failure(let error):
+                    print(error.localizedDescription)
+                case .success:
+                    break
             }
         }
     }

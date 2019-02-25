@@ -67,9 +67,12 @@ class BillPaymentsViewController: TableViewController {
         toDate = calendar.date(bySetting: .day, value: 1, of: toDate)!
         toDate = calendar.startOfDay(for: toDate)
         
-        FrolloSDK.shared.bills.refreshBillPayments(from: fromDate, to: toDate) { (error) in
-            if let refreshError = error {
-                print(refreshError.localizedDescription)
+        FrolloSDK.shared.bills.refreshBillPayments(from: fromDate, to: toDate) { (result) in
+            switch result {
+                case .failure(let error):
+                    print(error.localizedDescription)
+                case .success:
+                    break
             }
         }
     }

@@ -27,9 +27,12 @@ class MessagesViewController: TableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        FrolloSDK.shared.messages.refreshUnreadMessages() { (error) in
-            if let refreshError = error {
-                print(refreshError.localizedDescription)
+        FrolloSDK.shared.messages.refreshUnreadMessages() { (result) in
+            switch result {
+                case .failure(let error):
+                    print(error.localizedDescription)
+                case .success:
+                    break
             }
         }
         

@@ -31,12 +31,13 @@ class HistoryTransactionReportGroupingViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        FrolloSDK.shared.reports.refreshTransactionHistoryReports(grouping: grouping, period: .month, from: fromDate, to: now) { (error) in
-            if let refreshError = error {
-                print(refreshError.localizedDescription)
+        FrolloSDK.shared.reports.refreshTransactionHistoryReports(grouping: grouping, period: .month, from: fromDate, to: now) { (result) in
+            switch result {
+                case .failure(let error):
+                    print(error.localizedDescription)
+                case .success:
+                    self.reloadData()
             }
-            
-            self.reloadData()
         }
         
         reloadData()

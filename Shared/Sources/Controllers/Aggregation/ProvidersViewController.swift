@@ -27,9 +27,12 @@ class ProvidersViewController: TableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        FrolloSDK.shared.aggregation.refreshProviders { (error) in
-            if let refreshError = error {
-                print(refreshError.localizedDescription)
+        FrolloSDK.shared.aggregation.refreshProviders { (result) in
+            switch result {
+                case .failure(let error):
+                    print(error.localizedDescription)
+                case .success:
+                    break
             }
         }
         

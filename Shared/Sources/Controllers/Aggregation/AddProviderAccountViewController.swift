@@ -66,14 +66,15 @@ class AddProviderAccountViewController: UIViewController, UITableViewDataSource,
             filledDataModel.encryptValues(encryptionKey: encryptionKey, encryptionAlias: encryptionAlias)
         }
         
-        FrolloSDK.shared.aggregation.createProviderAccount(providerID: providerID, loginForm: filledDataModel) { (error) in
+        FrolloSDK.shared.aggregation.createProviderAccount(providerID: providerID, loginForm: filledDataModel) { (result) in
             self.tableView.isHidden = false
             self.spinner.stopAnimating()
             
-            if let createError = error {
-                print(createError.localizedDescription)
-            } else {
-                self.dismiss(animated: true)
+            switch result {
+                case .failure(let error):
+                    print(error.localizedDescription)
+                case .success:
+                    self.dismiss(animated: true)
             }
         }
     }
@@ -87,13 +88,14 @@ class AddProviderAccountViewController: UIViewController, UITableViewDataSource,
     }
     
     private func refreshProvider() {
-        FrolloSDK.shared.aggregation.refreshProvider(providerID: providerID) { (error) in
-            if let refreshError = error {
-                print(refreshError.localizedDescription)
-                
-                self.navigationController?.popViewController(animated: true)
-            } else {
-                self.reloadData()
+        FrolloSDK.shared.aggregation.refreshProvider(providerID: providerID) { (result) in
+            switch result {
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    
+                    self.navigationController?.popViewController(animated: true)
+                case .success:
+                    self.reloadData()
             }
         }
     }

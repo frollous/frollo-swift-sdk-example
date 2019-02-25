@@ -45,9 +45,12 @@ class AccountBalancesViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        FrolloSDK.shared.reports.refreshAccountBalanceReports(period: period, from: fromDate, to: now, accountID: accountID) { (error) in
-            if let refreshError = error {
-                print(refreshError.localizedDescription)
+        FrolloSDK.shared.reports.refreshAccountBalanceReports(period: period, from: fromDate, to: now, accountID: accountID) { (result) in
+            switch result {
+                case .failure(let error):
+                    print(error.localizedDescription)
+                case .success:
+                    break
             }
             
             self.reloadData()

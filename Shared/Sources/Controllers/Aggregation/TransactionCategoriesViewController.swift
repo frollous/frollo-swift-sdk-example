@@ -26,9 +26,12 @@ class TransactionCategoriesViewController: TableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        FrolloSDK.shared.aggregation.refreshTransactionCategories { (error) in
-            if let refreshError = error {
-                print(refreshError.localizedDescription)
+        FrolloSDK.shared.aggregation.refreshTransactionCategories { (result) in
+            switch result {
+            case .failure(let error):
+                print(error.localizedDescription)
+            case .success:
+                break
             }
         }
         

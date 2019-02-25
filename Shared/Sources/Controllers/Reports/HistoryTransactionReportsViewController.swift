@@ -43,9 +43,12 @@ class HistoryTransactionReportsViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        FrolloSDK.shared.reports.refreshTransactionCurrentReports(grouping: grouping) { (error) in
-            if let refreshError = error {
-                print(refreshError.localizedDescription)
+        FrolloSDK.shared.reports.refreshTransactionCurrentReports(grouping: grouping) { (result) in
+            switch result {
+                case .failure(let error):
+                    print(error.localizedDescription)
+                case .success:
+                    break
             }
             
             self.reloadData()

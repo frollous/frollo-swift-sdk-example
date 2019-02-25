@@ -21,15 +21,23 @@ class StartupViewController: UIViewController {
         
         spinner.startAnimating()
 
+        let clientID = "x"
+        let clientSecret = "y"
+        let redirectURI = "frollo://auth"
+        let authorizationURL = URL(string: "https://id-sandbox.frollo.us/oauth/authorization")!
+        let tokenURL = URL(string: "https://id-sandbox.frollo.us/oauth/token")!
         let serverURL = URL(string: "https://api-sandbox.frollo.us/api/v2/")!
         
-        FrolloSDK.shared.setup(serverURL: serverURL, logLevel: .debug, publicKeyPinningEnabled: false) { (error) in 
-            if let setupError = error {
-                fatalError(setupError.localizedDescription)
-            } else {
-                DispatchQueue.main.async {
-                    self.completeStartup()
-                }
+        let config = FrolloSDKConfiguration(clientID: clientID, clientSecret: clientSecret, redirectURI: redirectURI, authorizationEndpoint: authorizationURL, tokenEndpoint: tokenURL, serverEndpoint: serverURL)
+        
+        FrolloSDK.shared.setup(configuration: config) { (result) in
+            switch result {
+                case .failure(let error):
+                    fatalError(error.localizedDescription)
+                case .success:
+                    DispatchQueue.main.async {
+                        self.completeStartup()
+                    }
             }
         }
     }
