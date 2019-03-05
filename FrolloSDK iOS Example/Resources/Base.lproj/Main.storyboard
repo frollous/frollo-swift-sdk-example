@@ -519,13 +519,26 @@
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Sfa-2R-Ebx">
                                 <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eG3-SR-s81">
+                                <rect key="frame" x="30" y="361" width="315" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="OiC-sn-hlG"/>
+                                </constraints>
+                                <state key="normal" title="Web Login"/>
+                                <connections>
+                                    <action selector="webLoginPressWithSender:" destination="8GS-a6-2fv" eventType="touchUpInside" id="m9s-OU-Kdg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="hgd-et-Uqf" firstAttribute="leading" secondItem="mrd-6J-tVV" secondAttribute="leading" id="1jp-Up-8I2"/>
                             <constraint firstItem="hgd-et-Uqf" firstAttribute="trailing" secondItem="mrd-6J-tVV" secondAttribute="trailing" id="7LA-7m-mSe"/>
+                            <constraint firstItem="eG3-SR-s81" firstAttribute="trailing" secondItem="hgd-et-Uqf" secondAttribute="trailing" id="DHW-0Z-TFD"/>
                             <constraint firstItem="izT-fO-3My" firstAttribute="centerX" secondItem="M2j-pq-OgG" secondAttribute="centerX" id="LVg-pf-8KH"/>
                             <constraint firstItem="Sfa-2R-Ebx" firstAttribute="centerY" secondItem="hgd-et-Uqf" secondAttribute="centerY" id="MMT-Iu-Uup"/>
+                            <constraint firstItem="eG3-SR-s81" firstAttribute="top" secondItem="hgd-et-Uqf" secondAttribute="bottom" constant="7.5" id="Nv7-Ic-HBT"/>
+                            <constraint firstItem="eG3-SR-s81" firstAttribute="leading" secondItem="hgd-et-Uqf" secondAttribute="leading" id="Ry0-Y2-yle"/>
                             <constraint firstItem="9Yu-hB-Pbz" firstAttribute="trailing" secondItem="mrd-6J-tVV" secondAttribute="trailing" constant="30" id="U0b-m1-01O"/>
                             <constraint firstItem="izT-fO-3My" firstAttribute="leading" secondItem="9Yu-hB-Pbz" secondAttribute="leading" constant="30" id="WlP-An-R66"/>
                             <constraint firstItem="mrd-6J-tVV" firstAttribute="leading" secondItem="9Yu-hB-Pbz" secondAttribute="leading" constant="30" id="Yee-fb-JRX"/>
@@ -545,6 +558,7 @@
                         <outlet property="spinner" destination="Sfa-2R-Ebx" id="Lle-t9-hrF"/>
                         <outlet property="usernameContainerView" destination="izT-fO-3My" id="Ln7-qQ-gUF"/>
                         <outlet property="usernameTextField" destination="o3u-XE-gl1" id="kkU-B7-qdI"/>
+                        <outlet property="webLoginButton" destination="eG3-SR-s81" id="Qcq-pv-4Dq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z2l-WU-Dbs" userLabel="First Responder" sceneMemberID="firstResponder"/>
