@@ -15,6 +15,7 @@ class LoginViewController: UIViewController {
     
     @IBOutlet var spinner: UIActivityIndicatorView!
     @IBOutlet var loginButton: UIButton!
+    @IBOutlet var webLoginButton: UIButton!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var usernameTextField: UITextField!
     @IBOutlet var passwordContainerView: UIView!
@@ -47,10 +48,12 @@ class LoginViewController: UIViewController {
         }
         
         loginButton.isHidden = true
+        webLoginButton.isHidden = true
         spinner.startAnimating()
         
         FrolloSDK.shared.authentication.loginUser(email: email, password: password) { (result) in
             self.loginButton.isHidden = false
+            self.webLoginButton.isHidden = false
             self.spinner.stopAnimating()
             
             switch result {
@@ -61,13 +64,30 @@ class LoginViewController: UIViewController {
                     
                     self.present(alertController, animated: true)
                 case .success:
-                    self.flowManager?.showMainSplitViewController()
+                    self.completeLogin()
+            }
+        }
+    }
+    
+    @IBAction func webLoginPress(sender: UIButton) {
+        loginButton.isHidden = true
+        webLoginButton.isHidden = true
+        spinner.startAnimating()
+        
+        FrolloSDK.shared.authentication.loginUserUsingWeb(presenting: self) { (result) in
+            self.loginButton.isHidden = false
+            self.webLoginButton.isHidden = false
+            self.spinner.stopAnimating()
+            
+            switch result {
+                case .failure(let error):
+                    let alertController = UIAlertController(title: "Login Failed", message: error.localizedDescription, preferredStyle: .alert)
+                    let dismissAction = UIAlertAction(title: "OK", style: .cancel)
+                    alertController.addAction(dismissAction)
                     
-                    self.registerForPushNotifications()
-                    
-                    DispatchQueue.main.async {
-                        FrolloSDK.shared.refreshData()
-                    }
+                    self.present(alertController, animated: true)
+                case .success:
+                    self.completeLogin()
             }
         }
     }
@@ -79,6 +99,18 @@ class LoginViewController: UIViewController {
             DispatchQueue.main.async {
                 UIApplication.shared.registerForRemoteNotifications()
             }
+        }
+    }
+    
+    // MARK: - Login
+    
+    private func completeLogin() {
+        flowManager?.showMainSplitViewController()
+        
+        registerForPushNotifications()
+        
+        DispatchQueue.main.async {
+            FrolloSDK.shared.refreshData()
         }
     }
     

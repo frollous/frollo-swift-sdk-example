@@ -56,6 +56,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         completionHandler(.newData)
     }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        return FrolloSDK.shared.applicationOpen(url: url)
+    }
 
 }
 
