@@ -14,6 +14,7 @@ class ReportTypesViewController: UITableViewController {
         case accountBalance
         case transactionCurrent
         case transactionHistory
+        case survey
     }
 
     override func viewDidLoad() {
@@ -45,10 +46,13 @@ class ReportTypesViewController: UITableViewController {
                 cell.textLabel?.text = "Current Transaction Reports"
             case .transactionHistory:
                 cell.textLabel?.text = "Historic Transaction Reports"
+            case .survey:
+                cell.textLabel?.text = "Start a survey"
         }
 
         return cell
     }
+    
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch ReportType.allCases[indexPath.row] {
@@ -63,6 +67,10 @@ class ReportTypesViewController: UITableViewController {
                 let viewController = storyboard?.instantiateViewController(withIdentifier: "ReportTypeTransactionViewController") as! ReportTypeTransactionViewController
                 viewController.current = false
                 navigationController?.pushViewController(viewController, animated: true)
+        case .survey:
+                let storyboard = UIStoryboard(name: "Surveys", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "SurveyViewController")  as! SurveyViewController
+                self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 
