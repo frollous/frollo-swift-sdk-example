@@ -94,7 +94,6 @@
 		01E5BF93222DEB70003D85FD /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 01E5BF92222DEB70003D85FD /* Settings.bundle */; };
 		2F16C955223F00B2005F178D /* SurveyAnswerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F16C954223F00B2005F178D /* SurveyAnswerTableCell.swift */; };
 		2F16C957223F1D7D005F178D /* FrolloSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F16C956223F1D7D005F178D /* FrolloSlider.swift */; };
-		2F16C95B2240961F005F178D /* SurveyLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F16C95A2240961F005F178D /* SurveyLoadingViewController.swift */; };
 		2F657DB9223B6FBD00471B85 /* Surveys.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F657DB8223B6FBD00471B85 /* Surveys.storyboard */; };
 		2F657DBC223B715800471B85 /* SurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F657DBB223B715800471B85 /* SurveyViewController.swift */; };
 		2F657DBE223B765900471B85 /* SurveyMultipleChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F657DBD223B765900471B85 /* SurveyMultipleChoiceViewController.swift */; };
@@ -162,7 +161,6 @@
 		01E5BF92222DEB70003D85FD /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		2F16C954223F00B2005F178D /* SurveyAnswerTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyAnswerTableCell.swift; sourceTree = "<group>"; };
 		2F16C956223F1D7D005F178D /* FrolloSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrolloSlider.swift; sourceTree = "<group>"; };
-		2F16C95A2240961F005F178D /* SurveyLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyLoadingViewController.swift; sourceTree = "<group>"; };
 		2F657DB8223B6FBD00471B85 /* Surveys.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Surveys.storyboard; sourceTree = "<group>"; };
 		2F657DBB223B715800471B85 /* SurveyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyViewController.swift; sourceTree = "<group>"; };
 		2F657DBD223B765900471B85 /* SurveyMultipleChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyMultipleChoiceViewController.swift; sourceTree = "<group>"; };
@@ -441,7 +439,6 @@
 				2F657DBB223B715800471B85 /* SurveyViewController.swift */,
 				2F657DBD223B765900471B85 /* SurveyMultipleChoiceViewController.swift */,
 				2F657DBF223B766700471B85 /* SurveySliderViewController.swift */,
-				2F16C95A2240961F005F178D /* SurveyLoadingViewController.swift */,
 			);
 			path = Survey;
 			sourceTree = "<group>";
@@ -640,7 +637,6 @@
 				017E5935218291DA00DC56FF /* AccountsViewController.swift in Sources */,
 				017E593A2182958900DC56FF /* AccountCell.swift in Sources */,
 				01527CEA20E1D3B000B5042A /* AppDelegate.swift in Sources */,
-				2F16C95B2240961F005F178D /* SurveyLoadingViewController.swift in Sources */,
 				015687B5218C1F4300C961B3 /* ProviderAccountCell.swift in Sources */,
 				0135D31F21A526B200318142 /* MessagesViewController.swift in Sources */,
 				017E59442186907B00DC56FF /* TransactionCategoriesViewController.swift in Sources */,

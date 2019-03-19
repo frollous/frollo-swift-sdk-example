@@ -24,20 +24,20 @@ class SurveySliderViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        titleLabel.text = surveyQuestion?.title ?? ""
-        displayLabel.text = surveyQuestion?.displayText ?? ""
+        titleLabel.text = surveyQuestion.title
+        displayLabel.text = surveyQuestion.displayText ?? ""
         answerSlider.delegate = self
         
         setDynamicSlider()
     }
     
+    // set default selected value in slider and text
     func setDynamicSlider(){
-        guard let answers = surveyQuestion?.answers else { return }
         answerSlider.minValue = 1
-        answerSlider.maxValue = answers.count
+        answerSlider.maxValue = surveyQuestion.answers.count
         var values = [String]()
         var defaultValue = 1
-        for (i,answer) in answers.enumerated(){
+        for (i,answer) in surveyQuestion.answers.enumerated(){
             values.append(answer.value)
             if(answer.selected){
                 defaultValue = i + 1

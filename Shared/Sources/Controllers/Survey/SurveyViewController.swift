@@ -13,15 +13,21 @@ import FrolloSDK
 class SurveyViewController: UIPageViewController {
     
     fileprivate lazy var surveyQuestions = [UIViewController]()
+    var activityLoader = UIActivityIndicatorView(style: .gray)
     var survey : Survey!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.white
         
-         let loadingVC = storyboard!.instantiateViewController(withIdentifier: "SurveyLoadingViewController") as! SurveyLoadingViewController
-        setViewControllers([loadingVC], direction: .forward, animated: true, completion: nil)
+        // add loading indicator
+        activityLoader.startAnimating()
+        activityLoader.center = view.center
+        self.view.addSubview(activityLoader)
         
+        // fetch surveys from api
         FrolloSDK.shared.surveys.fetchSurvey(surveyKey: "APP_TESTING") { (result) in
+            self.activityLoader.stopAnimating()
             switch result {
             case .failure(let error):
                 print(error.localizedDescription)
@@ -34,7 +40,9 @@ class SurveyViewController: UIPageViewController {
     }
     
     func updateSurvey(){
+        activityLoader.startAnimating()
         
+        // filter out unselected answers since api only expects selected answers in array
         for question in survey.questions{
             for answer in question.answers{
                 if(answer.selected){
@@ -50,12 +58,13 @@ class SurveyViewController: UIPageViewController {
                 print(error.localizedDescription)
             case .success(let survey):
                 print(survey.key)
+                self.navigationController?.popViewController(animated: true)
                 break
             }
         }
     }
 
-    
+    // create list of viewcontroller array and display first viewcontroller
     func showSurveyQuestions(){
         
         for (index, question) in survey.questions.enumerated(){
@@ -67,6 +76,7 @@ class SurveyViewController: UIPageViewController {
             
     }
     
+    // create viewcontroller pages for each questions depending on the type
     fileprivate func getSurveyViewController(question : SurveyQuestion, index : Int) -> UIViewController
     {
         switch question.type {
@@ -85,29 +95,22 @@ class SurveyViewController: UIPageViewController {
         }
     }
     
-    func createSurvey() -> Survey? {
-        let jsonString = "{\"id\": 4,\"key\": \"FINANCIAL_WELLBEING_4\",\"name\": \"Wellbeing Survey\",\"questions\": [{\"id\": 4,\"type\": \"multiple_choice\",\"title\": \"How do you feel about your finances?\",\"display_text\": \"This let' us understand the level of support we should give you to keep you on the right track.\",\"answers\": [{\"id\": 12,\"title\": \"NEEDS FIXING\",\"display_text\": \"Always feel overwhelmed and I am always worried about money.\",\"value\": \"1\",\"selected\": false},{\"id\": 13,\"title\": \"NOT GREAT\",\"display_text\": \"Often feel overwhelmed and I worry about my money.\",\"value\": \"2\",\"selected\": false},{\"id\": 14,\"title\": \"OK\",\"display_text\": \"I know enough but need to put things into practice. Sometimes I worry about money.\",\"value\": \"3\",\"selected\": true},{\"id\": 15,\"title\": \"GOOD\",\"display_text\": \"I feel comfortable about my money situations and rarely I worry about money.\",\"value\": \"4\",\"selected\": false},{\"id\": 16,\"title\": \"GREAT\",\"display_text\": \"Have mastered my finance and never worry about money.\",\"value\": \"5\",\"selected\": false}]},{\"id\": 3,\"type\": \"slider\",\"title\": \"Frollo is here to help you!\",\"display_text\": \"We aim to personalise every experience. So we can provide you with meaningful financial direction, please let us know why you are here. I am here to...\",\"answers\": [{\"id\": 9,\"display_text\": \"Save for a goal\",\"value\": \"1\",\"selected\": true},{\"id\": 10,\"display_text\": \"Find out where my money goes\",\"value\": \"2\",\"selected\": false},{\"id\": 11,\"display_text\": \"Get support in paying off debt\",\"value\": \"3\",\"selected\": false},{\"id\": 12,\"display_text\": \"New Option\",\"value\": \"4\",\"selected\": false},{\"id\": 13,\"display_text\": \"Last One\",\"value\": \"5\",\"selected\": false}]}]}"
-        
-        if let jsonData = jsonString.data(using: .utf8)
-        {
-            let survey = try? JSONDecoder().decode(Survey.self, from: jsonData)
-            return survey
-        }
-        return nil
-    }
 }
 
 extension SurveyViewController : SurveyQuestionCompleted{
+    
+    //next button pressed
     func onQuestioncompleted(index: Int) {
         if(index < surveyQuestions.count-1){
             setViewControllers([surveyQuestions[index+1]], direction: .forward, animated: true, completion: nil)
         }else{
-            // call update survey api
+            // all pages completed. call update survey api
             updateSurvey()
         }
         
     }
     
+    // previous button pressed
     func onPreviousQuestion(index : Int){
         if(index > 0){
             setViewControllers([surveyQuestions[index-1]], direction: .reverse, animated: true, completion: nil)

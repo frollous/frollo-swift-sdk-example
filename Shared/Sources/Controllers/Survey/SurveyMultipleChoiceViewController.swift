@@ -37,6 +37,7 @@ class SurveyMultipleChoiceViewController: UIViewController {
         delegate?.onQuestioncompleted(index: questionIndex)
     }
     
+    // set selected row and unset all others
     func selectAnswer(indexPath : IndexPath){
         
         for answer in surveyQuestion.answers{
