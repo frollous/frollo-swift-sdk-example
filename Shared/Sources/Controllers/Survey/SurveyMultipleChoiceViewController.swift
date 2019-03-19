@@ -17,7 +17,7 @@ class SurveyMultipleChoiceViewController: UIViewController {
     @IBOutlet weak var displayLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     
-    var surveyQuestion : SurveyQuestion!
+    var surveyQuestion : Survey.Question!
     var questionIndex : Int!
     weak var delegate : SurveyQuestionCompleted?
     

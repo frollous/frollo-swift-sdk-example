@@ -18,7 +18,7 @@ class SurveySliderViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var answerSlider: FrolloSlider!
     
-    var surveyQuestion : SurveyQuestion!
+    var surveyQuestion : Survey.Question!
     var questionIndex : Int!
     weak var delegate : SurveyQuestionCompleted?
     

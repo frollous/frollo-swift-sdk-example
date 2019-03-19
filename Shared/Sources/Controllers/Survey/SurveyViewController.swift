@@ -77,7 +77,7 @@ class SurveyViewController: UIPageViewController {
     }
     
     // create viewcontroller pages for each questions depending on the type
-    fileprivate func getSurveyViewController(question : SurveyQuestion, index : Int) -> UIViewController
+    fileprivate func getSurveyViewController(question : Survey.Question, index : Int) -> UIViewController
     {
         switch question.type {
         case .multipleChoice:
