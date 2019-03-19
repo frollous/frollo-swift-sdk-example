@@ -236,5 +236,30 @@
             </objects>
             <point key="canvasLocation" x="773.60000000000002" y="222.63868065967017"/>
         </scene>
+        <!--Survey Loading View Controller-->
+        <scene sceneID="T6p-YH-nrr">
+            <objects>
+                <viewController storyboardIdentifier="SurveyLoadingViewController" id="HyN-Oh-alk" customClass="SurveyLoadingViewController" customModule="FrolloSDK_iOS_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GTP-qh-lts">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="dvE-Gg-wFh">
+                                <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dvE-Gg-wFh" firstAttribute="centerX" secondItem="GTP-qh-lts" secondAttribute="centerX" id="02H-yL-m2R"/>
+                            <constraint firstItem="dvE-Gg-wFh" firstAttribute="centerY" secondItem="GTP-qh-lts" secondAttribute="centerY" id="vgm-l5-GEp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Thq-JA-NSd"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hAC-UV-0fa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1481" y="216"/>
+        </scene>
     </scenes>
 </document>

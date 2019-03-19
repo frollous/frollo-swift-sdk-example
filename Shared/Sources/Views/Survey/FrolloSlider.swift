@@ -37,6 +37,7 @@ class FrolloSlider: UIView {
     }
     
     func updateDefautValue(){
+        slider?.value = Float(selectedValue)
         stackView?.removeAllArrangedSubviews()
         for index in 0...maxValue - 1{
             let label = UILabel(frame: .zero)

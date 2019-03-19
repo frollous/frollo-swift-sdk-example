@@ -18,7 +18,7 @@ class SurveySliderViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var answerSlider: FrolloSlider!
     
-    var surveyQuestion : SurveyQuestion?
+    var surveyQuestion : SurveyQuestion!
     var questionIndex : Int!
     weak var delegate : SurveyQuestionCompleted?
     
@@ -38,8 +38,8 @@ class SurveySliderViewController: UIViewController {
         var values = [String]()
         var defaultValue = 1
         for (i,answer) in answers.enumerated(){
-            values.append(answer.value ?? "")
-            if(answer.selected!){
+            values.append(answer.value)
+            if(answer.selected){
                 defaultValue = i + 1
             }
         }
@@ -59,13 +59,11 @@ class SurveySliderViewController: UIViewController {
 
 extension SurveySliderViewController : SliderValueChange{
     func onSliderValueChanged(index : Int){
-        answerDescriptionLabel.text = surveyQuestion?.answers?[index].displayText
-        guard let question = surveyQuestion else { return }
-        guard let answers = question.answers else { return }
-        for answer in answers{
+        answerDescriptionLabel.text = surveyQuestion.answers[index].displayText
+        for answer in surveyQuestion.answers{
             answer.selected = false
         }
-        surveyQuestion?.answers?[index].selected = true
+        surveyQuestion.answers[index].selected = true
     }
 }
 

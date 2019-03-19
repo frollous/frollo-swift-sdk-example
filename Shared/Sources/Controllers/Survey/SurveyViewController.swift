@@ -18,38 +18,47 @@ class SurveyViewController: UIPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        FrolloSDK.shared.surveys.fetchSurvey(surveyKey: "FINANCIAL_WELLBEING") { (result) in
-//            switch result {
-//            case .failure(let error):
-//                print(error.localizedDescription)
-//            case .success(let survey):
-//                self.showSurveyQuestions(survey:survey)
-//                break
-//            }
-//        }
-        survey = createSurvey()
-        showSurveyQuestions(survey: survey)
+         let loadingVC = storyboard!.instantiateViewController(withIdentifier: "SurveyLoadingViewController") as! SurveyLoadingViewController
+        setViewControllers([loadingVC], direction: .forward, animated: true, completion: nil)
+        
+        FrolloSDK.shared.surveys.fetchSurvey(surveyKey: "APP_TESTING") { (result) in
+            switch result {
+            case .failure(let error):
+                print(error.localizedDescription)
+            case .success(let survey):
+                self.survey = survey
+                self.showSurveyQuestions()
+                break
+            }
+        }
     }
     
     func updateSurvey(){
+        
+        for question in survey.questions{
+            for answer in question.answers{
+                if(answer.selected){
+                    question.answers = [answer]
+                    break
+                }
+            }
+        }
+
         FrolloSDK.shared.surveys.submitSurvey(survey: survey) { (result) in
             switch result{
             case .failure(let error):
                 print(error.localizedDescription)
             case .success(let survey):
-                print(survey.key!)
+                print(survey.key)
                 break
             }
         }
     }
 
     
-    func showSurveyQuestions(survey:Survey?){
+    func showSurveyQuestions(){
         
-        guard let survey = survey else { return }
-        guard let questions = survey.questions else { return }
-        
-        for (index, question) in questions.enumerated(){
+        for (index, question) in survey.questions.enumerated(){
             surveyQuestions.append(getSurveyViewController(question: question, index: index))
         }
         if let firstQuestion = surveyQuestions.first{
@@ -60,7 +69,7 @@ class SurveyViewController: UIPageViewController {
     
     fileprivate func getSurveyViewController(question : SurveyQuestion, index : Int) -> UIViewController
     {
-        switch question.type! {
+        switch question.type {
         case .multipleChoice:
             let vc = storyboard!.instantiateViewController(withIdentifier: "SurveyMultipleChoiceViewController") as! SurveyMultipleChoiceViewController
             vc.questionIndex = index
@@ -94,7 +103,7 @@ extension SurveyViewController : SurveyQuestionCompleted{
             setViewControllers([surveyQuestions[index+1]], direction: .forward, animated: true, completion: nil)
         }else{
             // call update survey api
-//            updateSurvey()
+            updateSurvey()
         }
         
     }
