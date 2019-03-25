@@ -12,10 +12,10 @@ import UIKit
 @IBDesignable
 class FrolloSlider: UIView {
     
-    var minValue = 1
-    var maxValue = 5
+    var minValue = 0
+    var maxValue = 4
     
-    var selectedValue : Int = 1{
+    var selectedValue : Int = 0{
         didSet{
             updateDefautValue()
         }
@@ -37,15 +37,17 @@ class FrolloSlider: UIView {
     }
     
     func updateDefautValue(){
+        slider?.minimumValue = Float(minValue)
+        slider?.maximumValue = Float(maxValue)
         slider?.value = Float(selectedValue)
         stackView?.removeAllArrangedSubviews()
-        for index in 0...maxValue - 1{
+        for index in 0...maxValue{
             let label = UILabel(frame: .zero)
             label.translatesAutoresizingMaskIntoConstraints = false
             label.text = values[index]
             label.textAlignment = .center
             label.textColor = UIColor.black
-            if(index + 1 == selectedValue){
+            if(index == selectedValue){
                 label.textColor = UIColor.blue
                 delegate?.onSliderValueChanged(index : index)
             }
@@ -70,7 +72,6 @@ class FrolloSlider: UIView {
         slider?.minimumValue = Float(minValue)
         slider?.maximumValue = Float(maxValue)
         slider?.value = Float(selectedValue)
-                
     }
     
     @objc func sliderValueDidChange(_ sender:UISlider!)

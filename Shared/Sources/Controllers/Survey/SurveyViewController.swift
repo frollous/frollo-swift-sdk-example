@@ -21,47 +21,51 @@ class SurveyViewController: UIPageViewController {
         view.backgroundColor = UIColor.white
         
         // add loading indicator
-        activityLoader.startAnimating()
+//        activityLoader.startAnimating()
         activityLoader.center = view.center
         self.view.addSubview(activityLoader)
         
         // fetch surveys from api
-        FrolloSDK.shared.surveys.fetchSurvey(surveyKey: "APP_TESTING") { (result) in
-            self.activityLoader.stopAnimating()
-            switch result {
-            case .failure(let error):
-                print(error.localizedDescription)
-            case .success(let survey):
-                self.survey = survey
-                self.showSurveyQuestions()
-                break
-            }
-        }
+//        FrolloSDK.shared.surveys.fetchSurvey(surveyKey: "APP_TESTING") { (result) in
+//            self.activityLoader.stopAnimating()
+//            switch result {
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            case .success(let survey):
+//                self.survey = survey
+//                self.showSurveyQuestions()
+//                break
+//            }
+//        }
+        
+        self.survey = self.createSurvey()!
+        self.showSurveyQuestions()
     }
     
     func updateSurvey(){
-        activityLoader.startAnimating()
+//        activityLoader.startAnimating()
         
         // filter out unselected answers since api only expects selected answers in array
         for question in survey.questions{
+            var selectedAnswers = [Survey.Question.Answer]()
             for answer in question.answers{
                 if(answer.selected){
-                    question.answers = [answer]
-                    break
+                    selectedAnswers.append(answer)
                 }
             }
+            question.answers = selectedAnswers
         }
 
-        FrolloSDK.shared.surveys.submitSurvey(survey: survey) { (result) in
-            switch result{
-            case .failure(let error):
-                print(error.localizedDescription)
-            case .success(let survey):
-                print(survey.key)
-                self.navigationController?.popViewController(animated: true)
-                break
-            }
-        }
+//        FrolloSDK.shared.surveys.submitSurvey(survey: survey) { (result) in
+//            switch result{
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            case .success(let survey):
+//                print(survey.key)
+//                self.navigationController?.popViewController(animated: true)
+//                break
+//            }
+//        }
     }
 
     // create list of viewcontroller array and display first viewcontroller
@@ -92,9 +96,25 @@ class SurveyViewController: UIPageViewController {
             vc.surveyQuestion = question
             vc.delegate = self
             return vc
+        case .checkbox:
+            let vc = storyboard!.instantiateViewController(withIdentifier: "SurveyMultipleChoiceViewController") as! SurveyMultipleChoiceViewController
+            vc.questionIndex = index
+            vc.surveyQuestion = question
+            vc.delegate = self
+            return vc
         }
     }
     
+    func createSurvey() -> Survey? {
+        let jsonString = "{\"id\": 1,\"key\": \"FINANCIAL_WELLBEING\",\"name\": \"Wellbeing Survey\",\"questions\": [{\"id\": 1,\"type\": \"multiple_choice\",\"title\": \"How do you feel about your finances?\",\"display_text\": \"This let's us understand the level of support we should give you to keep you on the right track.\",\"icon_url\": \"https://content.frollo.us/surveys/images/question_icon.png\",\"optional\": false,\"answers\": [{\"id\": 1,\"type\": \"normal_selection\",\"title\": \"1 OK\",\"display_text\": \"1 I know enough but need to put things into practice. Sometimes I worry about money.\",\"icon_url\": \"https://content.frollo.us/surveys/images/medium_face_emoji.png\",\"value\": \"1\",\"selected\": false},{\"id\": 2,\"type\": \"normal_selection\",\"title\": \"2 OK\",\"display_text\": \"2 I know enough but need to put things into practice. Sometimes I worry about money.\",\"icon_url\": \"https://content.frollo.us/surveys/images/medium_face_emoji.png\",\"value\": \"2\",\"selected\": false},{\"id\": 3,\"type\": \"normal_selection\",\"title\": \"3 OK\",\"display_text\": \"3 I know enough but need to put things into practice. Sometimes I worry about money.\",\"icon_url\": \"https://content.frollo.us/surveys/images/medium_face_emoji.png\",\"value\": \"3\",\"selected\": true},{\"id\": 4,\"type\": \"open_ended\",\"title\": \"4 OK\",\"display_text\": \"4 I know enough but need to put things into practice. Sometimes I worry about money.\",\"icon_url\": \"https://content.frollo.us/surveys/images/medium_face_emoji.png\",\"value\": \"4\",\"selected\": false}]},{\"id\": 1,\"type\": \"checkbox\",\"title\": \"How do you feel about your finances?\",\"display_text\": \"This let's us understand the level of support we should give you to keep you on the right track.\",\"icon_url\": \"https://content.frollo.us/surveys/images/question_icon.png\",\"optional\": false,\"answers\": [{\"id\": 1,\"type\": \"normal_selection\",\"title\": \"1 OK\",\"display_text\": \"10 I know enough but need to put things into practice. Sometimes I worry about money.\",\"icon_url\": \"https://content.frollo.us/surveys/images/medium_face_emoji.png\",\"value\": \"1\",\"selected\": false},{\"id\": 20,\"type\": \"normal_selection\",\"title\": \"2 OK\",\"display_text\": \"20 I know enough but need to put things into practice. Sometimes I worry about money.\",\"icon_url\": \"https://content.frollo.us/surveys/images/medium_face_emoji.png\",\"value\": \"2\",\"selected\": false},{\"id\": 3,\"type\": \"normal_selection\",\"title\": \"3 OK\",\"display_text\": \"30 I know enough but need to put things into practice. Sometimes I worry about money.\",\"icon_url\": \"https://content.frollo.us/surveys/images/medium_face_emoji.png\",\"value\": \"3\",\"selected\": true},{\"id\": 4,\"type\": \"normal_selection\",\"title\": \"4 OK\",\"display_text\": \"40 I know enough but need to put things into practice. Sometimes I worry about money.\",\"icon_url\": \"https://content.frollo.us/surveys/images/medium_face_emoji.png\",\"value\": \"4\",\"selected\": false}]},{\"id\": 1,\"type\": \"slider\",\"title\": \"How do you feel about your finances?\",\"display_text\": \"This let's us understand the level of support we should give you to keep you on the right track.\",\"icon_url\": \"https://content.frollo.us/surveys/images/question_icon.png\",\"optional\": false,\"answers\": [{\"id\": 1,\"type\": \"normal_selection\",\"title\": \"1OK\",\"display_text\": \"I know enough but need to put things into practice. Sometimes I worry about money.\",\"icon_url\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Noto_Emoji_KitKat_263a.svg/1200px-Noto_Emoji_KitKat_263a.svg.png\",\"value\": \"1\",\"selected\": false},{\"id\": 1,\"type\": \"normal_selection\",\"title\": \"2OK\",\"display_text\": \"I know enough but need to put things into practice. Sometimes I worry about money.\",\"icon_url\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Noto_Emoji_KitKat_263a.svg/1200px-Noto_Emoji_KitKat_263a.svg.png\",\"value\": \"2\",\"selected\": false},{\"id\": 1,\"type\": \"normal_selection\",\"title\": \"3OK\",\"display_text\": \"I know enough but need to put things into practice. Sometimes I worry about money.\",\"icon_url\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Noto_Emoji_KitKat_263a.svg/1200px-Noto_Emoji_KitKat_263a.svg.png\",\"value\": \"3\",\"selected\": true},{\"id\": 1,\"type\": \"normal_selection\",\"title\": \"4OK\",\"display_text\": \"I know enough but need to put things into practice. Sometimes I worry about money.\",\"icon_url\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Noto_Emoji_KitKat_263a.svg/1200px-Noto_Emoji_KitKat_263a.svg.png\",\"value\": \"4\",\"selected\": false}]}]}"
+        
+        if let jsonData = jsonString.data(using: .utf8)
+        {
+            let survey = try? JSONDecoder().decode(Survey.self, from: jsonData)
+            return survey
+        }
+        return nil
+    }
 }
 
 extension SurveyViewController : SurveyQuestionCompleted{

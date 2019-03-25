@@ -12,6 +12,8 @@ import FrolloSDK
 
 class SurveySliderViewController: UIViewController {
     
+    @IBOutlet weak var answerDisplayTextLabel: UILabel!
+    @IBOutlet weak var answerIconImageView: UIImageView!
     @IBOutlet weak var answerDescriptionLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var displayLabel: UILabel!
@@ -33,18 +35,23 @@ class SurveySliderViewController: UIViewController {
     
     // set default selected value in slider and text
     func setDynamicSlider(){
-        answerSlider.minValue = 1
-        answerSlider.maxValue = surveyQuestion.answers.count
+        answerSlider.minValue = 0
+        answerSlider.maxValue = surveyQuestion.answers.count - 1
         var values = [String]()
-        var defaultValue = 1
+        var defaultValue = 0
         for (i,answer) in surveyQuestion.answers.enumerated(){
             values.append(answer.value)
             if(answer.selected){
-                defaultValue = i + 1
+                defaultValue = i
             }
         }
         answerSlider.values = values
         answerSlider.selectedValue = defaultValue
+        answerDescriptionLabel.text = surveyQuestion.answers[defaultValue].displayText
+        answerDisplayTextLabel.text = surveyQuestion.answers[defaultValue].title
+        
+        answerIconImageView.downloaded(from: surveyQuestion.answers[defaultValue].iconURL ?? "")
+
     }
     
     @IBAction func previousButtonPressed(_ sender: Any) {
@@ -60,6 +67,7 @@ class SurveySliderViewController: UIViewController {
 extension SurveySliderViewController : SliderValueChange{
     func onSliderValueChanged(index : Int){
         answerDescriptionLabel.text = surveyQuestion.answers[index].displayText
+        answerDisplayTextLabel.text = surveyQuestion.answers[index].title
         for answer in surveyQuestion.answers{
             answer.selected = false
         }
@@ -70,3 +78,5 @@ extension SurveySliderViewController : SliderValueChange{
 protocol SliderValueChange : class {
     func onSliderValueChanged(index : Int)
 }
+
+

@@ -98,6 +98,7 @@
 		2F657DBC223B715800471B85 /* SurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F657DBB223B715800471B85 /* SurveyViewController.swift */; };
 		2F657DBE223B765900471B85 /* SurveyMultipleChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F657DBD223B765900471B85 /* SurveyMultipleChoiceViewController.swift */; };
 		2F657DC0223B766700471B85 /* SurveySliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F657DBF223B766700471B85 /* SurveySliderViewController.swift */; };
+		2FE180062248574F00B87AAB /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE180052248574F00B87AAB /* UIExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -165,6 +166,7 @@
 		2F657DBB223B715800471B85 /* SurveyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyViewController.swift; sourceTree = "<group>"; };
 		2F657DBD223B765900471B85 /* SurveyMultipleChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyMultipleChoiceViewController.swift; sourceTree = "<group>"; };
 		2F657DBF223B766700471B85 /* SurveySliderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveySliderViewController.swift; sourceTree = "<group>"; };
+		2FE180052248574F00B87AAB /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -439,6 +441,7 @@
 				2F657DBB223B715800471B85 /* SurveyViewController.swift */,
 				2F657DBD223B765900471B85 /* SurveyMultipleChoiceViewController.swift */,
 				2F657DBF223B766700471B85 /* SurveySliderViewController.swift */,
+				2FE180052248574F00B87AAB /* UIExtensions.swift */,
 			);
 			path = Survey;
 			sourceTree = "<group>";
@@ -628,6 +631,7 @@
 				015023C82181465100EEB5F2 /* ProvidersViewController.swift in Sources */,
 				01E5BF90222DEACD003D85FD /* SetupManager.swift in Sources */,
 				01527CEC20E1D3B000B5042A /* ViewController.swift in Sources */,
+				2FE180062248574F00B87AAB /* UIExtensions.swift in Sources */,
 				011C199D21E6EDFE00490EDD /* BillPaymentsViewController.swift in Sources */,
 				017E593E2182D8D100DC56FF /* TransactionCell.swift in Sources */,
 				01850208220A86C500069D87 /* ReportTypeTransactionViewController.swift in Sources */,

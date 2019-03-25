@@ -26,7 +26,7 @@ class SurveyMultipleChoiceViewController: UIViewController {
         titleLabel.text = surveyQuestion.title
         displayLabel.text = surveyQuestion.displayText ?? ""
         answerTableView.tableFooterView = UIView()
-        answerTableView.rowHeight = 45
+        answerTableView.estimatedRowHeight = 45
     }
     
     @IBAction func previousButtonPressed(_ sender: Any) {
@@ -39,14 +39,19 @@ class SurveyMultipleChoiceViewController: UIViewController {
     
     // set selected row and unset all others
     func selectAnswer(indexPath : IndexPath){
-        
-        for answer in surveyQuestion.answers{
-            answer.selected = false
+        if(surveyQuestion.type == .checkbox){
+            surveyQuestion.answers[indexPath.item].selected = !surveyQuestion.answers[indexPath.item].selected
+        }else{
+            for answer in surveyQuestion.answers{
+                answer.selected = false
+            }
+            surveyQuestion.answers[indexPath.item].selected = true
         }
-        surveyQuestion.answers[indexPath.item].selected = true
-
+        
         answerTableView.reloadData()
     }
+    
+    
 }
 
 extension SurveyMultipleChoiceViewController : UITableViewDataSource, UITableViewDelegate{
@@ -61,14 +66,22 @@ extension SurveyMultipleChoiceViewController : UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SurveyAnswerTableCell") as! SurveyAnswerTableCell
-        let answer = surveyQuestion.answers[indexPath.item]
-        cell.answerTitleLabel.text = answer.displayText ?? ""
-        cell.answerImage.isHidden = !answer.selected
+        cell.answer = surveyQuestion.answers[indexPath.item]
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectAnswer(indexPath: indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let answer = surveyQuestion.answers[indexPath.item]
+        if(answer.answerType == .normalSelection){
+            return 40
+        }else{
+            return 75
+        }
+        
     }
 }
 
