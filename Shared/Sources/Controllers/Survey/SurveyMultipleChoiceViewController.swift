@@ -76,7 +76,7 @@ extension SurveyMultipleChoiceViewController : UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let answer = surveyQuestion.answers[indexPath.item]
-        if(answer.answerType == .normalSelection){
+        if(answer.answerType == .selection){
             return 40
         }else{
             return 75

@@ -19,8 +19,9 @@ class SurveyAnswerTableCell: UITableViewCell {
     var answer : Survey.Question.Answer!{
         didSet{
             answerTitleLabel.text = answer.displayText ?? ""
+            answerInputText.text = answer.value
             answerImage.isHidden = !answer.selected
-            if(answer.answerType == .normalSelection){
+            if(answer.answerType == .selection){
                 answerInputText.isHidden = true
             }else{
                 answerInputText.isHidden = false
