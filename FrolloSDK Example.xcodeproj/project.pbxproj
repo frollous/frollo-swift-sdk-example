@@ -89,6 +89,8 @@
 		018B04422176E0A5008C34D7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018B04402176E0A4008C34D7 /* Alamofire.framework */; };
 		018B04872176E540008C34D7 /* FrolloSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018B04852176E540008C34D7 /* FrolloSDK.framework */; };
 		018B04882176E540008C34D7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018B04862176E540008C34D7 /* Alamofire.framework */; };
+		01968679225AE9720014365A /* GoalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01968678225AE9720014365A /* GoalsViewController.swift */; };
+		0196867A225AE9720014365A /* GoalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01968678225AE9720014365A /* GoalsViewController.swift */; };
 		01E5BF90222DEACD003D85FD /* SetupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E5BF8F222DEACD003D85FD /* SetupManager.swift */; };
 		01E5BF91222DEACD003D85FD /* SetupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E5BF8F222DEACD003D85FD /* SetupManager.swift */; };
 		01E5BF93222DEB70003D85FD /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 01E5BF92222DEB70003D85FD /* Settings.bundle */; };
@@ -158,6 +160,7 @@
 		018B04862176E540008C34D7 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/tvOS/Alamofire.framework; sourceTree = "<group>"; };
 		018B04BA21770FC9008C34D7 /* FrolloSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FrolloSDK.framework; path = Carthage/Build/watchOS/FrolloSDK.framework; sourceTree = "<group>"; };
 		018B04BC21770FD7008C34D7 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/watchOS/Alamofire.framework; sourceTree = "<group>"; };
+		01968678225AE9720014365A /* GoalsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsViewController.swift; sourceTree = "<group>"; };
 		01E5BF8F222DEACD003D85FD /* SetupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupManager.swift; sourceTree = "<group>"; };
 		01E5BF92222DEB70003D85FD /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		2F16C954223F00B2005F178D /* SurveyAnswerTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyAnswerTableCell.swift; sourceTree = "<group>"; };
@@ -194,13 +197,14 @@
 		013F1F64217829010043BF56 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2F657DBA223B714300471B85 /* Survey */,
 				018501F1220A461000069D87 /* Aggregation */,
 				018501F3220A461C00069D87 /* Bills */,
+				01968677225AE9470014365A /* Goals */,
 				018501F2220A461700069D87 /* Login */,
 				018501F5220A462700069D87 /* Messages */,
 				018501FA220A46F300069D87 /* Reports */,
 				018501F6220A464200069D87 /* Shared */,
+				2F657DBA223B714300471B85 /* Survey */,
 				013F1F6821782CC80043BF56 /* StartupViewController.swift */,
 			);
 			path = Controllers;
@@ -426,6 +430,14 @@
 			path = "FrolloSDK tvOS Example";
 			sourceTree = "<group>";
 		};
+		01968677225AE9470014365A /* Goals */ = {
+			isa = PBXGroup;
+			children = (
+				01968678225AE9720014365A /* GoalsViewController.swift */,
+			);
+			path = Goals;
+			sourceTree = "<group>";
+		};
 		2F16C953223F0091005F178D /* Survey */ = {
 			isa = PBXGroup;
 			children = (
@@ -641,6 +653,7 @@
 				017E5935218291DA00DC56FF /* AccountsViewController.swift in Sources */,
 				017E593A2182958900DC56FF /* AccountCell.swift in Sources */,
 				01527CEA20E1D3B000B5042A /* AppDelegate.swift in Sources */,
+				01968679225AE9720014365A /* GoalsViewController.swift in Sources */,
 				015687B5218C1F4300C961B3 /* ProviderAccountCell.swift in Sources */,
 				0135D31F21A526B200318142 /* MessagesViewController.swift in Sources */,
 				017E59442186907B00DC56FF /* TransactionCategoriesViewController.swift in Sources */,
@@ -683,6 +696,7 @@
 				011C199821E6C4EE00490EDD /* BillCell.swift in Sources */,
 				0156879F218BD58F00C961B3 /* TransactionCategoriesViewController.swift in Sources */,
 				0156879C218BD57C00C961B3 /* AddProviderAccountViewController.swift in Sources */,
+				0196867A225AE9720014365A /* GoalsViewController.swift in Sources */,
 				015687A4218BD5D400C961B3 /* AccountCell.swift in Sources */,
 				0185020C220B9E4000069D87 /* CurrentTransactionReportsViewController.swift in Sources */,
 				015687B6218C1F4300C961B3 /* ProviderAccountCell.swift in Sources */,

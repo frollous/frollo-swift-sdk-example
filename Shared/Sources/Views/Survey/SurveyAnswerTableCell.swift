@@ -21,7 +21,7 @@ class SurveyAnswerTableCell: UITableViewCell {
             answerTitleLabel.text = answer.displayText ?? ""
             answerInputText.text = answer.value
             answerImage.isHidden = !answer.selected
-            if(answer.answerType == .selection){
+            if(answer.answerType == .normalSelection){
                 answerInputText.isHidden = true
             }else{
                 answerInputText.isHidden = false

@@ -36,7 +36,9 @@ class SetupManager {
     internal func setup(completion: @escaping () -> Void) {
         reloadHostPreferences()
         
-        let config = hostConfig(host: selectedHost)
+        var config = hostConfig(host: selectedHost)
+        config.logLevel = .debug
+        config.publicKeyPinningEnabled = false
         
         FrolloSDK.shared.setup(configuration: config) { (result) in
             switch result {
@@ -104,6 +106,14 @@ class SetupManager {
                                               authorizationEndpoint: URL(string: "https://id-sandbox.frollo.us/oauth/authorize")!,
                                               tokenEndpoint: URL(string: "https://id-sandbox.frollo.us/oauth/token")!,
                                               serverEndpoint: URL(string: "https://api-sandbox.frollo.us/api/v2/")!)
+            
+            case .frolloStaging:
+                return FrolloSDKConfiguration(clientID: "2cc2f8df6286c8ab800287cd5a86eb779b4dd63ebb028834dcec13615a3d0517",
+                                              redirectURL: redirectURL,
+                                              authorizationEndpoint: URL(string: "https://id-staging.frollo.us/oauth/authorize")!,
+                                              tokenEndpoint: URL(string: "https://id-staging.frollo.us/oauth/token")!,
+                                              serverEndpoint: URL(string: "https://api-staging.frollo.us/api/v2/")!)
+            
             case .voltSandbox:
                return FrolloSDKConfiguration(clientID: "PzlborkOwZf42SJ2b6Fdj6JTi9lcqiNi",
                                              redirectURL: redirectURL,
