@@ -11,9 +11,12 @@ import UIKit
 
 import FrolloSDK
 
-class TransactionsViewController: TableViewController {
+class TransactionsViewController: TableViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
-    public var accountID: Int64 = -1
+    @IBOutlet var spinner: UIActivityIndicatorView!
+    
+    public var accountID: Int64?
+    public var searchEnabled = false
     
     private let currencyFormatter: NumberFormatter = {
         let numberFormatter = NumberFormatter()
@@ -30,14 +33,28 @@ class TransactionsViewController: TableViewController {
     }()
     
     private var fetchedResultsController: NSFetchedResultsController<Transaction>!
+    private var searchResultsController: UISearchController!
+    private var transactionSearchIDs = [Int64]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let context = FrolloSDK.shared.database.viewContext
-        let predicate = NSPredicate(format: #keyPath(Transaction.accountID) + " == %ld", argumentArray: [accountID])
+        var predicate: NSPredicate?
+        if let id = accountID {
+            predicate = NSPredicate(format: #keyPath(Transaction.accountID) + " == %ld", argumentArray: [id])
+        }
+        
         let sortDescriptors = [NSSortDescriptor(key: #keyPath(Transaction.transactionDateString), ascending: false)]
         fetchedResultsController = FrolloSDK.shared.aggregation.transactionsFetchedResultsController(context: context, filteredBy: predicate, sortedBy: sortDescriptors)
+        
+        if searchEnabled {
+            setupSearch()
+        }
+        
+        if navigationController?.viewControllers.count == 1 {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismissModal))
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,6 +78,26 @@ class TransactionsViewController: TableViewController {
             let transaction = fetchedResultsController.object(at: indexPath)
             detailsViewController.transactionID = transaction.transactionID
         }
+    }
+    
+    @objc private func dismissModal() {
+        dismiss(animated: true)
+    }
+    
+    // MARK: - Search
+    
+    private func setupSearch() {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self
+        searchController.searchBar.placeholder = "Search Transactions"
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = searchController
+        }
+        definesPresentationContext = true
+        
+        searchResultsController = searchController
     }
     
     // MARK: - Transactions
@@ -119,6 +156,56 @@ class TransactionsViewController: TableViewController {
         cell.dateLabel.text = dateFormatter.string(from: transaction.transactionDate)
 
         return cell
+    }
+    
+    // MARK: - Search Bar Delegate
+    
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        transactionSearchIDs = []
+        
+        return true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        transactionSearchIDs = []
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchTerm = searchBar.text,
+            !searchTerm.isEmpty
+            else {
+                searchBar.resignFirstResponder()
+                return
+        }
+        
+        spinner.startAnimating()
+        
+        FrolloSDK.shared.aggregation.transactionSearch(searchTerm: searchTerm) { (result) in
+            self.spinner.stopAnimating()
+            
+            switch result {
+                case .failure(let error):
+                    print(error.localizedDescription)
+                case .success(let transactionIDs):
+                    self.transactionSearchIDs = transactionIDs
+                    
+                    self.updateSearchResults(for: self.searchResultsController)
+            }
+        }
+    }
+    
+    // MARK: - Search Results
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if searchController.isActive {
+            fetchedResultsController.fetchRequest.predicate = NSPredicate(format: #keyPath(Transaction.transactionID) + " IN %@", argumentArray: [transactionSearchIDs])
+        } else {
+            fetchedResultsController.fetchRequest.predicate = nil
+        }
+        
+        try? fetchedResultsController.performFetch()
+        
+        tableView.reloadData()
     }
 
 }

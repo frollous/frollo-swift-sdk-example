@@ -67,6 +67,10 @@ class ProviderAccountsViewController: TableViewController {
             let indexPath = tableView.indexPath(for: cell) {
             let providerAccount = fetchedResultsController.object(at: indexPath)
             accountsViewController.providerAccountID = providerAccount.providerAccountID
+        } else if segue.identifier == "SearchSegue",
+            let navigationController = segue.destination as? UINavigationController,
+            let transactionsViewController = navigationController.viewControllers.first as? TransactionsViewController {
+            transactionsViewController.searchEnabled = true
         }
     }
     

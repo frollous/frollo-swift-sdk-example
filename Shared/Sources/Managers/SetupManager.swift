@@ -36,7 +36,8 @@ class SetupManager {
     internal func setup(completion: @escaping () -> Void) {
         reloadHostPreferences()
         
-        let config = hostConfig(host: selectedHost)
+        var config = hostConfig(host: selectedHost)
+        config.logLevel = .debug
         
         FrolloSDK.shared.setup(configuration: config) { (result) in
             switch result {

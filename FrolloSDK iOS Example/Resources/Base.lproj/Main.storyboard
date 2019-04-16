@@ -155,11 +155,18 @@
                                 <action selector="logoutPressWithSender:" destination="ogU-uQ-iMk" id="mXu-9d-Zbn"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="3rR-TN-Gl3">
-                            <connections>
-                                <segue destination="mK3-rA-TWz" kind="presentation" id="eRH-Im-Ci4"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="3rR-TN-Gl3">
+                                <connections>
+                                    <segue destination="mK3-rA-TWz" kind="presentation" id="eRH-Im-Ci4"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="search" id="UAa-2j-t8R">
+                                <connections>
+                                    <segue destination="yVs-px-i4N" kind="presentation" identifier="SearchSegue" id="u1z-7A-GhX"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="uNB-Wf-nPV">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -385,6 +392,22 @@
             <point key="canvasLocation" x="4535" y="-562"/>
         </scene>
         <!--Navigation Controller-->
+        <scene sceneID="9sn-T5-zT9">
+            <objects>
+                <navigationController id="yVs-px-i4N" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="V5c-bz-GH7">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="hkh-h9-lQC" kind="relationship" relationship="rootViewController" id="r50-Pt-P2I"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eYl-M4-Mot" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1902" y="-1334"/>
+        </scene>
+        <!--Navigation Controller-->
         <scene sceneID="Ao7-ZT-pgQ">
             <objects>
                 <navigationController id="mK3-rA-TWz" sceneMemberID="viewController">
@@ -607,6 +630,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="Nty-oa-Gap">
+                            <rect key="frame" x="0.0" y="108" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="iv6-3L-zKZ">
+                                    <rect key="frame" x="177.5" y="12" width="20" height="20"/>
+                                </activityIndicatorView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="iv6-3L-zKZ" firstAttribute="centerX" secondItem="Nty-oa-Gap" secondAttribute="centerX" id="2uK-Ka-9ld"/>
+                                <constraint firstItem="iv6-3L-zKZ" firstAttribute="centerY" secondItem="Nty-oa-Gap" secondAttribute="centerY" id="E2A-71-f3d"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TransactionCell" rowHeight="80" id="MvD-xC-0FS" customClass="TransactionCell" customModule="FrolloSDK_iOS_Example" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="80"/>
@@ -660,6 +697,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Transactions" id="f3z-0w-yGe"/>
+                    <connections>
+                        <outlet property="spinner" destination="iv6-3L-zKZ" id="LXZ-pK-vvY"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="idT-qn-CxM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -678,7 +718,7 @@
                                 <color key="color" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zb1-DF-NKB">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transaction Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5U-bJ-W50">
                                         <rect key="frame" x="15" y="15" width="345" height="21"/>
@@ -1402,6 +1442,7 @@
         <image name="reports" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="crT-1I-a7E"/>
+        <segue reference="r50-Pt-P2I"/>
+        <segue reference="Y4U-KU-SAB"/>
     </inferredMetricsTieBreakers>
 </document>
