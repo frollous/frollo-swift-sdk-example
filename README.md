@@ -5,10 +5,10 @@ Please make sure you follow the steps below when cloning this project or else it
 **This example project uses the [Frollo iOS SDK](https://bitbucket.org/frollo1/frollo-ios-sdk/src/master/) project as a submodule so developers are able to update the SDK whilst running this example project.**
 
 1. Clone repo by executing the following command
-```
-git clone git@bitbucket.org:frollo1/frollo-ios-sdk-example.git --recurse-submodules
-```
-`--recurse-submodules` has to be added or else the frollo-ios-sdk submodule won't be pulled.
+    ```
+    git clone git@bitbucket.org:frollo1/frollo-ios-sdk-example.git --recurse-submodules
+    ```
+    `--recurse-submodules` has to be added or else the frollo-ios-sdk submodule won't be pulled.
 
 2. Open `Carfile` in root directory and replace `/xcode/frollo-ios-sdk-example/frollo-ios-sdk` with the **absolute path** of your frollo example project. (I wasn't able to make relative paths work in the Carfile, maybe it's not supported yet. So we have to update the file each time we pull new changes)  
 
