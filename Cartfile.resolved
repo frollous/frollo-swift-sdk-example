@@ -1,3 +1,3 @@
-git "git@bitbucket.org:frollo1/frollo-ios-sdk.git" "792dfc87eb800c18cb6652fbf0079f463393280d"
+git "frollo-ios-sdk" "2.0.0"
 github "Alamofire/Alamofire" "4.8.2"
 github "openid/AppAuth-iOS" "1.0.0.rc1"
