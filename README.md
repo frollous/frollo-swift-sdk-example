@@ -1,16 +1,12 @@
 # Frollo iOS SDK Example
 
-## Installation
-Please make sure you follow the steps below when cloning this project or else it's not going to work
+## Cloning
 **This example project uses the [Frollo iOS SDK](https://bitbucket.org/frollo1/frollo-ios-sdk/src/master/) project as a submodule so developers are able to update the SDK whilst running this example project.**
 
-1. Clone repo by executing the following command
-    ```
-    git clone git@bitbucket.org:frollo1/frollo-ios-sdk-example.git --recurse-submodules
-    ```
-    `--recurse-submodules` has to be added or else the frollo-ios-sdk submodule won't be pulled.
-
-2. Open `Carfile` in root directory and replace `/xcode/frollo-ios-sdk-example/frollo-ios-sdk` with the **absolute path** of your frollo example project. (I wasn't able to make relative paths work in the Carfile, maybe it's not supported yet. So we have to update the file each time we pull new changes)  
+To clone the repository including the submodule, use the following command:
+```
+git clone git@bitbucket.org:frollo1/frollo-ios-sdk-example.git --recurse-submodules
+```
 
 ## Bootstrapping environment
 
@@ -28,3 +24,10 @@ To get a new environment working for Frollo iOS use the following steps:
 9. (Optional) Bootstrap any other vendor certificates as needed - `fastlane bootstrap --env pioneer`
 10. Passwords for the above can be found in 1Password as *Match Password* and *Apple ci@frollo.us*
 11. Build! 👷‍♂️
+
+## Issues
+If you're experiencing some problems maybe clearing the Carthage cache might fix it. You can do that by executing:
+
+```
+rm -rf ~/Library/Caches/org.carthage.CarthageKit
+```

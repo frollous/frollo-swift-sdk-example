@@ -1,1 +1,2 @@
-git "/xcode/frollo-ios-sdk-example/frollo-ios-sdk" "develop"
+git "frollo-ios-sdk" "2.0.0"
+# git "frollo-ios-sdk" "develop"
