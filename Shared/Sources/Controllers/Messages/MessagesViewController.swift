@@ -17,7 +17,8 @@ class MessagesViewController: TableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = UITableView.automaticDimension
         let context = FrolloSDK.shared.database.viewContext
         let predicate = NSPredicate(format: #keyPath(Message.read) + " == false && " + #keyPath(Message.contentTypeRawValue) + " == %@", argumentArray: [Message.ContentType.text.rawValue])
         let sortDescriptors = [NSSortDescriptor(key: #keyPath(Message.placement), ascending: false)]
@@ -81,6 +82,7 @@ class MessagesViewController: TableViewController {
             cell.bodyLabel.text = message.text
             cell.footerLabel.text = message.footer
             cell.actionLabel.text = message.actionTitle
+            cell.autoDismissLabel.text = "(\(message.autoDismiss ? "Auto" : "No Auto") Dismiss)"
         }
 
         return cell

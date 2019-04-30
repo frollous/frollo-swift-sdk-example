@@ -92,6 +92,13 @@
 		01E5BF90222DEACD003D85FD /* SetupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E5BF8F222DEACD003D85FD /* SetupManager.swift */; };
 		01E5BF91222DEACD003D85FD /* SetupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E5BF8F222DEACD003D85FD /* SetupManager.swift */; };
 		01E5BF93222DEB70003D85FD /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 01E5BF92222DEB70003D85FD /* Settings.bundle */; };
+		2F16C955223F00B2005F178D /* SurveyAnswerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F16C954223F00B2005F178D /* SurveyAnswerTableCell.swift */; };
+		2F16C957223F1D7D005F178D /* FrolloSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F16C956223F1D7D005F178D /* FrolloSlider.swift */; };
+		2F657DB9223B6FBD00471B85 /* Surveys.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F657DB8223B6FBD00471B85 /* Surveys.storyboard */; };
+		2F657DBC223B715800471B85 /* SurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F657DBB223B715800471B85 /* SurveyViewController.swift */; };
+		2F657DBE223B765900471B85 /* SurveyMultipleChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F657DBD223B765900471B85 /* SurveyMultipleChoiceViewController.swift */; };
+		2F657DC0223B766700471B85 /* SurveySliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F657DBF223B766700471B85 /* SurveySliderViewController.swift */; };
+		2FE180062248574F00B87AAB /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE180052248574F00B87AAB /* UIExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -153,6 +160,13 @@
 		018B04BC21770FD7008C34D7 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/watchOS/Alamofire.framework; sourceTree = "<group>"; };
 		01E5BF8F222DEACD003D85FD /* SetupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupManager.swift; sourceTree = "<group>"; };
 		01E5BF92222DEB70003D85FD /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		2F16C954223F00B2005F178D /* SurveyAnswerTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyAnswerTableCell.swift; sourceTree = "<group>"; };
+		2F16C956223F1D7D005F178D /* FrolloSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrolloSlider.swift; sourceTree = "<group>"; };
+		2F657DB8223B6FBD00471B85 /* Surveys.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Surveys.storyboard; sourceTree = "<group>"; };
+		2F657DBB223B715800471B85 /* SurveyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyViewController.swift; sourceTree = "<group>"; };
+		2F657DBD223B765900471B85 /* SurveyMultipleChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyMultipleChoiceViewController.swift; sourceTree = "<group>"; };
+		2F657DBF223B766700471B85 /* SurveySliderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveySliderViewController.swift; sourceTree = "<group>"; };
+		2FE180052248574F00B87AAB /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +194,7 @@
 		013F1F64217829010043BF56 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2F657DBA223B714300471B85 /* Survey */,
 				018501F1220A461000069D87 /* Aggregation */,
 				018501F3220A461C00069D87 /* Bills */,
 				018501F2220A461700069D87 /* Login */,
@@ -282,6 +297,7 @@
 				01527CF220E1D3B200B5042A /* LaunchScreen.storyboard */,
 				01527CED20E1D3B000B5042A /* Main.storyboard */,
 				01E5BF92222DEB70003D85FD /* Settings.bundle */,
+				2F657DB8223B6FBD00471B85 /* Surveys.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -300,6 +316,7 @@
 		017E59382182957100DC56FF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2F16C953223F0091005F178D /* Survey */,
 				018501F7220A468400069D87 /* Aggregation */,
 				018501F9220A469300069D87 /* Bills */,
 				018501F8220A468B00069D87 /* Messages */,
@@ -409,6 +426,26 @@
 			path = "FrolloSDK tvOS Example";
 			sourceTree = "<group>";
 		};
+		2F16C953223F0091005F178D /* Survey */ = {
+			isa = PBXGroup;
+			children = (
+				2F16C954223F00B2005F178D /* SurveyAnswerTableCell.swift */,
+				2F16C956223F1D7D005F178D /* FrolloSlider.swift */,
+			);
+			path = Survey;
+			sourceTree = "<group>";
+		};
+		2F657DBA223B714300471B85 /* Survey */ = {
+			isa = PBXGroup;
+			children = (
+				2F657DBB223B715800471B85 /* SurveyViewController.swift */,
+				2F657DBD223B765900471B85 /* SurveyMultipleChoiceViewController.swift */,
+				2F657DBF223B766700471B85 /* SurveySliderViewController.swift */,
+				2FE180052248574F00B87AAB /* UIExtensions.swift */,
+			);
+			path = Survey;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -460,6 +497,7 @@
 				TargetAttributes = {
 					01527CE520E1D3B000B5042A = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -505,6 +543,7 @@
 			files = (
 				01527CF420E1D3B200B5042A /* LaunchScreen.storyboard in Resources */,
 				013BC1ED218AA62D005A2714 /* AddProviderLoginFieldView.xib in Resources */,
+				2F657DB9223B6FBD00471B85 /* Surveys.storyboard in Resources */,
 				011C199521E6C25500490EDD /* BillCell.xib in Resources */,
 				01527CF120E1D3B200B5042A /* Assets.xcassets in Resources */,
 				01527CEF20E1D3B000B5042A /* Main.storyboard in Resources */,
@@ -586,22 +625,28 @@
 				017E59402182DD7800DC56FF /* TransactionDetailsViewController.swift in Sources */,
 				013BC1E9218AA30A005A2714 /* AddProviderChoiceView.swift in Sources */,
 				0185020E220BABF400069D87 /* HistoryTransactionReportGroupingViewController.swift in Sources */,
+				2F657DC0223B766700471B85 /* SurveySliderViewController.swift in Sources */,
 				011C199721E6C4E500490EDD /* BillCell.swift in Sources */,
+				2F657DBE223B765900471B85 /* SurveyMultipleChoiceViewController.swift in Sources */,
 				013F1F66217829320043BF56 /* ProviderAccountsViewController.swift in Sources */,
 				015023C82181465100EEB5F2 /* ProvidersViewController.swift in Sources */,
 				01E5BF90222DEACD003D85FD /* SetupManager.swift in Sources */,
 				01527CEC20E1D3B000B5042A /* ViewController.swift in Sources */,
+				2FE180062248574F00B87AAB /* UIExtensions.swift in Sources */,
 				011C199D21E6EDFE00490EDD /* BillPaymentsViewController.swift in Sources */,
 				017E593E2182D8D100DC56FF /* TransactionCell.swift in Sources */,
 				01850208220A86C500069D87 /* ReportTypeTransactionViewController.swift in Sources */,
 				011C199A21E6C8CE00490EDD /* BillsViewController.swift in Sources */,
 				017E59422186906300DC56FF /* MerchantsViewController.swift in Sources */,
+				2F16C957223F1D7D005F178D /* FrolloSlider.swift in Sources */,
 				017E5935218291DA00DC56FF /* AccountsViewController.swift in Sources */,
 				017E593A2182958900DC56FF /* AccountCell.swift in Sources */,
 				01527CEA20E1D3B000B5042A /* AppDelegate.swift in Sources */,
 				015687B5218C1F4300C961B3 /* ProviderAccountCell.swift in Sources */,
 				0135D31F21A526B200318142 /* MessagesViewController.swift in Sources */,
 				017E59442186907B00DC56FF /* TransactionCategoriesViewController.swift in Sources */,
+				2F657DBC223B715800471B85 /* SurveyViewController.swift in Sources */,
+				2F16C955223F00B2005F178D /* SurveyAnswerTableCell.swift in Sources */,
 				0185020B220B9E4000069D87 /* CurrentTransactionReportsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -818,6 +863,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = us.frollo.FrolloSDK.iOSExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -844,6 +890,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = us.frollo.FrolloSDK.iOSExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

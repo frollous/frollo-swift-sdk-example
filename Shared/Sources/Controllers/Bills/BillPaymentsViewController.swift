@@ -37,7 +37,7 @@ class BillPaymentsViewController: TableViewController {
         tableView.register(UINib(nibName: "BillCell", bundle: nil), forCellReuseIdentifier: "BillCell")
         
         let context = FrolloSDK.shared.database.viewContext
-        let predicate = NSPredicate(format: #keyPath(BillPayment.billID) + " == %ld", argumentArray: [billID])
+        let predicate = NSPredicate(format: #keyPath(BillPayment.billID) + " == %ld", argumentArray: [billID!])
         let sortDescriptors = [NSSortDescriptor(key: #keyPath(BillPayment.dateString), ascending: false)]
         fetchedResultsController = FrolloSDK.shared.bills.billPaymentsFetchedResultsController(context: context, filteredBy: predicate, sortedBy: sortDescriptors)
         fetchedResultsController.delegate = self

@@ -15,5 +15,6 @@ class MessageCell: UITableViewCell {
     @IBOutlet var footerLabel: UILabel!
     @IBOutlet var headerLabel: UILabel!
     @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var autoDismissLabel: UILabel!
 
 }
