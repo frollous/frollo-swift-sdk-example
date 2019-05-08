@@ -1070,7 +1070,7 @@
             </objects>
             <point key="canvasLocation" x="949.60000000000002" y="976.46176911544239"/>
         </scene>
-        <!--User Tags View Controller-->
+        <!--User Tags-->
         <scene sceneID="jIa-MV-qt3">
             <objects>
                 <tableViewController id="DGZ-C4-bKM" customClass="UserTagsViewController" customModule="FrolloSDK_iOS_Example" customModuleProvider="target" sceneMemberID="viewController">
@@ -1198,6 +1198,7 @@
                             <outlet property="delegate" destination="DGZ-C4-bKM" id="kOc-eY-W9T"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="User Tags" id="5rb-iW-I5O"/>
                     <connections>
                         <outlet property="spinner" destination="cLF-Qw-v6N" id="WfE-II-ACM"/>
                     </connections>
