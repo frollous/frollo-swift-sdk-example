@@ -1,8 +1,8 @@
 //
-//  UserTagsViewController.swift
-//  FrolloSDK iOS Example
+//  SuggestedTagsViewController.swift
+//  FrolloSDK Example
 //
-//  Created by Maher Santina on 8/5/19.
+//  Created by Maher Santina on 9/5/19.
 //  Copyright © 2019 Frollo. All rights reserved.
 //
 
@@ -10,17 +10,22 @@ import UIKit
 import FrolloSDK
 import CoreData
 
-class UserTagsViewController: TableViewController, UISearchBarDelegate, UISearchResultsUpdating {
-
+class SuggestedTagsViewController: TableViewController, UISearchBarDelegate, UISearchResultsUpdating {
+    
     @IBOutlet var spinner: UIActivityIndicatorView!
-
+    
     public var searchEnabled = true
     
-    private var fetchedResultsController: NSFetchedResultsController<Tag>!
     private var searchResultsController: UISearchController!
     private var searchTerm: String? = nil {
         didSet {
             updateData()
+        }
+    }
+    
+    private var data: [SuggestedTag] = [] {
+        didSet {
+            tableView.reloadData()
         }
     }
     
@@ -29,60 +34,45 @@ class UserTagsViewController: TableViewController, UISearchBarDelegate, UISearch
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = UITableView.automaticDimension
         
-        initializeFetchedResultsController()
-        
         if searchEnabled {
             let controller = defaultSearchController(placeHolder: "Search Tags")
             searchResultsController = controller
         }
-        spinner.startAnimating()
-        FrolloSDK.shared.aggregation.refreshTransactionUserTags { (_) in
-            self.reloadData()
-            self.spinner.stopAnimating()
-        }
-    }
-    
-    private func initializeFetchedResultsController() {
-        let context = FrolloSDK.shared.database.viewContext
-        
-        let sortDescriptors = [NSSortDescriptor(key: #keyPath(Tag.name), ascending: true)]
-        fetchedResultsController = FrolloSDK.shared.aggregation.transactionUserTagsFetchedResultsController(context: context, filteredBy: nil, sortedBy: sortDescriptors)
-    }
-    
-    private func reloadData() {
-        do {
-            try fetchedResultsController.performFetch()
-        } catch {
-            print(error.localizedDescription)
-        }
-        
-        tableView.reloadData()
+        updateData()
     }
     
     private func updateData() {
-        var predicate: NSPredicate?
-        if let term = searchTerm, !term.isEmpty {
-            predicate = NSPredicate(format: "name CONTAINS[cd] %@", argumentArray: [term])
+        spinner.startAnimating()
+        FrolloSDK.shared.aggregation.transactionSuggestedTags(searchTerm: searchTerm ?? "") { (result) in
+            DispatchQueue.main.async {
+                self.spinner.stopAnimating()
+                switch result {
+                case .success(let data):
+                    self.data = data
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+            
+            
         }
-        fetchedResultsController.fetchRequest.predicate = predicate
-        reloadData()
     }
     
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return fetchedResultsController.sections?.count ?? 0
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fetchedResultsController.sections?[section].numberOfObjects ?? 0
+        return data.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! UserTagCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SuggestedTagCell
         
-        let tag = fetchedResultsController.object(at: indexPath)
-        cell.data = tag
+        let tag = data[indexPath.row]
+        cell.nameLabel.text = tag.name
         
         return cell
     }

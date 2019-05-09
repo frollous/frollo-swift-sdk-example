@@ -1093,7 +1093,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="116" id="EEv-dP-Jti" customClass="TagCell" customModule="FrolloSDK_iOS_Example" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="116" id="EEv-dP-Jti" customClass="UserTagCell" customModule="FrolloSDK_iOS_Example" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="116"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EEv-dP-Jti" id="gdx-rw-Uu9">
@@ -1188,7 +1188,9 @@
                                 <connections>
                                     <outlet property="countLabel" destination="LIv-Jc-Xgn" id="Bg3-E0-CbP"/>
                                     <outlet property="createdAtLabel" destination="MEe-Cm-ApK" id="GMm-Nn-eZM"/>
+                                    <outlet property="createdAtView" destination="vXL-tk-j0T" id="YpO-xt-mwL"/>
                                     <outlet property="lastUsedAtLabel" destination="r7Z-Pf-hWX" id="Aro-kt-qCT"/>
+                                    <outlet property="lastUsedAtView" destination="MPt-z3-cCA" id="Qh3-ob-6OQ"/>
                                     <outlet property="nameLabel" destination="54r-fL-RiP" id="S07-rc-bPG"/>
                                 </connections>
                             </tableViewCell>
@@ -1198,7 +1200,13 @@
                             <outlet property="delegate" destination="DGZ-C4-bKM" id="kOc-eY-W9T"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="User Tags" id="5rb-iW-I5O"/>
+                    <navigationItem key="navigationItem" title="User Tags" id="5rb-iW-I5O">
+                        <barButtonItem key="rightBarButtonItem" title="Suggested" id="Qyx-qQ-ucf">
+                            <connections>
+                                <segue destination="vBh-T9-VnK" kind="show" id="UrY-eI-ElJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="spinner" destination="cLF-Qw-v6N" id="WfE-II-ACM"/>
                     </connections>
@@ -1206,6 +1214,80 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a2b-hX-yvi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1892" y="971.96401799100454"/>
+        </scene>
+        <!--Suggested Tags View Controller-->
+        <scene sceneID="hUl-Kj-tYs">
+            <objects>
+                <tableViewController id="vBh-T9-VnK" customClass="SuggestedTagsViewController" customModule="FrolloSDK_iOS_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="N6H-V4-3lo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="J6X-xG-Swl">
+                            <rect key="frame" x="0.0" y="103" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="hWt-og-OPJ">
+                                    <rect key="frame" x="177.5" y="12" width="20" height="20"/>
+                                </activityIndicatorView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="hWt-og-OPJ" firstAttribute="centerY" secondItem="J6X-xG-Swl" secondAttribute="centerY" id="2db-n3-QTw"/>
+                                <constraint firstItem="hWt-og-OPJ" firstAttribute="centerX" secondItem="J6X-xG-Swl" secondAttribute="centerX" id="mKI-lv-aPK"/>
+                            </constraints>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="75" id="pP0-AX-aEQ" customClass="SuggestedTagCell" customModule="FrolloSDK_iOS_Example" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="75"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pP0-AX-aEQ" id="lz7-Zs-24m">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gQH-Lj-5sO">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0he-tt-2ur">
+                                                    <rect key="frame" x="16" y="8" width="343" height="58.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="0he-tt-2ur" secondAttribute="bottom" constant="8" id="DKU-2B-gu8"/>
+                                                <constraint firstItem="0he-tt-2ur" firstAttribute="leading" secondItem="gQH-Lj-5sO" secondAttribute="leading" constant="16" id="FyO-KX-BV7"/>
+                                                <constraint firstAttribute="trailing" secondItem="0he-tt-2ur" secondAttribute="trailing" constant="16" id="cPs-tg-0as"/>
+                                                <constraint firstItem="0he-tt-2ur" firstAttribute="top" secondItem="gQH-Lj-5sO" secondAttribute="top" constant="8" id="nlf-PO-N0s"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="gQH-Lj-5sO" firstAttribute="top" secondItem="lz7-Zs-24m" secondAttribute="top" id="7Hk-a6-ufC"/>
+                                        <constraint firstAttribute="bottom" secondItem="gQH-Lj-5sO" secondAttribute="bottom" id="FqB-KQ-W7q"/>
+                                        <constraint firstAttribute="trailing" secondItem="gQH-Lj-5sO" secondAttribute="trailing" id="VUy-qk-wZB"/>
+                                        <constraint firstItem="gQH-Lj-5sO" firstAttribute="leading" secondItem="lz7-Zs-24m" secondAttribute="leading" id="nOr-FP-b6h"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="0he-tt-2ur" id="foc-AZ-rcV"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="vBh-T9-VnK" id="Coe-fI-W6a"/>
+                            <outlet property="delegate" destination="vBh-T9-VnK" id="vDe-ey-0a3"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="spinner" destination="hWt-og-OPJ" id="f6G-jg-mlp"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uQ2-uG-cL4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2752.8000000000002" y="971.96401799100454"/>
         </scene>
         <!--Bills-->
         <scene sceneID="eqp-jY-0VJ">
