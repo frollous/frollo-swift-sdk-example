@@ -1215,7 +1215,7 @@
             </objects>
             <point key="canvasLocation" x="1892" y="971.96401799100454"/>
         </scene>
-        <!--Suggested Tags View Controller-->
+        <!--Suggested Tags-->
         <scene sceneID="hUl-Kj-tYs">
             <objects>
                 <tableViewController id="vBh-T9-VnK" customClass="SuggestedTagsViewController" customModule="FrolloSDK_iOS_Example" customModuleProvider="target" sceneMemberID="viewController">
@@ -1281,6 +1281,7 @@
                             <outlet property="delegate" destination="vBh-T9-VnK" id="vDe-ey-0a3"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Suggested Tags" id="Zrr-w1-DZp"/>
                     <connections>
                         <outlet property="spinner" destination="hWt-og-OPJ" id="f6G-jg-mlp"/>
                     </connections>
