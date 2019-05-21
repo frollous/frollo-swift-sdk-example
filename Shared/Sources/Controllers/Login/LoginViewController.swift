@@ -41,63 +41,8 @@ class LoginViewController: UIViewController {
         textFieldView.layer.borderWidth = 1.0
     }
     
-
-    // MARK: - Interaction
-    
-    @IBAction func loginPress(sender: UIButton) {
-        guard let email = usernameTextField.text,
-            let password = passwordTextField.text
-            else {
-            return
-        }
-        
-        loginButton.isHidden = true
-        webLoginButton.isHidden = true
-        spinner.startAnimating()
-        
-        if SetupManager.shared.useV1Auth {
-            SetupManager.shared.authentication?.loginUser(email: email, password: password) { (result) in
-                self.loginButton.isHidden = false
-                self.webLoginButton.isHidden = false
-                self.spinner.stopAnimating()
-                
-                switch result {
-                    case .failure(let error):
-                        let alertController = UIAlertController(title: "Login Failed", message: error.localizedDescription, preferredStyle: .alert)
-                        let dismissAction = UIAlertAction(title: "OK", style: .cancel)
-                        alertController.addAction(dismissAction)
-                        
-                        self.present(alertController, animated: true)
-                    case .success:
-                        self.completeLogin()
-                }
-            }
-        } else {
-            FrolloSDK.shared.defaultAuthentication?.loginUser(email: email, password: password) { (result) in
-                self.loginButton.isHidden = false
-                self.webLoginButton.isHidden = false
-                self.spinner.stopAnimating()
-                
-                switch result {
-                    case .failure(let error):
-                        let alertController = UIAlertController(title: "Login Failed", message: error.localizedDescription, preferredStyle: .alert)
-                        let dismissAction = UIAlertAction(title: "OK", style: .cancel)
-                        alertController.addAction(dismissAction)
-                        
-                        self.present(alertController, animated: true)
-                    case .success:
-                        self.completeLogin()
-                }
-            }
-        }
-    }
-    
-    @IBAction func webLoginPress(sender: UIButton) {
-        loginButton.isHidden = true
-        webLoginButton.isHidden = true
-        spinner.startAnimating()
-        
-        FrolloSDK.shared.defaultAuthentication?.loginUserUsingWeb(presenting: self) { (result) in
+    private var defaultCompletion: FrolloSDKCompletionHandler {
+        return { (result) in
             self.loginButton.isHidden = false
             self.webLoginButton.isHidden = false
             self.spinner.stopAnimating()
@@ -113,6 +58,34 @@ class LoginViewController: UIViewController {
                     self.completeLogin()
             }
         }
+    }
+
+    // MARK: - Interaction
+    
+    @IBAction func loginPress(sender: UIButton) {
+        guard let email = usernameTextField.text,
+            let password = passwordTextField.text
+            else {
+            return
+        }
+        
+        loginButton.isHidden = true
+        webLoginButton.isHidden = true
+        spinner.startAnimating()
+        
+        if SetupManager.shared.useV1Auth {
+            SetupManager.shared.authentication?.loginUser(email: email, password: password, completion: defaultCompletion)
+        } else {
+            FrolloSDK.shared.defaultAuthentication?.loginUser(email: email, password: password, completion: defaultCompletion)
+        }
+    }
+    
+    @IBAction func webLoginPress(sender: UIButton) {
+        loginButton.isHidden = true
+        webLoginButton.isHidden = true
+        spinner.startAnimating()
+        
+        FrolloSDK.shared.defaultAuthentication?.loginUserUsingWeb(presenting: self, completion: defaultCompletion)
     }
     
     // MARK: - Push Notifications
