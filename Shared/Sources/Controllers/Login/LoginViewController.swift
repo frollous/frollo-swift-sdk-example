@@ -28,6 +28,10 @@ class LoginViewController: UIViewController {
 
         navigationItem.title = "Login"
         
+        if SetupManager.shared.useV1Auth {
+            webLoginButton.isHidden = true
+        }
+        
         themeTextFieldContainer(usernameContainerView)
         themeTextFieldContainer(passwordContainerView)
     }
@@ -37,6 +41,24 @@ class LoginViewController: UIViewController {
         textFieldView.layer.borderWidth = 1.0
     }
     
+    private var defaultCompletion: FrolloSDKCompletionHandler {
+        return { (result) in
+            self.loginButton.isHidden = false
+            self.webLoginButton.isHidden = false
+            self.spinner.stopAnimating()
+            
+            switch result {
+                case .failure(let error):
+                    let alertController = UIAlertController(title: "Login Failed", message: error.localizedDescription, preferredStyle: .alert)
+                    let dismissAction = UIAlertAction(title: "OK", style: .cancel)
+                    alertController.addAction(dismissAction)
+                    
+                    self.present(alertController, animated: true)
+                case .success:
+                    self.completeLogin()
+            }
+        }
+    }
 
     // MARK: - Interaction
     
@@ -51,21 +73,10 @@ class LoginViewController: UIViewController {
         webLoginButton.isHidden = true
         spinner.startAnimating()
         
-        FrolloSDK.shared.authentication.loginUser(email: email, password: password) { (result) in
-            self.loginButton.isHidden = false
-            self.webLoginButton.isHidden = false
-            self.spinner.stopAnimating()
-            
-            switch result {
-                case .failure(let error):
-                    let alertController = UIAlertController(title: "Login Failed", message: error.localizedDescription, preferredStyle: .alert)
-                    let dismissAction = UIAlertAction(title: "OK", style: .cancel)
-                    alertController.addAction(dismissAction)
-                    
-                    self.present(alertController, animated: true)
-                case .success:
-                    self.completeLogin()
-            }
+        if SetupManager.shared.useV1Auth {
+            SetupManager.shared.authentication?.loginUser(email: email, password: password, completion: defaultCompletion)
+        } else {
+            FrolloSDK.shared.defaultAuthentication?.loginUser(email: email, password: password, completion: defaultCompletion)
         }
     }
     
@@ -74,22 +85,7 @@ class LoginViewController: UIViewController {
         webLoginButton.isHidden = true
         spinner.startAnimating()
         
-        FrolloSDK.shared.authentication.loginUserUsingWeb(presenting: self) { (result) in
-            self.loginButton.isHidden = false
-            self.webLoginButton.isHidden = false
-            self.spinner.stopAnimating()
-            
-            switch result {
-                case .failure(let error):
-                    let alertController = UIAlertController(title: "Login Failed", message: error.localizedDescription, preferredStyle: .alert)
-                    let dismissAction = UIAlertAction(title: "OK", style: .cancel)
-                    alertController.addAction(dismissAction)
-                    
-                    self.present(alertController, animated: true)
-                case .success:
-                    self.completeLogin()
-            }
-        }
+        FrolloSDK.shared.defaultAuthentication?.loginUserUsingWeb(presenting: self, completion: defaultCompletion)
     }
     
     // MARK: - Push Notifications
