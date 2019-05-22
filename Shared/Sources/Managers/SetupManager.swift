@@ -48,7 +48,8 @@ class SetupManager {
             let auth = CustomV1Authentication(baseURL: baseV1URL)
             authentication = auth
             
-            config = FrolloSDKConfiguration(authentication: auth, serverEndpoint: baseV2URL)
+            config = FrolloSDKConfiguration(authenticationType: .custom(authentication: auth),
+                                            serverEndpoint: baseV2URL)
         }
         
         FrolloSDK.shared.setup(configuration: config) { (result) in
@@ -130,23 +131,23 @@ class SetupManager {
     private func hostConfig(host: Host) -> FrolloSDKConfiguration {
         switch host {
             case .frolloSandbox:
-                return FrolloSDKConfiguration(clientID: "f97faef0bdef6882a5cbabaf4afc2f3bc8612f725a8434f9daebf2ad3c259cc1",
-                                              redirectURL: redirectURL,
-                                              authorizationEndpoint: URL(string: "https://id-sandbox.frollo.us/oauth/authorize")!,
-                                              tokenEndpoint: URL(string: "https://id-sandbox.frollo.us/oauth/token")!,
+                return FrolloSDKConfiguration(authenticationType: .oAuth2(clientID: "f97faef0bdef6882a5cbabaf4afc2f3bc8612f725a8434f9daebf2ad3c259cc1",
+                                                                          redirectURL: redirectURL,
+                                                                          authorizationEndpoint: URL(string: "https://id-sandbox.frollo.us/oauth/authorize")!,
+                                                                          tokenEndpoint: URL(string: "https://id-sandbox.frollo.us/oauth/token")!),
                                               serverEndpoint: URL(string: "https://api-sandbox.frollo.us/api/v2/")!)
             case .voltSandbox:
-               return FrolloSDKConfiguration(clientID: "PzlborkOwZf42SJ2b6Fdj6JTi9lcqiNi",
-                                             redirectURL: redirectURL,
-                                             authorizationEndpoint: URL(string: "https://frollo-test.au.auth0.com/authorize")!,
-                                             tokenEndpoint: URL(string: "https://frollo-test.au.auth0.com/oauth/token")!,
-                                             serverEndpoint: URL(string: "https://volt-sandbox.frollo.us/api/v2/")!)
+                return FrolloSDKConfiguration(authenticationType: .oAuth2(clientID: "PzlborkOwZf42SJ2b6Fdj6JTi9lcqiNi",
+                                                                          redirectURL: redirectURL,
+                                                                          authorizationEndpoint: URL(string: "https://frollo-test.au.auth0.com/authorize")!,
+                                                                          tokenEndpoint: URL(string: "https://frollo-test.au.auth0.com/oauth/token")!),
+                                              serverEndpoint: URL(string: "https://volt-sandbox.frollo.us/api/v2/")!)
             default:
                 // Return frollo sandbox for now
-                return FrolloSDKConfiguration(clientID: "f97faef0bdef6882a5cbabaf4afc2f3bc8612f725a8434f9daebf2ad3c259cc1",
-                                              redirectURL: redirectURL,
-                                              authorizationEndpoint: URL(string: "https://id-sandbox.frollo.us/oauth/authorize")!,
-                                              tokenEndpoint: URL(string: "https://id-sandbox.frollo.us/oauth/token")!,
+                return FrolloSDKConfiguration(authenticationType: .oAuth2(clientID: "f97faef0bdef6882a5cbabaf4afc2f3bc8612f725a8434f9daebf2ad3c259cc1",
+                                                                          redirectURL: redirectURL,
+                                                                          authorizationEndpoint: URL(string: "https://id-sandbox.frollo.us/oauth/authorize")!,
+                                                                          tokenEndpoint: URL(string: "https://id-sandbox.frollo.us/oauth/token")!),
                                               serverEndpoint: URL(string: "https://api-sandbox.frollo.us/api/v2/")!)
         }
     }
