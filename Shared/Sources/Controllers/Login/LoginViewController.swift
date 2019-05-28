@@ -51,7 +51,7 @@ class LoginViewController: UIViewController {
         webLoginButton.isHidden = true
         spinner.startAnimating()
         
-        FrolloSDK.shared.authentication.loginUser(email: email, password: password) { (result) in
+        FrolloSDK.shared.authentication.loginUser(email: email, password: password, scopes: ["offline_access", "email", "openid"]) { (result) in
             self.loginButton.isHidden = false
             self.webLoginButton.isHidden = false
             self.spinner.stopAnimating()
@@ -74,7 +74,7 @@ class LoginViewController: UIViewController {
         webLoginButton.isHidden = true
         spinner.startAnimating()
         
-        FrolloSDK.shared.authentication.loginUserUsingWeb(presenting: self) { (result) in
+        FrolloSDK.shared.authentication.loginUserUsingWeb(presenting: self, scopes: ["offline_access", "email", "openid"]) { (result) in
             self.loginButton.isHidden = false
             self.webLoginButton.isHidden = false
             self.spinner.stopAnimating()
