@@ -13,6 +13,9 @@ import FrolloSDK
 
 class TransactionDetailsViewController: UIViewController {
     
+    @IBOutlet weak var applyToAllSwitch: UISwitch!
+    @IBOutlet weak var tagTextField: UITextField!
+    @IBOutlet weak var tagsLabel: UILabel!
     @IBOutlet var spinner: UIActivityIndicatorView!
     @IBOutlet var budgetCategoryButton: UIButton!
     @IBOutlet var categoryButton: UIButton!
@@ -64,6 +67,49 @@ class TransactionDetailsViewController: UIViewController {
         }
     }
     
+    @IBAction func addTagAction(_ sender: Any) {
+        
+        guard let tag = tagTextField.text else {
+            return
+        }
+        
+        containerView.isHidden = true
+        spinner.startAnimating()
+        
+        var tuplearray = [Aggregation.tagApplyAllPairs]()
+        tuplearray.append((tag,applyToAllSwitch.isOn))
+        
+        
+        FrolloSDK.shared.aggregation.addTagToTransaction(transactionID: transactionID, tagApplyAllPairs: tuplearray) { (result) in
+            
+            self.tagTextField.text = ""
+            self.reloadData()
+            self.spinner.stopAnimating()
+            self.containerView.isHidden = false
+        }
+
+    }
+    
+    @IBAction func removeTagAction(_ sender: Any) {
+        
+        containerView.isHidden = true
+        spinner.startAnimating()
+        
+        let tag = tagTextField.text!
+        
+        var tuplearray = [Aggregation.tagApplyAllPairs]()
+        tuplearray.append((tag,applyToAllSwitch.isOn))
+        
+        FrolloSDK.shared.aggregation.removeTagFromTransaction(transactionID: transactionID, tagApplyAllPairs: tuplearray) { (result) in
+            
+            self.tagTextField.text = ""
+            self.reloadData()
+            self.spinner.stopAnimating()
+            self.containerView.isHidden = false
+        }
+    }
+    
+    
     private func reloadData() {
         fetchTransaction()
         
@@ -77,6 +123,7 @@ class TransactionDetailsViewController: UIViewController {
         dateLabel.text = dateFormatter.string(from: transaction.transactionDate)
         merchantButton.setTitle(transaction.merchant?.name ?? "Unknown Merchant", for: .normal)
         categoryButton.setTitle(transaction.transactionCategory?.name ?? "Unknown Category", for: .normal)
+        tagsLabel.text = transaction.userTags.joined(separator:",")
         
         switch transaction.budgetCategory {
             case .income:
