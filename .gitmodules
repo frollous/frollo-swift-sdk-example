@@ -1,0 +1,3 @@
+[submodule "frollo-ios-sdk"]
+	path = frollo-ios-sdk
+	url = git@bitbucket.org:frollo1/frollo-ios-sdk.git

@@ -38,7 +38,9 @@ class TransactionsViewController: TableViewController, UISearchResultsUpdating, 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = UITableView.automaticDimension
+        
         let context = FrolloSDK.shared.database.viewContext
         var predicate: NSPredicate?
         if let id = accountID {
@@ -49,7 +51,8 @@ class TransactionsViewController: TableViewController, UISearchResultsUpdating, 
         fetchedResultsController = FrolloSDK.shared.aggregation.transactionsFetchedResultsController(context: context, filteredBy: predicate, sortedBy: sortDescriptors)
         
         if searchEnabled {
-            setupSearch()
+            let controller = defaultSearchController(placeHolder: "Search Transactions")
+            searchResultsController = controller
         }
         
         if navigationController?.viewControllers.count == 1 {
@@ -82,22 +85,6 @@ class TransactionsViewController: TableViewController, UISearchResultsUpdating, 
     
     @objc private func dismissModal() {
         dismiss(animated: true)
-    }
-    
-    // MARK: - Search
-    
-    private func setupSearch() {
-        let searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.delegate = self
-        searchController.searchBar.placeholder = "Search Transactions"
-        if #available(iOS 11.0, *) {
-            navigationItem.searchController = searchController
-        }
-        definesPresentationContext = true
-        
-        searchResultsController = searchController
     }
     
     // MARK: - Transactions
@@ -154,6 +141,7 @@ class TransactionsViewController: TableViewController, UISearchResultsUpdating, 
         }
         
         cell.dateLabel.text = dateFormatter.string(from: transaction.transactionDate)
+        cell.tagsCollectionView.data = transaction.userTags
 
         return cell
     }

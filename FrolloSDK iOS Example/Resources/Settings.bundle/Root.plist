@@ -46,6 +46,16 @@
 				<string>voltProduction</string>
 			</array>
 		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Use V1 Authentication</string>
+			<key>Key</key>
+			<string>SDKExampleUseV1Authentication</string>
+			<key>DefaultValue</key>
+			<false/>
+		</dict>
 	</array>
 </dict>
 </plist>
