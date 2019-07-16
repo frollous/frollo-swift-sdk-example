@@ -33,6 +33,7 @@ class CustomV1Authentication: Authentication {
     var loggedIn = false
     
     var delegate: AuthenticationDelegate?
+    var tokenDelegate: AuthenticationTokenDelegate?
     
     private let baseURL: URL
     private let session = URLSession(configuration: URLSessionConfiguration.default)
@@ -75,7 +76,7 @@ class CustomV1Authentication: Authentication {
                         if let accessToken = responseJSON["access_token"] as? String {
                             self.loggedIn = true
                             
-                            self.delegate?.saveAccessTokens(accessToken: accessToken, expiry: Date().addingTimeInterval(600))
+                            self.tokenDelegate?.saveAccessTokens(accessToken: accessToken, expiry: Date().addingTimeInterval(600))
                             
                             completion(.success)
                         } else {
@@ -104,6 +105,10 @@ class CustomV1Authentication: Authentication {
     func resumeAuthentication(url: URL) -> Bool {
         // Unused
         return false
+    }
+    
+    func logout() {
+        reset()
     }
     
     func reset() {
