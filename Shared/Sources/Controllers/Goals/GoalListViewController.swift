@@ -40,7 +40,7 @@ class GoalListViewController: TableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        FrolloSDK.shared.aggregation.refreshAccounts { (result) in
+        FrolloSDK.shared.goals.refreshGoals(status: .active) { (result) in
             switch result {
                 case .failure(let error):
                     print(error.localizedDescription)
@@ -99,6 +99,14 @@ class GoalListViewController: TableViewController {
         cell.currentAmountLabel.text = "Saved: " + currencyFormatter.string(from: goal.currentAmount)!
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let goal = fetchedResultsController.object(at: indexPath)
+        
+        let goalDetailsViewController = storyboard?.instantiateViewController(withIdentifier: "GoalDetailsViewController") as! GoalDetailsViewController
+        goalDetailsViewController.goalID = goal.goalID
+        navigationController?.pushViewController(goalDetailsViewController, animated: true)
     }
 
 }
