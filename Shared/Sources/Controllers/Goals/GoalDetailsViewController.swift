@@ -13,9 +13,11 @@ import FrolloSDK
 
 class GoalDetailsViewController: TableViewController {
     
+    @IBOutlet var spinner: UIActivityIndicatorView!
     @IBOutlet var frequencyLabel: UILabel!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var periodAmountLabel: UILabel!
+    @IBOutlet var loadingView: UIView!
     
     internal var goalID: Int64 = -1
     
@@ -63,6 +65,47 @@ class GoalDetailsViewController: TableViewController {
         }
         
         reloadData()
+    }
+    
+    // MARK: - Interaction
+    
+    @IBAction func deletePress(sender: UIBarButtonItem) {
+        showDeleteGoalAlert()
+    }
+    
+    // MARK: - Goal
+    
+    private func showDeleteGoalAlert() {
+        let alertController = UIAlertController(title: "Abandon Goal", message: "Are you sure you wish to abandon the goal?", preferredStyle: .alert)
+        
+        let deleteAction = UIAlertAction(title: "Abandon", style: .destructive) { (action) in
+            self.deleteGoal()
+        }
+        alertController.addAction(deleteAction)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true)
+    }
+    
+    private func deleteGoal() {
+        FrolloSDK.shared.goals.deleteGoal(goalID: goalID) { (result) in
+            switch result {
+                case .failure(let error):
+                    self.showError(details: error.localizedDescription)
+                case .success:
+                    self.navigationController?.popViewController(animated: true)
+            }
+        }
+    }
+    
+    private func showError(details: String) {
+        let alertController = UIAlertController(title: "Create Goal Failed", message: details, preferredStyle: .alert)
+        let dismissAction = UIAlertAction(title: "OK", style: .cancel)
+        alertController.addAction(dismissAction)
+        
+        self.present(alertController, animated: true)
     }
     
     // MARK: - Goal Periods

@@ -35,9 +35,7 @@
 		0150C44722926AB100A18B52 /* CustomV1Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0150C44522926AB100A18B52 /* CustomV1Authentication.swift */; };
 		01527CEA20E1D3B000B5042A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01527CE920E1D3B000B5042A /* AppDelegate.swift */; };
 		01527CEC20E1D3B000B5042A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01527CEB20E1D3B000B5042A /* ViewController.swift */; };
-		01527CEF20E1D3B000B5042A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01527CED20E1D3B000B5042A /* Main.storyboard */; };
 		01527CF120E1D3B200B5042A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01527CF020E1D3B200B5042A /* Assets.xcassets */; };
-		01527CF420E1D3B200B5042A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01527CF220E1D3B200B5042A /* LaunchScreen.storyboard */; };
 		01568799218AB0B100C961B3 /* AddProviderLoginFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01568798218AB0B100C961B3 /* AddProviderLoginFieldCell.swift */; };
 		0156879B218BD57900C961B3 /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017E5934218291DA00DC56FF /* AccountsViewController.swift */; };
 		0156879C218BD57C00C961B3 /* AddProviderAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011A7BCE2189330600E2CEF1 /* AddProviderAccountViewController.swift */; };
@@ -109,6 +107,8 @@
 		01A722B322EFDD24006136D8 /* GoalDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A722B122EFDD24006136D8 /* GoalDetailsViewController.swift */; };
 		01A722B522EFF40F006136D8 /* GoalPeriodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A722B422EFF40F006136D8 /* GoalPeriodCell.swift */; };
 		01A722B622EFF40F006136D8 /* GoalPeriodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A722B422EFF40F006136D8 /* GoalPeriodCell.swift */; };
+		01A722B922F01752006136D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01A722B722F01752006136D8 /* LaunchScreen.storyboard */; };
+		01A722BA22F01752006136D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01A722B822F01752006136D8 /* Main.storyboard */; };
 		01E5BF90222DEACD003D85FD /* SetupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E5BF8F222DEACD003D85FD /* SetupManager.swift */; };
 		01E5BF91222DEACD003D85FD /* SetupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E5BF8F222DEACD003D85FD /* SetupManager.swift */; };
 		01E5BF93222DEB70003D85FD /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 01E5BF92222DEB70003D85FD /* Settings.bundle */; };
@@ -157,9 +157,7 @@
 		01527CE620E1D3B000B5042A /* FrolloSDK iOS Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FrolloSDK iOS Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01527CE920E1D3B000B5042A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01527CEB20E1D3B000B5042A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		01527CEE20E1D3B000B5042A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		01527CF020E1D3B200B5042A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		01527CF320E1D3B200B5042A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01527CF520E1D3B200B5042A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01568798218AB0B100C961B3 /* AddProviderLoginFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProviderLoginFieldCell.swift; sourceTree = "<group>"; };
 		015687AC218BD7B700C961B3 /* AddProviderLoginFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddProviderLoginFieldView.xib; sourceTree = "<group>"; };
@@ -202,6 +200,8 @@
 		01A722AE22EFB77B006136D8 /* GoalListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalListViewController.swift; sourceTree = "<group>"; };
 		01A722B122EFDD24006136D8 /* GoalDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDetailsViewController.swift; sourceTree = "<group>"; };
 		01A722B422EFF40F006136D8 /* GoalPeriodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPeriodCell.swift; sourceTree = "<group>"; };
+		01A722B722F01752006136D8 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		01A722B822F01752006136D8 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		01E5BF8F222DEACD003D85FD /* SetupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupManager.swift; sourceTree = "<group>"; };
 		01E5BF92222DEB70003D85FD /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		03B4711522825D9700DD773C /* TagsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsCollectionView.swift; sourceTree = "<group>"; };
@@ -347,10 +347,10 @@
 				013BC1EA218AA3C0005A2714 /* AddProviderChoiceView.xib */,
 				013BC1EC218AA62D005A2714 /* AddProviderLoginFieldView.xib */,
 				011C199421E6C25500490EDD /* BillCell.xib */,
-				01527CF520E1D3B200B5042A /* Info.plist */,
-				01527CF220E1D3B200B5042A /* LaunchScreen.storyboard */,
-				01527CED20E1D3B000B5042A /* Main.storyboard */,
 				01A722A822EE8A2F006136D8 /* GoalOptionViewController.swift */,
+				01527CF520E1D3B200B5042A /* Info.plist */,
+				01A722B722F01752006136D8 /* LaunchScreen.storyboard */,
+				01A722B822F01752006136D8 /* Main.storyboard */,
 				01E5BF92222DEB70003D85FD /* Settings.bundle */,
 				2F657DB8223B6FBD00471B85 /* Surveys.storyboard */,
 			);
@@ -633,12 +633,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01527CF420E1D3B200B5042A /* LaunchScreen.storyboard in Resources */,
+				01A722B922F01752006136D8 /* LaunchScreen.storyboard in Resources */,
+				01A722BA22F01752006136D8 /* Main.storyboard in Resources */,
 				013BC1ED218AA62D005A2714 /* AddProviderLoginFieldView.xib in Resources */,
 				2F657DB9223B6FBD00471B85 /* Surveys.storyboard in Resources */,
 				011C199521E6C25500490EDD /* BillCell.xib in Resources */,
 				01527CF120E1D3B200B5042A /* Assets.xcassets in Resources */,
-				01527CEF20E1D3B000B5042A /* Main.storyboard in Resources */,
 				015687B0218BD8BF00C961B3 /* AddProviderChoiceView.xib in Resources */,
 				01E5BF93222DEB70003D85FD /* Settings.bundle in Resources */,
 			);
@@ -824,22 +824,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		01527CED20E1D3B000B5042A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				01527CEE20E1D3B000B5042A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		01527CF220E1D3B200B5042A /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				01527CF320E1D3B200B5042A /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
 		018B044F2176E474008C34D7 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

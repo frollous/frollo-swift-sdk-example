@@ -1600,13 +1600,13 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Required: $1,234.56" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2dA-0M-nOX">
-                                            <rect key="frame" x="16" y="63" width="139" height="18"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Required: $1,234.56" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2dA-0M-nOX">
+                                            <rect key="frame" x="16" y="63" width="251" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On Track" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lrE-jy-H1V">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="251" text="On Track" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lrE-jy-H1V">
                                             <rect key="frame" x="275" y="70" width="84" height="24"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                             <color key="textColor" red="0.97559099740932642" green="0.50554306790933079" blue="0.081096184118987419" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1621,6 +1621,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="2dA-0M-nOX" firstAttribute="top" secondItem="wb9-0N-uRz" secondAttribute="bottom" constant="8" id="Fx5-AA-HXf"/>
+                                        <constraint firstItem="lrE-jy-H1V" firstAttribute="leading" secondItem="2dA-0M-nOX" secondAttribute="trailing" constant="8" id="Hu7-OY-hqD"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="r4a-6u-J3q" secondAttribute="trailing" id="Rwu-he-4em"/>
                                         <constraint firstItem="wb9-0N-uRz" firstAttribute="top" secondItem="IbJ-2N-UlE" secondAttribute="bottom" constant="8" id="UGf-dS-R4S"/>
                                         <constraint firstItem="IbJ-2N-UlE" firstAttribute="leading" secondItem="x54-M3-CIh" secondAttribute="leadingMargin" id="f77-Yu-FRa"/>
@@ -1651,7 +1652,9 @@
                             <outlet property="delegate" destination="g6M-jw-WHS" id="uue-G6-16b"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Periods" id="uKO-UF-b6U"/>
+                    <navigationItem key="navigationItem" title="Periods" id="uKO-UF-b6U">
+                        <barButtonItem key="rightBarButtonItem" title="Abandon" id="EAs-rQ-Gk0"/>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="frequencyLabel" destination="B61-mE-Zdp" id="bDD-7a-SmM"/>
