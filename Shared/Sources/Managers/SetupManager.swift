@@ -41,6 +41,7 @@ class SetupManager {
         
         var config = hostConfig(host: selectedHost)
         config.logLevel = .debug
+        config.publicKeyPinningEnabled = false
         
         if useV1Auth {
             let baseV1URL = baseURL(host: selectedHost).appendingPathComponent("v1/")
