@@ -54,7 +54,7 @@ class SetupManager {
                                             serverEndpoint: baseV2URL)
         }
         
-        FrolloSDK.shared.setup(configuration: config) { (result) in
+        Frollo.shared.setup(configuration: config) { (result) in
             switch result {
                 case .failure(let error):
                     fatalError(error.localizedDescription)
@@ -70,7 +70,7 @@ class SetupManager {
         saveHostPreferences()
         
         if selectedHost != currentHost {
-            FrolloSDK.shared.reset { (result) in
+            Frollo.shared.reset { (result) in
                 abort()
             }
         }
@@ -78,10 +78,10 @@ class SetupManager {
         NotificationCenter.default.addObserver(forName: UserDefaults.didChangeNotification, object: nil, queue: .main) { (notification) in
             self.reloadHostPreferences()
             
-            if self.currentHost != self.selectedHost, FrolloSDK.shared.authentication.loggedIn {
+            if self.currentHost != self.selectedHost, Frollo.shared.authentication.loggedIn {
                 self.saveHostPreferences()
                 
-                FrolloSDK.shared.reset { (result) in
+                Frollo.shared.reset { (result) in
                     abort()
                 }
             }

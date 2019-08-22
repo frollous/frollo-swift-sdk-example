@@ -32,15 +32,15 @@ class GoalListViewController: TableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let context = FrolloSDK.shared.database.viewContext
-        fetchedResultsController = FrolloSDK.shared.goals.goalsFetchedResultsController(context: context, status: .active, sortedBy: [NSSortDescriptor(key: #keyPath(Goal.endDateString), ascending: true)])
+        let context = Frollo.shared.database.viewContext
+        fetchedResultsController = Frollo.shared.goals.goalsFetchedResultsController(context: context, status: .active, sortedBy: [NSSortDescriptor(key: #keyPath(Goal.endDateString), ascending: true)])
         fetchedResultsController.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        FrolloSDK.shared.goals.refreshGoals(status: .active) { (result) in
+        Frollo.shared.goals.refreshGoals(status: .active) { (result) in
             switch result {
                 case .failure(let error):
                     print(error.localizedDescription)

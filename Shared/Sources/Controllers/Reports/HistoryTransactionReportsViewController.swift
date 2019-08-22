@@ -43,7 +43,7 @@ class HistoryTransactionReportsViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        FrolloSDK.shared.reports.refreshTransactionCurrentReports(grouping: grouping) { (result) in
+        Frollo.shared.reports.refreshTransactionCurrentReports(grouping: grouping) { (result) in
             switch result {
                 case .failure(let error):
                     print(error.localizedDescription)
@@ -60,7 +60,7 @@ class HistoryTransactionReportsViewController: UITableViewController {
     // MARK: - Reports
     
     private func reloadData() {
-        let context = FrolloSDK.shared.database.viewContext
+        let context = Frollo.shared.database.viewContext
         
         var predicates = [NSPredicate(format: #keyPath(ReportTransactionHistory.groupingRawValue) + " == %@ && " + #keyPath(ReportTransactionHistory.periodRawValue) + " == %@ && " + #keyPath(ReportTransactionHistory.filterBudgetCategoryRawValue) + " == nil", argumentArray: [grouping.rawValue, ReportTransactionHistory.Period.month.rawValue])]
         
@@ -81,7 +81,7 @@ class HistoryTransactionReportsViewController: UITableViewController {
                 break
         }
         
-        reports = FrolloSDK.shared.reports.historyTransactionReports(context: context, filteredBy: NSCompoundPredicate(andPredicateWithSubpredicates: predicates), sortedBy: [NSSortDescriptor(key: #keyPath(ReportTransactionHistory.dateString), ascending: false)]) ?? []
+        reports = Frollo.shared.reports.historyTransactionReports(context: context, filteredBy: NSCompoundPredicate(andPredicateWithSubpredicates: predicates), sortedBy: [NSSortDescriptor(key: #keyPath(ReportTransactionHistory.dateString), ascending: false)]) ?? []
         
         tableView.reloadData()
     }

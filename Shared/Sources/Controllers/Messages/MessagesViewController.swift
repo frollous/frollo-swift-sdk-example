@@ -18,16 +18,16 @@ class MessagesViewController: TableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let context = FrolloSDK.shared.database.viewContext
+        let context = Frollo.shared.database.viewContext
         let predicate = NSPredicate(format: #keyPath(Message.read) + " == false && " + #keyPath(Message.contentTypeRawValue) + " == %@", argumentArray: [Message.ContentType.text.rawValue])
         let sortDescriptors = [NSSortDescriptor(key: #keyPath(Message.placement), ascending: false)]
-        fetchedResultsController = FrolloSDK.shared.messages.messagesFetchedResultsController(context: context, filteredBy: predicate, sortedBy: sortDescriptors)
+        fetchedResultsController = Frollo.shared.messages.messagesFetchedResultsController(context: context, filteredBy: predicate, sortedBy: sortDescriptors)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        FrolloSDK.shared.messages.refreshUnreadMessages() { (result) in
+        Frollo.shared.messages.refreshUnreadMessages() { (result) in
             switch result {
                 case .failure(let error):
                     print(error.localizedDescription)

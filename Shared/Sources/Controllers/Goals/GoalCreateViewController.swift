@@ -246,7 +246,7 @@ class GoalCreateViewController: UIViewController, UITableViewDataSource, UITable
         
         showLoadingView()
         
-        FrolloSDK.shared.goals.createGoal(name: name,
+        Frollo.shared.goals.createGoal(name: name,
                                           description: goalDescription,
                                           target: goalTarget,
                                           trackingType: goalTrackingType,

@@ -34,13 +34,13 @@ class StartupViewController: UIViewController {
     private func completeStartup() {
         spinner.stopAnimating()
         
-        if FrolloSDK.shared.authentication.loggedIn {
+        if Frollo.shared.authentication.loggedIn {
             flowManager?.showMainSplitViewController()
             
             UIApplication.shared.registerForRemoteNotifications()
             
             DispatchQueue.main.async {
-                FrolloSDK.shared.refreshData()
+                Frollo.shared.refreshData()
             }
         } else {
             flowManager?.showLoginViewController()

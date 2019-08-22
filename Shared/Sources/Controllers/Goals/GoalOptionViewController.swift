@@ -33,9 +33,9 @@ class GoalAccountOptionViewController: UITableViewController {
     // MARK: - Data
     
     private func reloadData() {
-        let context = FrolloSDK.shared.database.viewContext
+        let context = Frollo.shared.database.viewContext
         
-        if let fetchedAccounts = FrolloSDK.shared.aggregation.accounts(context: context) {
+        if let fetchedAccounts = Frollo.shared.aggregation.accounts(context: context) {
             accounts = fetchedAccounts
         }
         

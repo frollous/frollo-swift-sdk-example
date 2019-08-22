@@ -34,16 +34,16 @@ class BillsViewController: TableViewController {
         
         tableView.register(UINib(nibName: "BillCell", bundle: nil), forCellReuseIdentifier: "BillCell")
 
-        let context = FrolloSDK.shared.database.viewContext
+        let context = Frollo.shared.database.viewContext
         let sortDescriptors = [NSSortDescriptor(key: #keyPath(Bill.statusRawValue), ascending: false), NSSortDescriptor(key: #keyPath(Bill.name), ascending: true)]
-        fetchedResultsController = FrolloSDK.shared.bills.billsFetchedResultsController(context: context, sortedBy: sortDescriptors)
+        fetchedResultsController = Frollo.shared.bills.billsFetchedResultsController(context: context, sortedBy: sortDescriptors)
         fetchedResultsController.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        FrolloSDK.shared.bills.refreshBills { (result) in
+        Frollo.shared.bills.refreshBills { (result) in
             switch result {
                 case .failure(let error):
                     print(error.localizedDescription)

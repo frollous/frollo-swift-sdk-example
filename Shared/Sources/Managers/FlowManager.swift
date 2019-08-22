@@ -18,8 +18,8 @@ class FlowManager: UISplitViewControllerDelegate {
     init(window: UIWindow) {
         self.window = window
         
-        NotificationCenter.default.addObserver(forName: FrolloSDK.authenticationChangedNotification, object: nil, queue: .main) { (notification) in
-            if let status = notification.userInfo?[FrolloSDK.authenticationStatusKey] as? FrolloSDK.FrolloSDKAuthenticationStatus, status == .loggedOut {
+        NotificationCenter.default.addObserver(forName: Frollo.authenticationChangedNotification, object: nil, queue: .main) { (notification) in
+            if let status = notification.userInfo?[Frollo.authenticationStatusKey] as? Frollo.FrolloSDKAuthenticationStatus, status == .loggedOut {
                 self.showLoginViewController()
             }
         }

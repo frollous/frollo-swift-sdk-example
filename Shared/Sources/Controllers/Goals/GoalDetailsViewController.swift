@@ -40,27 +40,27 @@ class GoalDetailsViewController: TableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let context = FrolloSDK.shared.database.viewContext
+        let context = Frollo.shared.database.viewContext
         
-        if let goal = FrolloSDK.shared.goals.goal(context: context, goalID: goalID) {
+        if let goal = Frollo.shared.goals.goal(context: context, goalID: goalID) {
             nameLabel.text = goal.name
             frequencyLabel.text = goal.frequency.rawValue.capitalized
             periodAmountLabel.text = currencyFormatter.string(from: goal.periodAmount)
         }
         
         let predicate = NSPredicate(format: #keyPath(GoalPeriod.goalID) + " == %ld", argumentArray: [goalID])
-        fetchedResultsController = FrolloSDK.shared.goals.goalPeriodsFetchedResultsController(context: context, filteredBy: predicate, sortedBy: [NSSortDescriptor(key: #keyPath(GoalPeriod.startDateString), ascending: true)])
+        fetchedResultsController = Frollo.shared.goals.goalPeriodsFetchedResultsController(context: context, filteredBy: predicate, sortedBy: [NSSortDescriptor(key: #keyPath(GoalPeriod.startDateString), ascending: true)])
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        FrolloSDK.shared.goals.refreshGoalPeriods(goalID: goalID) { (result) in
+        Frollo.shared.goals.refreshGoalPeriods(goalID: goalID) { (result) in
             switch result {
                 case .failure(let error):
                     print(error.localizedDescription)
                 case .success:
-                    break
+                    self.reloadData()
             }
         }
         
@@ -90,7 +90,7 @@ class GoalDetailsViewController: TableViewController {
     }
     
     private func deleteGoal() {
-        FrolloSDK.shared.goals.deleteGoal(goalID: goalID) { (result) in
+        Frollo.shared.goals.deleteGoal(goalID: goalID) { (result) in
             switch result {
                 case .failure(let error):
                     self.showError(details: error.localizedDescription)
@@ -152,16 +152,22 @@ class GoalDetailsViewController: TableViewController {
         cell.requiredAmountLabel.text = "Required: " + currencyFormatter.string(from: period.requiredAmount)!
         cell.currentAmountLabel.text = "Current: " + currencyFormatter.string(from: period.currentAmount)!
         
-        switch period.trackingStatus {
-            case .ahead:
-                cell.statusLabel.text = "Ahead"
-                cell.statusLabel.textColor = UIColor.green
-            case .behind:
-                cell.statusLabel.text = "Behind"
-                cell.statusLabel.textColor = UIColor.red
-            case .onTrack:
-                cell.statusLabel.text = "On Track"
-                cell.statusLabel.textColor = UIColor.orange
+        if let trackingStatus = period.trackingStatus {
+            cell.statusLabel.isHidden = false
+            
+            switch trackingStatus {
+                case .ahead:
+                    cell.statusLabel.text = "Ahead"
+                    cell.statusLabel.textColor = UIColor.green
+                case .behind:
+                    cell.statusLabel.text = "Behind"
+                    cell.statusLabel.textColor = UIColor.red
+                case .onTrack:
+                    cell.statusLabel.text = "On Track"
+                    cell.statusLabel.textColor = UIColor.orange
+            }
+        } else {
+            cell.statusLabel.isHidden = true
         }
         
         return cell

@@ -76,7 +76,7 @@ class LoginViewController: UIViewController {
         if SetupManager.shared.useV1Auth {
             SetupManager.shared.authentication?.loginUser(email: email, password: password, completion: defaultCompletion)
         } else {
-            FrolloSDK.shared.defaultAuthentication?.loginUser(email: email, password: password, scopes: [], completion: defaultCompletion)
+            Frollo.shared.defaultAuthentication?.loginUser(email: email, password: password, scopes: [], completion: defaultCompletion)
         }
     }
     
@@ -85,7 +85,7 @@ class LoginViewController: UIViewController {
         webLoginButton.isHidden = true
         spinner.startAnimating()
         
-        FrolloSDK.shared.defaultAuthentication?.loginUserUsingWeb(presenting: self, scopes: [], completion: defaultCompletion)
+        Frollo.shared.defaultAuthentication?.loginUserUsingWeb(presenting: self, scopes: [], completion: defaultCompletion)
     }
     
     // MARK: - Push Notifications
@@ -106,7 +106,7 @@ class LoginViewController: UIViewController {
         registerForPushNotifications()
         
         DispatchQueue.main.async {
-            FrolloSDK.shared.refreshData()
+            Frollo.shared.refreshData()
         }
     }
     

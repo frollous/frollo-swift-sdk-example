@@ -43,7 +43,7 @@ class SuggestedTagsViewController: TableViewController, UISearchBarDelegate, UIS
     
     private func updateData() {
         spinner.startAnimating()
-        FrolloSDK.shared.aggregation.transactionSuggestedTags(searchTerm: searchTerm ?? "") { (result) in
+        Frollo.shared.aggregation.transactionSuggestedTags(searchTerm: searchTerm ?? "") { (result) in
             DispatchQueue.main.async {
                 self.spinner.stopAnimating()
                 switch result {

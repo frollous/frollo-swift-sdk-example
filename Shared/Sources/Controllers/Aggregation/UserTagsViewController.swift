@@ -36,17 +36,17 @@ class UserTagsViewController: TableViewController, UISearchBarDelegate, UISearch
             searchResultsController = controller
         }
         spinner.startAnimating()
-        FrolloSDK.shared.aggregation.refreshTransactionUserTags { (_) in
+        Frollo.shared.aggregation.refreshTransactionUserTags { (_) in
             self.reloadData()
             self.spinner.stopAnimating()
         }
     }
     
     private func initializeFetchedResultsController() {
-        let context = FrolloSDK.shared.database.viewContext
+        let context = Frollo.shared.database.viewContext
         
         let sortDescriptors = [NSSortDescriptor(key: #keyPath(Tag.name), ascending: true)]
-        fetchedResultsController = FrolloSDK.shared.aggregation.transactionUserTagsFetchedResultsController(context: context, filteredBy: nil, sortedBy: sortDescriptors)
+        fetchedResultsController = Frollo.shared.aggregation.transactionUserTagsFetchedResultsController(context: context, filteredBy: nil, sortedBy: sortDescriptors)
     }
     
     private func reloadData() {

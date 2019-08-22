@@ -18,15 +18,15 @@ class ReportsAccountListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let context = FrolloSDK.shared.database.viewContext
+        let context = Frollo.shared.database.viewContext
         let sortDescriptors = [NSSortDescriptor(key: #keyPath(Account.providerAccountID), ascending: true), NSSortDescriptor(key: #keyPath(Account.accountTypeRawValue), ascending: true), NSSortDescriptor(key: #keyPath(Account.accountName), ascending: true)]
-        fetchedResultsController = FrolloSDK.shared.aggregation.accountsFetchedResultsController(context: context, filteredBy: nil, sortedBy: sortDescriptors)
+        fetchedResultsController = Frollo.shared.aggregation.accountsFetchedResultsController(context: context, filteredBy: nil, sortedBy: sortDescriptors)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        FrolloSDK.shared.aggregation.refreshAccounts { (result) in
+        Frollo.shared.aggregation.refreshAccounts { (result) in
             switch result {
                 case .failure(let error):
                     print(error.localizedDescription)
