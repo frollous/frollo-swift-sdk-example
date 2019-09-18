@@ -1,8 +1,8 @@
 //
-//  BillsViewController.swift
+//  GoalListViewController.swift
 //  FrolloSDK Example
 //
-//  Created by Nick Dawson on 10/1/19.
+//  Created by Nick Dawson on 30/7/19.
 //  Copyright © 2019 Frollo. All rights reserved.
 //
 
@@ -11,7 +11,7 @@ import UIKit
 
 import FrolloSDK
 
-class BillsViewController: TableViewController {
+class GoalListViewController: TableViewController {
     
     private let currencyFormatter: NumberFormatter = {
         let numberFormatter = NumberFormatter()
@@ -27,23 +27,20 @@ class BillsViewController: TableViewController {
         return dateFormatter
     }()
     
-    private var fetchedResultsController: NSFetchedResultsController<Bill>!
+    private var fetchedResultsController: NSFetchedResultsController<Goal>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableView.register(UINib(nibName: "BillCell", bundle: nil), forCellReuseIdentifier: "BillCell")
 
         let context = Frollo.shared.database.viewContext
-        let sortDescriptors = [NSSortDescriptor(key: #keyPath(Bill.statusRawValue), ascending: false), NSSortDescriptor(key: #keyPath(Bill.name), ascending: true)]
-        fetchedResultsController = Frollo.shared.bills.billsFetchedResultsController(context: context, sortedBy: sortDescriptors)
+        fetchedResultsController = Frollo.shared.goals.goalsFetchedResultsController(context: context, status: .active, sortedBy: [NSSortDescriptor(key: #keyPath(Goal.endDateString), ascending: true)])
         fetchedResultsController.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        Frollo.shared.bills.refreshBills { (result) in
+        Frollo.shared.goals.refreshGoals(status: .active) { (result) in
             switch result {
                 case .failure(let error):
                     print(error.localizedDescription)
@@ -55,7 +52,7 @@ class BillsViewController: TableViewController {
         reloadData()
     }
     
-    // MARK: - Bills
+    // MARK: - Goals
     
     private func reloadData() {
         do {
@@ -68,7 +65,7 @@ class BillsViewController: TableViewController {
     }
 
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         guard let sections = fetchedResultsController.sections
             else {
@@ -89,45 +86,27 @@ class BillsViewController: TableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "BillCell", for: indexPath) as! BillCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "GoalListCell", for: indexPath) as! GoalListCell
         
-        let bill = fetchedResultsController.object(at: indexPath)
+        let goal = fetchedResultsController.object(at: indexPath)
         
-        cell.nameLabel.text = bill.name
-        cell.dateLabel.text = "Next due: " + dateFormatter.string(from: bill.nextPaymentDate)
-        cell.detailsLabel.text = bill.transactionCategory?.name
-        cell.amountLabel.text  = currencyFormatter.string(from: bill.dueAmount)
-        
-        switch bill.frequency {
-            case .annually:
-                cell.statusLabel.text = "Annually"
-            case .biannually:
-                cell.statusLabel.text = "Biannually"
-            case .fortnightly:
-                cell.statusLabel.text = "Fortnightly"
-            case .fourWeekly:
-                cell.statusLabel.text = "Every four weeks"
-            case .irregular:
-                cell.statusLabel.text = "Irregular"
-            case .monthly:
-                cell.statusLabel.text = "Monthly"
-            case .quarterly:
-                cell.statusLabel.text = "Quarterly"
-            case .unknown:
-                cell.statusLabel.text = "Unknown"
-            case .weekly:
-                cell.statusLabel.text = "Weekly"
-        }
+        cell.nameLabel.text = goal.name
+        cell.detailsLabel.text = goal.details
+        cell.frequencyLabel.text = goal.frequency.rawValue.capitalized
+        cell.endDateLabel.text = dateFormatter.string(from: goal.endDate)
+        cell.targetLabel.text = goal.target.rawValue.capitalized
+        cell.targetAmountLabel.text = "Target: " + currencyFormatter.string(for: goal.targetAmount)!
+        cell.currentAmountLabel.text = "Saved: " + currencyFormatter.string(from: goal.currentAmount)!
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let bill = fetchedResultsController.object(at: indexPath)
+        let goal = fetchedResultsController.object(at: indexPath)
         
-        let billPaymentsViewController = storyboard?.instantiateViewController(withIdentifier: "BillPaymentsViewController") as! BillPaymentsViewController
-        billPaymentsViewController.billID = bill.billID
-        navigationController?.pushViewController(billPaymentsViewController, animated: true)
+        let goalDetailsViewController = storyboard?.instantiateViewController(withIdentifier: "GoalDetailsViewController") as! GoalDetailsViewController
+        goalDetailsViewController.goalID = goal.goalID
+        navigationController?.pushViewController(goalDetailsViewController, animated: true)
     }
 
 }

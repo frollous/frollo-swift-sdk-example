@@ -32,11 +32,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        FrolloSDK.shared.applicationDidEnterBackground()
+        Frollo.shared.applicationDidEnterBackground()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        FrolloSDK.shared.applicationWillEnterForeground()
+        Frollo.shared.applicationWillEnterForeground()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -48,17 +48,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        FrolloSDK.shared.notifications.registerPushNotificationToken(deviceToken)
+        Frollo.shared.notifications.registerPushNotificationToken(deviceToken)
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        FrolloSDK.shared.notifications.handlePushNotification(userInfo: userInfo)
+        Frollo.shared.notifications.handlePushNotification(userInfo: userInfo)
         
         completionHandler(.newData)
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        return FrolloSDK.shared.applicationOpen(url: url)
+        return Frollo.shared.oAuth2Authentication?.resumeAuthentication(url: url) ?? false
     }
 
 }

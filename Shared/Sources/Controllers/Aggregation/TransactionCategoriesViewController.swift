@@ -18,15 +18,15 @@ class TransactionCategoriesViewController: TableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let context = FrolloSDK.shared.database.viewContext
+        let context = Frollo.shared.database.viewContext
         let sortDescriptors = [NSSortDescriptor(key: #keyPath(TransactionCategory.name), ascending: true)]
-        fetchedResultsController = FrolloSDK.shared.aggregation.transactionCategoriesFetchedResultsController(context: context, sortedBy: sortDescriptors)
+        fetchedResultsController = Frollo.shared.aggregation.transactionCategoriesFetchedResultsController(context: context, sortedBy: sortDescriptors)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        FrolloSDK.shared.aggregation.refreshTransactionCategories { (result) in
+        Frollo.shared.aggregation.refreshTransactionCategories { (result) in
             switch result {
             case .failure(let error):
                 print(error.localizedDescription)

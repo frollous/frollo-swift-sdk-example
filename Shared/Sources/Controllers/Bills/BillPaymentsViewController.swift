@@ -36,10 +36,10 @@ class BillPaymentsViewController: TableViewController {
 
         tableView.register(UINib(nibName: "BillCell", bundle: nil), forCellReuseIdentifier: "BillCell")
         
-        let context = FrolloSDK.shared.database.viewContext
+        let context = Frollo.shared.database.viewContext
         let predicate = NSPredicate(format: #keyPath(BillPayment.billID) + " == %ld", argumentArray: [billID!])
         let sortDescriptors = [NSSortDescriptor(key: #keyPath(BillPayment.dateString), ascending: false)]
-        fetchedResultsController = FrolloSDK.shared.bills.billPaymentsFetchedResultsController(context: context, filteredBy: predicate, sortedBy: sortDescriptors)
+        fetchedResultsController = Frollo.shared.bills.billPaymentsFetchedResultsController(context: context, filteredBy: predicate, sortedBy: sortDescriptors)
         fetchedResultsController.delegate = self
     }
     
@@ -67,7 +67,7 @@ class BillPaymentsViewController: TableViewController {
         toDate = calendar.date(bySetting: .day, value: 1, of: toDate)!
         toDate = calendar.startOfDay(for: toDate)
         
-        FrolloSDK.shared.bills.refreshBillPayments(from: fromDate, to: toDate) { (result) in
+        Frollo.shared.bills.refreshBillPayments(from: fromDate, to: toDate) { (result) in
             switch result {
                 case .failure(let error):
                     print(error.localizedDescription)
@@ -88,21 +88,21 @@ class BillPaymentsViewController: TableViewController {
     }
     
     private func markBillPaymentPaid(billPaymentID: Int64) {
-        let context = FrolloSDK.shared.database.newBackgroundContext()
+        let context = Frollo.shared.database.newBackgroundContext()
         
         context.performAndWait {
-            let billPayment = FrolloSDK.shared.bills.billPayment(context: context, billPaymentID: billPaymentID)
+            let billPayment = Frollo.shared.bills.billPayment(context: context, billPaymentID: billPaymentID)
             
             billPayment?.paymentStatus = .paid
             
             try? context.save()
         }
         
-        FrolloSDK.shared.bills.updateBillPayment(billPaymentID: billPaymentID)
+        Frollo.shared.bills.updateBillPayment(billPaymentID: billPaymentID)
     }
     
     private func removeBill(billPaymentID: Int64) {
-        FrolloSDK.shared.bills.deleteBillPayment(billPaymentID: billPaymentID)
+        Frollo.shared.bills.deleteBillPayment(billPaymentID: billPaymentID)
     }
 
     // MARK: - Table view data source

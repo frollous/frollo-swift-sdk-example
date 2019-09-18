@@ -41,6 +41,7 @@ class SetupManager {
         
         var config = hostConfig(host: selectedHost)
         config.logLevel = .debug
+        config.publicKeyPinningEnabled = false
         
         if useV1Auth {
             let baseV1URL = baseURL(host: selectedHost).appendingPathComponent("v1/")
@@ -48,18 +49,19 @@ class SetupManager {
             let auth = CustomV1Authentication(baseURL: baseV1URL)
             authentication = auth
             
-            config = FrolloSDKConfiguration(authenticationType: .custom(authentication: auth),
+            config = FrolloSDKConfiguration(authenticationType: .custom(authenticationDataSource: auth, authenticationDelegate: auth),
+                                            clientID: "f97faef0bdef6882a5cbabaf4afc2f3bc8612f725a8434f9daebf2ad3c259cc1",
                                             serverEndpoint: baseV2URL)
         }
         
-        FrolloSDK.shared.setup(configuration: config) { (result) in
+        Frollo.shared.setup(configuration: config) { (result) in
             switch result {
                 case .failure(let error):
                     fatalError(error.localizedDescription)
                 case .success:
                     DispatchQueue.main.async {
                         self.completeSetup(completion: completion)
-                }
+                    }
             }
         }
     }
@@ -68,7 +70,7 @@ class SetupManager {
         saveHostPreferences()
         
         if selectedHost != currentHost {
-            FrolloSDK.shared.reset { (result) in
+            Frollo.shared.reset { (result) in
                 abort()
             }
         }
@@ -76,10 +78,10 @@ class SetupManager {
         NotificationCenter.default.addObserver(forName: UserDefaults.didChangeNotification, object: nil, queue: .main) { (notification) in
             self.reloadHostPreferences()
             
-            if self.currentHost != self.selectedHost, FrolloSDK.shared.authentication.loggedIn {
+            if self.currentHost != self.selectedHost, Frollo.shared.oAuth2Authentication?.loggedIn == true {
                 self.saveHostPreferences()
                 
-                FrolloSDK.shared.reset { (result) in
+                Frollo.shared.reset { (result) in
                     abort()
                 }
             }
@@ -131,26 +133,26 @@ class SetupManager {
     private func hostConfig(host: Host) -> FrolloSDKConfiguration {
         switch host {
             case .frolloSandbox:
-                return FrolloSDKConfiguration(authenticationType: .oAuth2(clientID: "f97faef0bdef6882a5cbabaf4afc2f3bc8612f725a8434f9daebf2ad3c259cc1",
-                                                                          redirectURL: redirectURL,
+                return FrolloSDKConfiguration(authenticationType: .oAuth2(redirectURL: redirectURL,
                                                                           authorizationEndpoint: URL(string: "https://id-sandbox.frollo.us/oauth/authorize")!,
                                                                           tokenEndpoint: URL(string: "https://id-sandbox.frollo.us/oauth/token")!,
                                                                           revokeTokenEndpoint: URL(string: "https://id-sandbox.frollo.us/oauth/revoke")!),
+                                              clientID: "f97faef0bdef6882a5cbabaf4afc2f3bc8612f725a8434f9daebf2ad3c259cc1",
                                               serverEndpoint: URL(string: "https://api-sandbox.frollo.us/api/v2/")!)
             case .voltSandbox:
-                return FrolloSDKConfiguration(authenticationType: .oAuth2(clientID: "PzlborkOwZf42SJ2b6Fdj6JTi9lcqiNi",
-                                                                          redirectURL: redirectURL,
+                return FrolloSDKConfiguration(authenticationType: .oAuth2(redirectURL: redirectURL,
                                                                           authorizationEndpoint: URL(string: "https://frollo-test.au.auth0.com/authorize")!,
                                                                           tokenEndpoint: URL(string: "https://frollo-test.au.auth0.com/oauth/token")!,
                                                                           revokeTokenEndpoint: URL(string: "https://voltlabs-devtest.au.auth0.com/oauth/revoke")),
+                                              clientID: "PzlborkOwZf42SJ2b6Fdj6JTi9lcqiNi",
                                               serverEndpoint: URL(string: "https://volt-sandbox.frollo.us/api/v2/")!)
             default:
                 // Return frollo sandbox for now
-                return FrolloSDKConfiguration(authenticationType: .oAuth2(clientID: "f97faef0bdef6882a5cbabaf4afc2f3bc8612f725a8434f9daebf2ad3c259cc1",
-                                                                          redirectURL: redirectURL,
+                return FrolloSDKConfiguration(authenticationType: .oAuth2(redirectURL: redirectURL,
                                                                           authorizationEndpoint: URL(string: "https://id-sandbox.frollo.us/oauth/authorize")!,
                                                                           tokenEndpoint: URL(string: "https://id-sandbox.frollo.us/oauth/token")!,
                                                                           revokeTokenEndpoint: URL(string: "https://id-sandbox.frollo.us/oauth/revoke")!),
+                                              clientID: "f97faef0bdef6882a5cbabaf4afc2f3bc8612f725a8434f9daebf2ad3c259cc1",
                                               serverEndpoint: URL(string: "https://api-sandbox.frollo.us/api/v2/")!)
         }
     }

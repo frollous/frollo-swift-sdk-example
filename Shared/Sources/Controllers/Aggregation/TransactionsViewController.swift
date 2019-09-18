@@ -41,14 +41,14 @@ class TransactionsViewController: TableViewController, UISearchResultsUpdating, 
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = UITableView.automaticDimension
         
-        let context = FrolloSDK.shared.database.viewContext
+        let context = Frollo.shared.database.viewContext
         var predicate: NSPredicate?
         if let id = accountID {
             predicate = NSPredicate(format: #keyPath(Transaction.accountID) + " == %ld", argumentArray: [id])
         }
         
         let sortDescriptors = [NSSortDescriptor(key: #keyPath(Transaction.transactionDateString), ascending: false)]
-        fetchedResultsController = FrolloSDK.shared.aggregation.transactionsFetchedResultsController(context: context, filteredBy: predicate, sortedBy: sortDescriptors)
+        fetchedResultsController = Frollo.shared.aggregation.transactionsFetchedResultsController(context: context, filteredBy: predicate, sortedBy: sortDescriptors)
         
         if searchEnabled {
             let controller = defaultSearchController(placeHolder: "Search Transactions")
@@ -64,7 +64,7 @@ class TransactionsViewController: TableViewController, UISearchResultsUpdating, 
         super.viewWillAppear(animated)
         
         let fromDate = Date().addingTimeInterval(-7776000) //  3 months ago
-        FrolloSDK.shared.aggregation.refreshTransactions(from: fromDate, to: Date())
+        Frollo.shared.aggregation.refreshTransactions(from: fromDate, to: Date())
         
         reloadData()
     }
@@ -168,7 +168,7 @@ class TransactionsViewController: TableViewController, UISearchResultsUpdating, 
         
         spinner.startAnimating()
         
-        FrolloSDK.shared.aggregation.transactionSearch(searchTerm: searchTerm) { (result) in
+        Frollo.shared.aggregation.transactionSearch(searchTerm: searchTerm) { (result) in
             self.spinner.stopAnimating()
             
             switch result {

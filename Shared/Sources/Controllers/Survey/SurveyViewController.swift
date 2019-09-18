@@ -26,7 +26,7 @@ class SurveyViewController: UIPageViewController {
         self.view.addSubview(activityLoader)
         
         // fetch surveys from api
-        FrolloSDK.shared.surveys.fetchSurvey(surveyKey: "CHANGE_TESTING") { (result) in
+        Frollo.shared.surveys.fetchSurvey(surveyKey: "CHANGE_TESTING") { (result) in
             self.activityLoader.stopAnimating()
             switch result {
             case .failure(let error):
@@ -56,7 +56,7 @@ class SurveyViewController: UIPageViewController {
             question.answers = selectedAnswers
         }
 
-        FrolloSDK.shared.surveys.submitSurvey(survey: survey) { (result) in
+        Frollo.shared.surveys.submitSurvey(survey: survey) { (result) in
             switch result{
             case .failure(let error):
                 print(error.localizedDescription)

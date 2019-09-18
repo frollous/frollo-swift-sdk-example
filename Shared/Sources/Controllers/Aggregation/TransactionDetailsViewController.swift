@@ -56,7 +56,7 @@ class TransactionDetailsViewController: UIViewController {
     // MARK: - Transaction
     
     private func fetchTransaction() {
-        let context = FrolloSDK.shared.database.viewContext
+        let context = Frollo.shared.database.viewContext
         let fetchRequest: NSFetchRequest<Transaction> = Transaction.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "transactionID == %ld", argumentArray: [transactionID])
         
@@ -80,7 +80,7 @@ class TransactionDetailsViewController: UIViewController {
         tuplearray.append((tag,applyToAllSwitch.isOn))
         
         
-        FrolloSDK.shared.aggregation.addTagToTransaction(transactionID: transactionID, tagApplyAllPairs: tuplearray) { (result) in
+        Frollo.shared.aggregation.addTagToTransaction(transactionID: transactionID, tagApplyAllPairs: tuplearray) { (result) in
             
             self.tagTextField.text = ""
             self.reloadData()
@@ -100,7 +100,7 @@ class TransactionDetailsViewController: UIViewController {
         var tuplearray = [Aggregation.tagApplyAllPairs]()
         tuplearray.append((tag,applyToAllSwitch.isOn))
         
-        FrolloSDK.shared.aggregation.removeTagFromTransaction(transactionID: transactionID, tagApplyAllPairs: tuplearray) { (result) in
+        Frollo.shared.aggregation.removeTagFromTransaction(transactionID: transactionID, tagApplyAllPairs: tuplearray) { (result) in
             
             self.tagTextField.text = ""
             self.reloadData()
@@ -200,7 +200,7 @@ class TransactionDetailsViewController: UIViewController {
         containerView.isHidden = true
         spinner.startAnimating()
         
-        FrolloSDK.shared.aggregation.updateTransaction(transactionID: transaction.transactionID) { (result) in
+        Frollo.shared.aggregation.updateTransaction(transactionID: transaction.transactionID) { (result) in
             self.spinner.stopAnimating()
             self.containerView.isHidden = false
             

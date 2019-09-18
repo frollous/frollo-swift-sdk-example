@@ -31,7 +31,7 @@ class HistoryTransactionReportGroupingViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        FrolloSDK.shared.reports.refreshTransactionHistoryReports(grouping: grouping, period: .month, from: fromDate, to: now) { (result) in
+        Frollo.shared.reports.refreshTransactionHistoryReports(grouping: grouping, period: .month, from: fromDate, to: now) { (result) in
             switch result {
                 case .failure(let error):
                     print(error.localizedDescription)
@@ -46,9 +46,9 @@ class HistoryTransactionReportGroupingViewController: UITableViewController {
     // MARK: - Reports
     
     private func reloadData() {
-        let context = FrolloSDK.shared.database.viewContext
+        let context = Frollo.shared.database.viewContext
         
-        let reports = FrolloSDK.shared.reports.historyTransactionReports(context: context, from: fromDate, to: now, grouping: grouping, period: .month) ?? []
+        let reports = Frollo.shared.reports.historyTransactionReports(context: context, from: fromDate, to: now, grouping: grouping, period: .month) ?? []
         
         switch grouping {
             case .budgetCategory:

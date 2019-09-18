@@ -18,9 +18,9 @@ class MerchantsViewController: TableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let context = FrolloSDK.shared.database.viewContext
+        let context = Frollo.shared.database.viewContext
         let sortDescriptors = [NSSortDescriptor(key: #keyPath(Merchant.name), ascending: true)]
-        fetchedResultsController = FrolloSDK.shared.aggregation.merchantsFetchedResultsController(context: context, sortedBy: sortDescriptors)
+        fetchedResultsController = Frollo.shared.aggregation.merchantsFetchedResultsController(context: context, sortedBy: sortDescriptors)
     }
     
     override func viewWillAppear(_ animated: Bool) {

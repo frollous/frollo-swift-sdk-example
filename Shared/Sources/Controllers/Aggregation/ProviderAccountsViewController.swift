@@ -18,15 +18,15 @@ class ProviderAccountsViewController: TableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let context = FrolloSDK.shared.database.viewContext
-        fetchedResultsController = FrolloSDK.shared.aggregation.providerAccountsFetchedResultsController(context: context)
+        let context = Frollo.shared.database.viewContext
+        fetchedResultsController = Frollo.shared.aggregation.providerAccountsFetchedResultsController(context: context)
         fetchedResultsController.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        FrolloSDK.shared.aggregation.refreshProviderAccounts { (result) in
+        Frollo.shared.aggregation.refreshProviderAccounts { (result) in
             switch result {
                 case .failure(let error):
                     print(error.localizedDescription)
@@ -42,7 +42,7 @@ class ProviderAccountsViewController: TableViewController {
     
     @available(tvOS, unavailable)
     @IBAction func refreshTriggered(sender: UIRefreshControl) {
-        FrolloSDK.shared.aggregation.refreshProviderAccounts { (result) in
+        Frollo.shared.aggregation.refreshProviderAccounts { (result) in
             switch result {
                 case .failure(let error):
                     print(error.localizedDescription)
@@ -55,7 +55,7 @@ class ProviderAccountsViewController: TableViewController {
     }
     
     @IBAction func logoutPress(sender: UIBarButtonItem) {
-        FrolloSDK.shared.reset()
+        Frollo.shared.reset()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
