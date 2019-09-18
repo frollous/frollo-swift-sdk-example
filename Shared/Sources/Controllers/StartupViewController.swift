@@ -34,7 +34,7 @@ class StartupViewController: UIViewController {
     private func completeStartup() {
         spinner.stopAnimating()
         
-        if Frollo.shared.authentication.loggedIn {
+        if Frollo.shared.oAuth2Authentication?.loggedIn == true {
             flowManager?.showMainSplitViewController()
             
             UIApplication.shared.registerForRemoteNotifications()

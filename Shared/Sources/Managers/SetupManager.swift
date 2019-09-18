@@ -49,7 +49,7 @@ class SetupManager {
             let auth = CustomV1Authentication(baseURL: baseV1URL)
             authentication = auth
             
-            config = FrolloSDKConfiguration(authenticationType: .custom(authentication: auth),
+            config = FrolloSDKConfiguration(authenticationType: .custom(authenticationDataSource: auth, authenticationDelegate: auth),
                                             clientID: "f97faef0bdef6882a5cbabaf4afc2f3bc8612f725a8434f9daebf2ad3c259cc1",
                                             serverEndpoint: baseV2URL)
         }
@@ -61,7 +61,7 @@ class SetupManager {
                 case .success:
                     DispatchQueue.main.async {
                         self.completeSetup(completion: completion)
-                }
+                    }
             }
         }
     }
@@ -78,7 +78,7 @@ class SetupManager {
         NotificationCenter.default.addObserver(forName: UserDefaults.didChangeNotification, object: nil, queue: .main) { (notification) in
             self.reloadHostPreferences()
             
-            if self.currentHost != self.selectedHost, Frollo.shared.authentication.loggedIn {
+            if self.currentHost != self.selectedHost, Frollo.shared.oAuth2Authentication?.loggedIn == true {
                 self.saveHostPreferences()
                 
                 Frollo.shared.reset { (result) in

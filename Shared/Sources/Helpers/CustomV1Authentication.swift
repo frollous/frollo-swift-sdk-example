@@ -28,12 +28,23 @@ extension UIDevice {
     
 }
 
-class CustomV1Authentication: Authentication {
+class CustomV1Authentication: AuthenticationDataSource, AuthenticationDelegate {
     
+    struct FrolloAccessToken: AccessToken {
+        
+        let expiryDate: Date?
+        let token: String
+        
+    }
+    
+    var accessToken: AccessToken? {
+        return token
+    }
+    
+    var preemptiveRefreshTime: TimeInterval? = 30
+    
+    var token: FrolloAccessToken?
     var loggedIn = false
-    
-    var delegate: AuthenticationDelegate?
-    var tokenDelegate: AuthenticationTokenDelegate?
     
     private let baseURL: URL
     private let session = URLSession(configuration: URLSessionConfiguration.default)
@@ -76,7 +87,7 @@ class CustomV1Authentication: Authentication {
                         if let accessToken = responseJSON["access_token"] as? String {
                             self.loggedIn = true
                             
-                            self.tokenDelegate?.saveAccessTokens(accessToken: accessToken, expiry: Date().addingTimeInterval(600))
+                            self.token = FrolloAccessToken(expiryDate: nil, token: accessToken)
                             
                             completion(.success)
                         } else {
@@ -95,19 +106,14 @@ class CustomV1Authentication: Authentication {
         task.resume()
     }
     
-    func refreshTokens(completion: FrolloSDKCompletionHandler?) {
+    func accessTokenExpired(completion: @escaping (Bool) -> Void) {
         // Only one access token is retrieved - reset if we try to renew the token
         reset()
         
-        completion?(.success)
+        completion(true)
     }
     
-    func resumeAuthentication(url: URL) -> Bool {
-        // Unused
-        return false
-    }
-    
-    func logout() {
+    func accessTokenInvalid() {
         reset()
     }
     

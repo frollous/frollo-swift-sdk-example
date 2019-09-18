@@ -58,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        return Frollo.shared.applicationOpen(url: url)
+        return Frollo.shared.oAuth2Authentication?.resumeAuthentication(url: url) ?? false
     }
 
 }
