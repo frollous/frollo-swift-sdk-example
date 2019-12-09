@@ -28,16 +28,16 @@ class CurrentTransactionsReportGroupingViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        Frollo.shared.reports.refreshTransactionCurrentReports(grouping: grouping) { (result) in
-            switch result {
-            case .failure(let error):
-                print(error.localizedDescription)
-            case .success:
-                break
-            }
-            
-            self.reloadData()
-        }
+//        Frollo.shared.reports.refreshTransactionCurrentReports(grouping: grouping) { (result) in
+//            switch result {
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            case .success:
+//                break
+//            }
+//
+//            self.reloadData()
+//        }
         
         reloadData()
     }
@@ -47,30 +47,30 @@ class CurrentTransactionsReportGroupingViewController: UITableViewController {
     private func reloadData() {
         let context = Frollo.shared.database.viewContext
         
-        let reports = Frollo.shared.reports.currentTransactionReports(context: context, grouping: grouping) ?? []
-        
-        switch grouping {
-            case .budgetCategory:
-                let allBudgetCategories = reports.compactMap { $0.budgetCategory }
-                let uniqueCategories = Set(allBudgetCategories)
-                budgetCategories = uniqueCategories.sorted(by: { (categoryA, categoryB) -> Bool in
-                    return categoryA.rawValue.compare(categoryB.rawValue) == .orderedAscending
-                })
-            case .merchant:
-                let allMerchants = reports.compactMap { $0.merchant }
-                let uniqueMerchants = Set(allMerchants)
-                merchants = uniqueMerchants.sorted(by: { (merchantA, merchantB) -> Bool in
-                    return merchantA.name.compare(merchantB.name) == .orderedAscending
-                })
-            case .transactionCategory:
-                let allTransactionCategories = reports.compactMap { $0.transactionCategory }
-                let uniqueTransactionCategories = Set(allTransactionCategories)
-                transactionCategories = uniqueTransactionCategories.sorted(by: { (categoryA, categoryB) -> Bool in
-                    return categoryA.name.compare(categoryB.name) == .orderedAscending
-                })
-            case .transactionCategoryGroup:
-                break
-        }
+//        let reports = Frollo.shared.reports.currentTransactionReports(context: context, grouping: grouping) ?? []
+//
+//        switch grouping {
+//            case .budgetCategory:
+//                let allBudgetCategories = reports.compactMap { $0.budgetCategory }
+//                let uniqueCategories = Set(allBudgetCategories)
+//                budgetCategories = uniqueCategories.sorted(by: { (categoryA, categoryB) -> Bool in
+//                    return categoryA.rawValue.compare(categoryB.rawValue) == .orderedAscending
+//                })
+//            case .merchant:
+//                let allMerchants = reports.compactMap { $0.merchant }
+//                let uniqueMerchants = Set(allMerchants)
+//                merchants = uniqueMerchants.sorted(by: { (merchantA, merchantB) -> Bool in
+//                    return merchantA.name.compare(merchantB.name) == .orderedAscending
+//                })
+//            case .transactionCategory:
+//                let allTransactionCategories = reports.compactMap { $0.transactionCategory }
+//                let uniqueTransactionCategories = Set(allTransactionCategories)
+//                transactionCategories = uniqueTransactionCategories.sorted(by: { (categoryA, categoryB) -> Bool in
+//                    return categoryA.name.compare(categoryB.name) == .orderedAscending
+//                })
+//            case .transactionCategoryGroup:
+//                break
+//        }
         
         tableView.reloadData()
     }
@@ -91,6 +91,8 @@ class CurrentTransactionsReportGroupingViewController: UITableViewController {
                 return transactionCategories.count
             case .transactionCategoryGroup:
                 return 0
+        default:
+            return 0
         }
     }
     
@@ -109,30 +111,32 @@ class CurrentTransactionsReportGroupingViewController: UITableViewController {
                 cell.textLabel?.text = category.name
             case .transactionCategoryGroup:
                 break
+        default:
+            break
         }
 
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let viewController = storyboard?.instantiateViewController(withIdentifier: "CurrentTransactionReportsViewController") as! CurrentTransactionReportsViewController
-        viewController.grouping = grouping
-        
-        switch grouping {
-            case .budgetCategory:
-                let budgetCategory = budgetCategories[indexPath.row]
-                viewController.budgetCategory = budgetCategory
-            case .merchant:
-                let merchant = merchants[indexPath.row]
-                viewController.linkedID = merchant.merchantID
-            case .transactionCategory:
-                let category = transactionCategories[indexPath.row]
-                viewController.linkedID = category.transactionCategoryID
-            default:
-                break
-        }
-        
-        navigationController?.pushViewController(viewController, animated: true)
+//        let viewController = storyboard?.instantiateViewController(withIdentifier: "CurrentTransactionReportsViewController") as! CurrentTransactionReportsViewController
+//        viewController.grouping = grouping
+//        
+//        switch grouping {
+//            case .budgetCategory:
+//                let budgetCategory = budgetCategories[indexPath.row]
+//                viewController.budgetCategory = budgetCategory
+//            case .merchant:
+//                let merchant = merchants[indexPath.row]
+//                viewController.linkedID = merchant.merchantID
+//            case .transactionCategory:
+//                let category = transactionCategories[indexPath.row]
+//                viewController.linkedID = category.transactionCategoryID
+//            default:
+//                break
+//        }
+//        
+//        navigationController?.pushViewController(viewController, animated: true)
     }
     
 }
