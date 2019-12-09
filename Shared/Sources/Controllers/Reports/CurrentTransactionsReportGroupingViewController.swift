@@ -28,16 +28,16 @@ class CurrentTransactionsReportGroupingViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        Frollo.shared.reports.refreshTransactionCurrentReports(grouping: grouping) { (result) in
-            switch result {
-            case .failure(let error):
-                print(error.localizedDescription)
-            case .success:
-                break
-            }
-            
-            self.reloadData()
-        }
+//        Frollo.shared.reports.refreshTransactionCurrentReports(grouping: grouping) { (result) in
+//            switch result {
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            case .success:
+//                break
+//            }
+//            
+//            self.reloadData()
+//        }
         
         reloadData()
     }
@@ -68,7 +68,7 @@ class CurrentTransactionsReportGroupingViewController: UITableViewController {
                 transactionCategories = uniqueTransactionCategories.sorted(by: { (categoryA, categoryB) -> Bool in
                     return categoryA.name.compare(categoryB.name) == .orderedAscending
                 })
-            case .transactionCategoryGroup:
+            default:
                 break
         }
         
@@ -89,7 +89,7 @@ class CurrentTransactionsReportGroupingViewController: UITableViewController {
                 return merchants.count
             case .transactionCategory:
                 return transactionCategories.count
-            case .transactionCategoryGroup:
+            default:
                 return 0
         }
     }
@@ -107,7 +107,7 @@ class CurrentTransactionsReportGroupingViewController: UITableViewController {
             case .transactionCategory:
                 let category = transactionCategories[indexPath.row]
                 cell.textLabel?.text = category.name
-            case .transactionCategoryGroup:
+            default:
                 break
         }
 

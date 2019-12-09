@@ -126,6 +126,23 @@
 		03B471272283B0EF00DD773C /* SuggestedTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B471232283B0E100DD773C /* SuggestedTagCell.swift */; };
 		03B471292283B2B300DD773C /* SuggestedTagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B471282283B2B300DD773C /* SuggestedTagsViewController.swift */; };
 		03B4712A2283B2B300DD773C /* SuggestedTagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B471282283B2B300DD773C /* SuggestedTagsViewController.swift */; };
+		1314DCBA239E038C00B9FD16 /* BudgetCreateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1314DCB9239E038C00B9FD16 /* BudgetCreateType.swift */; };
+		1314DCBB239E038C00B9FD16 /* BudgetCreateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1314DCB9239E038C00B9FD16 /* BudgetCreateType.swift */; };
+		13CFDAA82398AA0B00559476 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFDAA72398AA0B00559476 /* MoreViewController.swift */; };
+		13CFDAA92398AA0B00559476 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFDAA72398AA0B00559476 /* MoreViewController.swift */; };
+		13CFDAAB2398AFAE00559476 /* Budgets.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13CFDAAA2398AFAE00559476 /* Budgets.storyboard */; };
+		13CFDAAC2398AFAE00559476 /* Budgets.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13CFDAAA2398AFAE00559476 /* Budgets.storyboard */; };
+		13CFDAAF2398B11D00559476 /* BudgetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFDAAE2398B11D00559476 /* BudgetCell.swift */; };
+		13CFDAB02398B11D00559476 /* BudgetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFDAAE2398B11D00559476 /* BudgetCell.swift */; };
+		13CFDAB22398B55C00559476 /* BudgetListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFDAB12398B55C00559476 /* BudgetListViewController.swift */; };
+		13CFDAB32398B55C00559476 /* BudgetListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFDAB12398B55C00559476 /* BudgetListViewController.swift */; };
+		13CFDAB62398B93F00559476 /* BudgetDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFDAB52398B93F00559476 /* BudgetDetailsViewController.swift */; };
+		13CFDAB72398B93F00559476 /* BudgetDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFDAB52398B93F00559476 /* BudgetDetailsViewController.swift */; };
+		13CFDAB92398C34A00559476 /* BudgetPeriodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFDAB82398C34A00559476 /* BudgetPeriodCell.swift */; };
+		13CFDABA2398C34A00559476 /* BudgetPeriodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFDAB82398C34A00559476 /* BudgetPeriodCell.swift */; };
+		13CFDABC2398C6E500559476 /* BudgetCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFDABB2398C6E500559476 /* BudgetCreateViewController.swift */; };
+		13CFDABD2398C6E500559476 /* BudgetCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFDABB2398C6E500559476 /* BudgetCreateViewController.swift */; };
+		13CFDABF2398D84B00559476 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFDABE2398D84B00559476 /* BaseViewController.swift */; };
 		2F16C955223F00B2005F178D /* SurveyAnswerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F16C954223F00B2005F178D /* SurveyAnswerTableCell.swift */; };
 		2F16C957223F1D7D005F178D /* FrolloSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F16C956223F1D7D005F178D /* FrolloSlider.swift */; };
 		2F657DB9223B6FBD00471B85 /* Surveys.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F657DB8223B6FBD00471B85 /* Surveys.storyboard */; };
@@ -211,6 +228,15 @@
 		03B471202282B77800DD773C /* DateFormatterExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtensions.swift; sourceTree = "<group>"; };
 		03B471232283B0E100DD773C /* SuggestedTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedTagCell.swift; sourceTree = "<group>"; };
 		03B471282283B2B300DD773C /* SuggestedTagsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedTagsViewController.swift; sourceTree = "<group>"; };
+		1314DCB9239E038C00B9FD16 /* BudgetCreateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetCreateType.swift; sourceTree = "<group>"; };
+		13CFDAA72398AA0B00559476 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
+		13CFDAAA2398AFAE00559476 /* Budgets.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Budgets.storyboard; sourceTree = "<group>"; };
+		13CFDAAE2398B11D00559476 /* BudgetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetCell.swift; sourceTree = "<group>"; };
+		13CFDAB12398B55C00559476 /* BudgetListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetListViewController.swift; sourceTree = "<group>"; };
+		13CFDAB52398B93F00559476 /* BudgetDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetDetailsViewController.swift; sourceTree = "<group>"; };
+		13CFDAB82398C34A00559476 /* BudgetPeriodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetPeriodCell.swift; sourceTree = "<group>"; };
+		13CFDABB2398C6E500559476 /* BudgetCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetCreateViewController.swift; sourceTree = "<group>"; };
+		13CFDABE2398D84B00559476 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		2F16C954223F00B2005F178D /* SurveyAnswerTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyAnswerTableCell.swift; sourceTree = "<group>"; };
 		2F16C956223F1D7D005F178D /* FrolloSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrolloSlider.swift; sourceTree = "<group>"; };
 		2F657DB8223B6FBD00471B85 /* Surveys.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Surveys.storyboard; sourceTree = "<group>"; };
@@ -245,6 +271,7 @@
 		013F1F64217829010043BF56 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				13CFDAB42398B56300559476 /* Budgets */,
 				018501F1220A461000069D87 /* Aggregation */,
 				018501F3220A461C00069D87 /* Bills */,
 				01A7229722EA9446006136D8 /* Goals */,
@@ -324,6 +351,7 @@
 		0159E47021924FC2002CC3BB /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				1314DCB8239E037900B9FD16 /* Transient */,
 				01527CE920E1D3B000B5042A /* AppDelegate.swift */,
 				013F1F64217829010043BF56 /* Controllers */,
 				013F1F6B217839D60043BF56 /* Managers */,
@@ -353,6 +381,7 @@
 				01A722B822F01752006136D8 /* Main.storyboard */,
 				01E5BF92222DEB70003D85FD /* Settings.bundle */,
 				2F657DB8223B6FBD00471B85 /* Surveys.storyboard */,
+				13CFDAAA2398AFAE00559476 /* Budgets.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -371,6 +400,7 @@
 		017E59382182957100DC56FF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				13CFDAAD2398B0ED00559476 /* Budgets */,
 				018501F7220A468400069D87 /* Aggregation */,
 				018501F9220A469300069D87 /* Bills */,
 				01A7229E22EACE8A006136D8 /* Goals */,
@@ -427,6 +457,8 @@
 			children = (
 				017E59362182945200DC56FF /* TableViewController.swift */,
 				01527CEB20E1D3B000B5042A /* ViewController.swift */,
+				13CFDAA72398AA0B00559476 /* MoreViewController.swift */,
+				13CFDABE2398D84B00559476 /* BaseViewController.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -516,6 +548,33 @@
 				0150C44522926AB100A18B52 /* CustomV1Authentication.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		1314DCB8239E037900B9FD16 /* Transient */ = {
+			isa = PBXGroup;
+			children = (
+				1314DCB9239E038C00B9FD16 /* BudgetCreateType.swift */,
+			);
+			path = Transient;
+			sourceTree = "<group>";
+		};
+		13CFDAAD2398B0ED00559476 /* Budgets */ = {
+			isa = PBXGroup;
+			children = (
+				13CFDAAE2398B11D00559476 /* BudgetCell.swift */,
+				13CFDAB82398C34A00559476 /* BudgetPeriodCell.swift */,
+			);
+			path = Budgets;
+			sourceTree = "<group>";
+		};
+		13CFDAB42398B56300559476 /* Budgets */ = {
+			isa = PBXGroup;
+			children = (
+				13CFDAB12398B55C00559476 /* BudgetListViewController.swift */,
+				13CFDAB52398B93F00559476 /* BudgetDetailsViewController.swift */,
+				13CFDABB2398C6E500559476 /* BudgetCreateViewController.swift */,
+			);
+			path = Budgets;
 			sourceTree = "<group>";
 		};
 		2F16C953223F0091005F178D /* Survey */ = {
@@ -633,6 +692,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13CFDAAB2398AFAE00559476 /* Budgets.storyboard in Resources */,
 				01A722B922F01752006136D8 /* LaunchScreen.storyboard in Resources */,
 				01A722BA22F01752006136D8 /* Main.storyboard in Resources */,
 				013BC1ED218AA62D005A2714 /* AddProviderLoginFieldView.xib in Resources */,
@@ -648,6 +708,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13CFDAAC2398AFAE00559476 /* Budgets.storyboard in Resources */,
 				015687B3218C152400C961B3 /* Main.storyboard in Resources */,
 				0159E47421925039002CC3BB /* Assets.xcassets in Resources */,
 			);
@@ -699,6 +760,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13CFDABF2398D84B00559476 /* BaseViewController.swift in Sources */,
 				01A722AC22EFB07C006136D8 /* GoalListCell.swift in Sources */,
 				03B4711B22829F1100DD773C /* UserTagCell.swift in Sources */,
 				018501FF220A51DD00069D87 /* ReportsAccountListViewController.swift in Sources */,
@@ -709,13 +771,18 @@
 				0150C44622926AB100A18B52 /* CustomV1Authentication.swift in Sources */,
 				013F1F6921782CC80043BF56 /* StartupViewController.swift in Sources */,
 				013BC1E7218AA0C2005A2714 /* AddProviderChoiceCell.swift in Sources */,
+				13CFDAAF2398B11D00559476 /* BudgetCell.swift in Sources */,
 				03B471242283B0E100DD773C /* SuggestedTagCell.swift in Sources */,
 				017E593C2182D03C00DC56FF /* TransactionsViewController.swift in Sources */,
+				13CFDAB92398C34A00559476 /* BudgetPeriodCell.swift in Sources */,
 				01A7229C22EA9481006136D8 /* GoalTargetViewController.swift in Sources */,
 				0135D32221A609BD00318142 /* MessageCell.swift in Sources */,
 				017E58CD217ECC2200DC56FF /* FlowManager.swift in Sources */,
+				13CFDAB62398B93F00559476 /* BudgetDetailsViewController.swift in Sources */,
+				13CFDABC2398C6E500559476 /* BudgetCreateViewController.swift in Sources */,
 				01A722B222EFDD24006136D8 /* GoalDetailsViewController.swift in Sources */,
 				01850205220A849100069D87 /* CurrentTransactionsReportGroupingViewController.swift in Sources */,
+				1314DCBA239E038C00B9FD16 /* BudgetCreateType.swift in Sources */,
 				03B4711D2282A69D00DD773C /* UIViewController+SearchController.swift in Sources */,
 				01850211220BBA8500069D87 /* HistoryTransactionReportsViewController.swift in Sources */,
 				01568799218AB0B100C961B3 /* AddProviderLoginFieldCell.swift in Sources */,
@@ -733,11 +800,13 @@
 				013F1F66217829320043BF56 /* ProviderAccountsViewController.swift in Sources */,
 				015023C82181465100EEB5F2 /* ProvidersViewController.swift in Sources */,
 				01A722A022EACEAB006136D8 /* TextFieldCell.swift in Sources */,
+				13CFDAA82398AA0B00559476 /* MoreViewController.swift in Sources */,
 				01E5BF90222DEACD003D85FD /* SetupManager.swift in Sources */,
 				01527CEC20E1D3B000B5042A /* ViewController.swift in Sources */,
 				2FE180062248574F00B87AAB /* UIExtensions.swift in Sources */,
 				011C199D21E6EDFE00490EDD /* BillPaymentsViewController.swift in Sources */,
 				03B471292283B2B300DD773C /* SuggestedTagsViewController.swift in Sources */,
+				13CFDAB22398B55C00559476 /* BudgetListViewController.swift in Sources */,
 				017E593E2182D8D100DC56FF /* TransactionCell.swift in Sources */,
 				01850208220A86C500069D87 /* ReportTypeTransactionViewController.swift in Sources */,
 				011C199A21E6C8CE00490EDD /* BillsViewController.swift in Sources */,
@@ -772,13 +841,16 @@
 				015687A8218BD5DD00C961B3 /* AddProviderLoginFieldView.swift in Sources */,
 				01850209220A86C500069D87 /* ReportTypeTransactionViewController.swift in Sources */,
 				01A722A122EACEAB006136D8 /* TextFieldCell.swift in Sources */,
+				1314DCBB239E038C00B9FD16 /* BudgetCreateType.swift in Sources */,
 				015023C92181465100EEB5F2 /* ProvidersViewController.swift in Sources */,
 				013F1F67217829320043BF56 /* ProviderAccountsViewController.swift in Sources */,
 				0135D32021A526B200318142 /* MessagesViewController.swift in Sources */,
 				015687A6218BD5D800C961B3 /* AddProviderChoiceCell.swift in Sources */,
 				0156879D218BD58000C961B3 /* MerchantsViewController.swift in Sources */,
 				01A722AD22EFB07C006136D8 /* GoalListCell.swift in Sources */,
+				13CFDABD2398C6E500559476 /* BudgetCreateViewController.swift in Sources */,
 				03B471262283B0ED00DD773C /* UserTagCell.swift in Sources */,
+				13CFDAA92398AA0B00559476 /* MoreViewController.swift in Sources */,
 				015687A0218BD59100C961B3 /* TransactionDetailsViewController.swift in Sources */,
 				03B471272283B0EF00DD773C /* SuggestedTagCell.swift in Sources */,
 				01850200220A51DD00069D87 /* ReportsAccountListViewController.swift in Sources */,
@@ -793,6 +865,7 @@
 				01E5BF91222DEACD003D85FD /* SetupManager.swift in Sources */,
 				013F1F6A21782CC80043BF56 /* StartupViewController.swift in Sources */,
 				01850212220BBA8500069D87 /* HistoryTransactionReportsViewController.swift in Sources */,
+				13CFDAB72398B93F00559476 /* BudgetDetailsViewController.swift in Sources */,
 				01A722B022EFB77B006136D8 /* GoalListViewController.swift in Sources */,
 				0156879B218BD57900C961B3 /* AccountsViewController.swift in Sources */,
 				03B4711922829DDB00DD773C /* UserTagsViewController.swift in Sources */,
@@ -800,6 +873,7 @@
 				017E58CE217ECC2200DC56FF /* FlowManager.swift in Sources */,
 				01A722A422EAD271006136D8 /* GoalCreateViewController.swift in Sources */,
 				01A7229D22EA9481006136D8 /* GoalTargetViewController.swift in Sources */,
+				13CFDAB32398B55C00559476 /* BudgetListViewController.swift in Sources */,
 				01A722B322EFDD24006136D8 /* GoalDetailsViewController.swift in Sources */,
 				0150C44722926AB100A18B52 /* CustomV1Authentication.swift in Sources */,
 				011C199821E6C4EE00490EDD /* BillCell.swift in Sources */,
@@ -809,9 +883,11 @@
 				0185020C220B9E4000069D87 /* CurrentTransactionReportsViewController.swift in Sources */,
 				03B471252283B0EB00DD773C /* TagsCollectionView.swift in Sources */,
 				015687B6218C1F4300C961B3 /* ProviderAccountCell.swift in Sources */,
+				13CFDAB02398B11D00559476 /* BudgetCell.swift in Sources */,
 				015687A2218BD5A800C961B3 /* ViewController.swift in Sources */,
 				015687A3218BD5B900C961B3 /* AppDelegate.swift in Sources */,
 				03B4711E2282A69D00DD773C /* UIViewController+SearchController.swift in Sources */,
+				13CFDABA2398C34A00559476 /* BudgetPeriodCell.swift in Sources */,
 				01A722A722EE7842006136D8 /* AmountCell.swift in Sources */,
 				015687A1218BD59400C961B3 /* TransactionsViewController.swift in Sources */,
 				018501FD220A472600069D87 /* ReportTypesViewController.swift in Sources */,

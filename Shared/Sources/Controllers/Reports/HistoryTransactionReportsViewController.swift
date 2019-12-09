@@ -43,16 +43,16 @@ class HistoryTransactionReportsViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        Frollo.shared.reports.refreshTransactionCurrentReports(grouping: grouping) { (result) in
-            switch result {
-                case .failure(let error):
-                    print(error.localizedDescription)
-                case .success:
-                    break
-            }
-            
-            self.reloadData()
-        }
+//        Frollo.shared.reports.refreshTransactionCurrentReports(grouping: grouping) { (result) in
+//            switch result {
+//                case .failure(let error):
+//                    print(error.localizedDescription)
+//                case .success:
+//                    break
+//            }
+//
+//            self.reloadData()
+//        }
         
         reloadData()
     }
@@ -77,11 +77,11 @@ class HistoryTransactionReportsViewController: UITableViewController {
                 if let id = linkedID {
                     predicates.append(NSPredicate(format: #keyPath(ReportTransactionCurrent.linkedID) + " == %ld", argumentArray: [id]))
                 }
-            case .transactionCategoryGroup:
+            default:
                 break
         }
-        
-        reports = Frollo.shared.reports.historyTransactionReports(context: context, filteredBy: NSCompoundPredicate(andPredicateWithSubpredicates: predicates), sortedBy: [NSSortDescriptor(key: #keyPath(ReportTransactionHistory.dateString), ascending: false)]) ?? []
+//        
+//        reports = Frollo.shared.reports.historyTransactionReports(context: context, filteredBy: NSCompoundPredicate(andPredicateWithSubpredicates: predicates), sortedBy: [NSSortDescriptor(key: #keyPath(ReportTransactionHistory.dateString), ascending: false)]) ?? []
         
         tableView.reloadData()
     }
