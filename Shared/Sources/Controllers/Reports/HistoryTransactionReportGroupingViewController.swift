@@ -116,26 +116,26 @@ class HistoryTransactionReportGroupingViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let viewController = storyboard?.instantiateViewController(withIdentifier: "HistoryTransactionReportsViewController") as! HistoryTransactionReportsViewController
-        viewController.grouping = grouping
-        viewController.fromDate = fromDate
-        viewController.toDate = now
-
-        switch grouping {
-            case .budgetCategory:
-                let budgetCategory = budgetCategories[indexPath.row]
-                viewController.budgetCategory = budgetCategory
-            case .merchant:
-                let merchant = merchants[indexPath.row]
-                viewController.linkedID = merchant.merchantID
-            case .transactionCategory:
-                let category = transactionCategories[indexPath.row]
-                viewController.linkedID = category.transactionCategoryID
-            default:
-                break
-        }
-
-        navigationController?.pushViewController(viewController, animated: true)
+//        let viewController = storyboard?.instantiateViewController(withIdentifier: "HistoryTransactionReportsViewController") as! HistoryTransactionReportsViewController
+//        viewController.grouping = grouping
+//        viewController.fromDate = fromDate
+//        viewController.toDate = now
+//
+//        switch grouping {
+//            case .budgetCategory:
+//                let budgetCategory = budgetCategories[indexPath.row]
+//                viewController.budgetCategory = budgetCategory
+//            case .merchant:
+//                let merchant = merchants[indexPath.row]
+//                viewController.linkedID = merchant.merchantID
+//            case .transactionCategory:
+//                let category = transactionCategories[indexPath.row]
+//                viewController.linkedID = category.transactionCategoryID
+//            default:
+//                break
+//        }
+//
+//        navigationController?.pushViewController(viewController, animated: true)
     }
 
 }
