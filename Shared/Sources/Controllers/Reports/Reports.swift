@@ -41,39 +41,59 @@ extension ReportItemDisplayable where Self: Reportable {
     }
 }
 
-extension ReportResponse {
+protocol ReportItemsProvider {
+    var reportItems: [ReportItemDisplayable] { get }
+}
+
+extension ReportResponse: ReportItemsProvider {
     var reportItems: [ReportItemDisplayable] {
         return groupReports.map{ _ in ReportItem(date: date, amount: value, grouping: T.grouping) }
     }
 }
 
-struct ReportForm<T: Reportable> {
+struct ReportForm{
     var filtering: TransactionReportFilter
     var grouping: ReportGrouping
     var period: Reports.Period
     
-    
     func fetch(completion: @escaping RequestCompletion<[ReportItemDisplayable]>) {
         
-        func getCompletion<T>(result: ReportsResponse<T>) -> ((RequestCompletion<[ReportItemDisplayable]>) -> Void) {
-            return {
-                
+        /// Will map the results from the fetch responses into a completion with displayable report items
+        func mapDisplayableItemsFromFetchCompletion<T: Reportable>(result: Result<ReportsResponse<T>, Error>) {
+            switch result {
+            case .success(let response):
+                completion(.success(response.flatMap{ $0.reportItems }))
+            case .failure(let error):
+                completion(.failure(error))
             }
         }
         
         let now = Date()
         let oneYearBack = Calendar.current.date(byAdding: .year, value: -1, to: Date())!
-        Frollo.shared.reports.fetchTransactionReports(filtering: filtering, grouping: grouping, period: period, from: oneYearBack, to: now, completion: {
-        result in
-            switch result {
-            case .success(let reports):
-                let items = reports.flatMap{ $0.reportItems }
-                completion(.success(items))
-            case .failure(let error):
-                completion(.failure(error))
+        let period = Reports.Period.monthly
+        switch grouping {
+        case .budgetCategory:
+            Frollo.shared.reports.fetchTransactionReports(filtering: filtering, grouping: BudgetCategoryGroupReport.self, period: period, from: oneYearBack, to: now) {
+                result in
+                mapDisplayableItemsFromFetchCompletion(result: result)
             }
-        })
+        case .merchant:
+            Frollo.shared.reports.fetchTransactionReports(filtering: filtering, grouping: MerchantGroupReport.self, period: period, from: oneYearBack, to: now) {
+                result in
+                mapDisplayableItemsFromFetchCompletion(result: result)
+            }
+        case .transactionCategory:
+            Frollo.shared.reports.fetchTransactionReports(filtering: filtering, grouping: TransactionCategoryGroupReport.self, period: period, from: oneYearBack, to: now) {
+                result in
+                mapDisplayableItemsFromFetchCompletion(result: result)
+            }
+        case .tag:
+            Frollo.shared.reports.fetchTransactionReports(filtering: filtering, grouping: TagGroupReport.self, period: period, from: oneYearBack, to: now) {
+                result in
+                mapDisplayableItemsFromFetchCompletion(result: result)
+            }
+        default:
+            break
+        }
     }
 }
-
-let a = ReportForm(filtering: .category(id: nil), grouping: TransactionCategoryGroupReport.self, period: .weekly)
