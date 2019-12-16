@@ -1,4 +1,4 @@
-git "git@bitbucket.org:frollo1/frollo-ios-sdk.git" "7343546f8bb7b87e22356e9d079b7d6a611c9704"
+git "file:///xcode/frollo-ios-sdk" "60a9f6354b4b226a769958cb5132de3165772ccd"
 github "Alamofire/Alamofire" "4.9.1"
 github "SwiftyJSON/SwiftyJSON" "5.0.0"
 github "openid/AppAuth-iOS" "1.3.0"
