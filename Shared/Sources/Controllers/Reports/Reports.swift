@@ -12,7 +12,7 @@ import FrolloSDK
 struct ReportItem {
     var date: String
     var amount: Decimal
-    var grouping: ReportGrouping
+    var name: String
 }
 
 extension ReportItem: ReportItemDisplayable {
@@ -25,7 +25,7 @@ extension ReportItem: ReportItemDisplayable {
     }
     
     var reportItemGroupNameText: String? {
-        return grouping.rawValue
+        return name
     }
 }
 
@@ -47,7 +47,7 @@ protocol ReportItemsProvider {
 
 extension ReportResponse: ReportItemsProvider {
     var reportItems: [ReportItemDisplayable] {
-        return groupReports.map{ _ in ReportItem(date: date, amount: value, grouping: T.grouping) }
+        return groupReports.map{ ReportItem(date: date, amount: $0.value, name: $0.name) }
     }
 }
 
@@ -95,8 +95,6 @@ extension ReportFormRepresentable {
                 result in
                 mapDisplayableItemsFromFetchCompletion(result: result)
             }
-        default:
-            break
         }
     }
 }

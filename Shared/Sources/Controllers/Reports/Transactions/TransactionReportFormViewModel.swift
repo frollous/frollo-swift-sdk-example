@@ -191,12 +191,15 @@ extension TransactionReportFormViewModel: TransactionReportFormViewControllerDat
 extension TransactionReportFormViewModel: TransactionReportFormViewControllerDelegate {
     func submitDidPress(completion: @escaping ([ReportItemDisplayable]) -> Void) {
         fetch { (result) in
-            switch result {
-            case .success(let reports):
-                completion(reports)
-            case .failure(let error):
-                assertionFailure(error.localizedDescription)
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let reports):
+                    completion(reports)
+                case .failure(let error):
+                    assertionFailure(error.localizedDescription)
+                }
             }
+            
         }
     }
     

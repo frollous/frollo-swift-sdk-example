@@ -1,2 +1,2 @@
 # git "frollo-ios-sdk" "2.0.0"
-git "file:///xcode/frollo-ios-sdk" "develop"
+git "git@bitbucket.org:frollo1/frollo-ios-sdk.git" "075078ed1087a70accc93dffaf945e52fb893bb4"
