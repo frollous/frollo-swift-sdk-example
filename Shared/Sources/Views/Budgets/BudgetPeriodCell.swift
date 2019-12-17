@@ -10,7 +10,10 @@ import UIKit
 
 class BudgetPeriodCell: UITableViewCell {
     
-    @IBOutlet var bugdetPeriodTitleLabel: UILabel!
-    @IBOutlet var bugdetPeriodSubTitleLabel: UILabel!
+    @IBOutlet var bugdetPeriodStartDateLabel: UILabel!
+    @IBOutlet var bugdetPeriodEndDateLabel: UILabel!
+    @IBOutlet var bugdetPeriodCurrentAmountLabel: UILabel!
+    @IBOutlet var bugdetPeriodTargetAmountLabel: UILabel!
+    @IBOutlet var budgetPeriodStatusLabel: UILabel!
     
 }

@@ -79,7 +79,6 @@ class TransactionDetailsViewController: UIViewController {
         var tuplearray = [Aggregation.tagApplyAllPairs]()
         tuplearray.append((tag,applyToAllSwitch.isOn))
         
-        
         Frollo.shared.aggregation.addTagToTransaction(transactionID: transactionID, tagApplyAllPairs: tuplearray) { (result) in
             
             self.tagTextField.text = ""

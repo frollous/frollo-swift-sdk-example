@@ -17,18 +17,28 @@ class BudgetCreateViewController: BaseViewController {
         case periodAmount
         case type
         case typeValue
+        case startDate
     }
     
     @IBOutlet var saveButtonItem: UIBarButtonItem!
     @IBOutlet var createBudgetTableView: UITableView!
+    @IBOutlet var datePickerConstraint: NSLayoutConstraint!
+    @IBOutlet var datePicker: UIDatePicker!
+    @IBOutlet var pickerContainerView: UIView!
     
-    var tableFields: [BudgetFields] = [.frequency, .imageURLString, .periodAmount, .type, .typeValue]
+    var tableFields: [BudgetFields] = [.frequency, .imageURLString, .periodAmount, .type, .typeValue, .startDate]
     var budgetFrequency: Budget.Frequency = .weekly
     var imageURLString: String?
     var type: Budget.BudgetType?
     var typeValue: String?
     var periodAmount: Decimal?
     var budgetCreateType: BudgetCreateType = .budgetCategory(budgetCategory: .living)
+    
+    var budgetStartDate: Date?
+    var update = false
+    var budgetID: Int64 = -1
+    let context = Frollo.shared.database.viewContext
+    var budget: Budget?
     
     private let currencyFormatter: NumberFormatter = {
            let numberFormatter = NumberFormatter()
@@ -37,13 +47,13 @@ class BudgetCreateViewController: BaseViewController {
            numberFormatter.maximumFractionDigits = 0
            return numberFormatter
        }()
-       let dateFormatter: DateFormatter = {
-           let dateFormatter = DateFormatter()
-           dateFormatter.locale = Locale.autoupdatingCurrent
-           dateFormatter.dateStyle = .short
-           dateFormatter.timeStyle = .none
-           return dateFormatter
-       }()
+    
+    private let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale.autoupdatingCurrent
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter
+    }()
     
     private func stripCurrencyString(string: String) -> String {
         let characterSet = CharacterSet.decimalDigits.inverted
@@ -55,7 +65,18 @@ class BudgetCreateViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if update {
+            budget = Frollo.shared.budgets.budget(context: context, budgetID: budgetID)
+            saveButtonItem.title = "Update"
+            periodAmount = budget?.periodAmount as Decimal?
+            imageURLString = budget?.imageURLString
+            tableFields = [.imageURLString, .periodAmount]
+            createBudgetTableView.reloadData()
+        }
     }
+    
+    // MARK: -  Interactions
     
     @IBAction func backButtonDidTap(_ sender: Any) {
         navigationController?.popViewController(animated: true)
@@ -65,29 +86,67 @@ class BudgetCreateViewController: BaseViewController {
         
         self.view.endEditing(true)
         
+        if update {
+            updateBudget()
+        } else {
+            createBudget()
+        }
+        
+    }
+    
+    // MARK: -  API calls
+    
+    func updateBudget() {
+                   
+        context.performAndWait {
+            
+            guard let newPeriodAmount = periodAmount
+                else {
+                    showError(details: "Period Amount is not valid.")
+                    return
+            }
+            
+            showProgress()
+                        
+            budget?.imageURLString = imageURLString
+            budget?.periodAmount = NSDecimalNumber(decimal: newPeriodAmount)
+            
+            try? context.save()
+        }
+        
+        Frollo.shared.budgets.updateBudget(budgetID: budgetID){ (result) in
+            self.handleResult(result: result)
+        }
+    }
+    
+    func createBudget() {
         guard let budgetPeriodAmount = periodAmount
             else {
                 showError(details: "Period Amount is missing.")
                 return
         }
         
+        var startDateString : String?
+        if let startDate = budgetStartDate {
+            startDateString = dateFormatter.string(from: startDate)
+        }
+        
         showProgress()
         
         switch budgetCreateType {
         case .budgetCategory(let budgetCategory):
-            Frollo.shared.budgets.createBudgetCategoryBudget(budgetCategory: budgetCategory, frequency: budgetFrequency, periodAmount: budgetPeriodAmount){ (result) in
+            Frollo.shared.budgets.createBudgetCategoryBudget(budgetCategory: budgetCategory, frequency: budgetFrequency, periodAmount: budgetPeriodAmount, startDate: startDateString){ (result) in
                 self.handleResult(result: result)
             }
         case .category(let categoryID):
-            Frollo.shared.budgets.createCategoryBudget(categoryID: categoryID, frequency: budgetFrequency, periodAmount: budgetPeriodAmount){ (result) in
+            Frollo.shared.budgets.createCategoryBudget(categoryID: categoryID, frequency: budgetFrequency, periodAmount: budgetPeriodAmount, startDate: startDateString){ (result) in
                 self.handleResult(result: result)
             }
         case .merchant(let merchantID):
-            Frollo.shared.budgets.createMerchantBudget(merchantID: merchantID, frequency: budgetFrequency, periodAmount: budgetPeriodAmount){ (result) in
+            Frollo.shared.budgets.createMerchantBudget(merchantID: merchantID, frequency: budgetFrequency, periodAmount: budgetPeriodAmount, startDate: startDateString){ (result) in
                 self.handleResult(result: result)
             }
         }
-        
     }
     
     func handleResult(result: EmptyResult<Error>) {
@@ -100,6 +159,8 @@ class BudgetCreateViewController: BaseViewController {
             self.navigationController?.popViewController(animated: true)
         }
     }
+    
+    // MARK: -  Popup Options
     
     func showFrequencyOptions() {
         let alertController = UIAlertController(title: "Frequency", message: nil, preferredStyle: .actionSheet)
@@ -145,6 +206,8 @@ class BudgetCreateViewController: BaseViewController {
         present(alertController, animated: true)
     }
     
+    // MARK: -  Navigations
+    
     func showValuePopup() {
         switch budgetCreateType {
         case .budgetCategory:
@@ -160,7 +223,7 @@ class BudgetCreateViewController: BaseViewController {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let transactionCategoriesViewController = mainStoryboard.instantiateViewController(withIdentifier: "TransactionCategoriesViewController") as! TransactionCategoriesViewController
         transactionCategoriesViewController.delegate = self
-        present(transactionCategoriesViewController, animated: true, completion: nil)
+         self.navigationController?.pushViewController(transactionCategoriesViewController, animated: true)
         
     }
     
@@ -168,8 +231,38 @@ class BudgetCreateViewController: BaseViewController {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let merchantsViewController = mainStoryboard.instantiateViewController(withIdentifier: "MerchantsViewController") as! MerchantsViewController
         merchantsViewController.delegate = self
-        present(merchantsViewController, animated: true, completion: nil)
+         self.navigationController?.pushViewController(merchantsViewController, animated: true)
         
+    }
+    
+    // MARK: -  Date Picker functions
+    
+    func hideDatePicker() {
+        datePickerConstraint.constant = 0
+        
+        UIView.animate(withDuration: 0.25) {
+            self.view.layoutIfNeeded()
+        }
+        UIView.animate(withDuration: 0.25) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func showDatePicker() {        
+        datePickerConstraint.constant = -260
+        
+        UIView.animate(withDuration: 0.25) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @IBAction func datePickerValueChanged(sender: UIDatePicker) {
+        budgetStartDate = sender.date
+        createBudgetTableView.reloadData()
+    }
+       
+    @IBAction func donePress(sender: UIBarButtonItem) {
+        hideDatePicker()
     }
 }
 
@@ -240,6 +333,16 @@ extension BudgetCreateViewController: UITableViewDelegate, UITableViewDataSource
                     cell.detailTextLabel?.text = "\(merchantID)"
                 }
                 return cell
+            
+            case .startDate:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "StartDateCell", for: indexPath)
+                cell.textLabel?.text = "Start Date"
+                
+                if let startDate = budgetStartDate {
+                    cell.detailTextLabel?.text = dateFormatter.string(from: startDate)
+                }
+                
+                return cell
         }
 
        }
@@ -247,6 +350,7 @@ extension BudgetCreateViewController: UITableViewDelegate, UITableViewDataSource
        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
            tableView.deselectRow(at: indexPath, animated: true)
            
+            self.view.endEditing(true)
            let field = tableFields[indexPath.row]
         
             switch field {
@@ -258,6 +362,9 @@ extension BudgetCreateViewController: UITableViewDelegate, UITableViewDataSource
                 
                 case .typeValue:
                     showValuePopup()
+                
+                case .startDate:
+                    showDatePicker()
             
                 default:
                 break

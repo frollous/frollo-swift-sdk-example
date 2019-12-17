@@ -27,6 +27,7 @@ class MerchantsViewController: TableViewController {
         let context = Frollo.shared.database.viewContext
         let sortDescriptors = [NSSortDescriptor(key: #keyPath(Merchant.name), ascending: true)]
         fetchedResultsController = Frollo.shared.aggregation.merchantsFetchedResultsController(context: context, sortedBy: sortDescriptors)
+        searchBar.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -94,7 +95,7 @@ class MerchantsViewController: TableViewController {
         
         let merchant = fetchedResultsController.object(at: indexPath)
         delegate.merchantDidselect(merchant: merchant)
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
 
 }

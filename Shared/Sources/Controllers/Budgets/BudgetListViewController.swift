@@ -18,7 +18,7 @@ class BudgetListViewController: TableViewController {
        super.viewDidLoad()
 
         let context = Frollo.shared.database.viewContext
-        fetchedResultsController = Frollo.shared.budgets.budgetsFetchedResultsController(context: context, status: .active, sortedBy: [NSSortDescriptor(key: #keyPath(Budget.startDateString), ascending: true)])
+        fetchedResultsController = Frollo.shared.budgets.budgetsFetchedResultsController(context: context, sortedBy: [NSSortDescriptor(key: #keyPath(Budget.startDateString), ascending: true)])
         fetchedResultsController.delegate = self
 
    }
@@ -53,8 +53,14 @@ class BudgetListViewController: TableViewController {
     }
     
     @IBAction func addButtonDidTap(_ sender: Any) {
+        showCreateBudget()
+    }
+    
+    func showCreateBudget(update: Bool = false, budgetID: Int64 = -1) {
         let storyboard = UIStoryboard(name: "Budgets", bundle: nil)
-        let budgetListViewController = storyboard.instantiateViewController(withIdentifier: "BudgetCreateViewController")
+        let budgetListViewController = storyboard.instantiateViewController(withIdentifier: "BudgetCreateViewController") as! BudgetCreateViewController
+        budgetListViewController.update = update
+        budgetListViewController.budgetID = budgetID
         self.navigationController?.pushViewController(budgetListViewController, animated: true)
     }
     
@@ -86,8 +92,19 @@ extension BudgetListViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BudgetCell", for: indexPath) as! BudgetCell
         
         let budget = fetchedResultsController.object(at: indexPath)
-        cell.bugdetTitleLabel.text = budget.budgetType.rawValue
-        cell.bugdetSubTitleLabel.text = budget.typeValue
+        cell.bugdetTypeLabel.text = budget.budgetType.rawValue
+        cell.bugdetValueLabel.text = budget.typeValue
+        cell.budgetFrequencyLabel.text = budget.frequency.rawValue
+        cell.budgetStartDateLabel.text = budget.startDateString
+        cell.budgetTargetAmountLabel.text = "Period: \(budget.periodAmount)"
+        cell.budgetCurrentAmountLabel.text = "Current: \(budget.currentAmount)"
+        
+        if let imageURL = budget.imageURLString {
+            cell.budgetImageView.downloaded(from: imageURL)
+        } else {
+            cell.budgetImageView.image = nil
+        }
+        
 
         return cell
     }
@@ -98,6 +115,19 @@ extension BudgetListViewController {
         let budgetDetailsViewController = storyboard?.instantiateViewController(withIdentifier: "BudgetDetailsViewController") as! BudgetDetailsViewController
         budgetDetailsViewController.budgetID = budget.budgetID
         navigationController?.pushViewController(budgetDetailsViewController, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let updateAction = UITableViewRowAction(style: .default, title: "Update", handler: { (action, indexPath) in
+            let budget = self.fetchedResultsController.object(at: indexPath)
+            self.showCreateBudget(update: true, budgetID: budget.budgetID)
+        })
+
+        return [updateAction]
     }
     
 }

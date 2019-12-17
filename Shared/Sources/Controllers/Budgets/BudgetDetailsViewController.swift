@@ -114,8 +114,11 @@ extension BudgetDetailsViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BudgetPeriodCell", for: indexPath) as! BudgetPeriodCell
         
         let budgetPeriod = fetchedResultsController.object(at: indexPath)
-        cell.bugdetPeriodTitleLabel.text = budgetPeriod.startDateString
-        cell.bugdetPeriodSubTitleLabel.text = budgetPeriod.endDateString
+        cell.bugdetPeriodStartDateLabel.text = "Start: \(budgetPeriod.startDateString)"
+        cell.bugdetPeriodEndDateLabel.text = "End: \(budgetPeriod.endDateString)"
+        cell.bugdetPeriodCurrentAmountLabel.text = "Current: \(budgetPeriod.currentAmount)"
+        cell.bugdetPeriodTargetAmountLabel.text = "Target: \(budgetPeriod.targetAmount)"
+        cell.budgetPeriodStatusLabel.text = budgetPeriod.trackingStatus?.rawValue ?? ""
 
         return cell
     }

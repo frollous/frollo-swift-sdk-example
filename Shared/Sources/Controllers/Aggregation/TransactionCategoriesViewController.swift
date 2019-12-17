@@ -96,7 +96,7 @@ class TransactionCategoriesViewController: TableViewController {
         
         let transactionCategory = fetchedResultsController.object(at: indexPath)
         delegate.transactionCatrgoryDidSelect(transactionCategory: transactionCategory)
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
 
 }

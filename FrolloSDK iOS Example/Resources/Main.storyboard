@@ -1137,6 +1137,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Merchants" id="1gm-Vu-M6Y"/>
+                    <connections>
+                        <outlet property="searchBar" destination="Onl-mO-hEn" id="zPZ-mF-DSt"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pCG-OB-Z6C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

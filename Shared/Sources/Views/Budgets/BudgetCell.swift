@@ -11,8 +11,12 @@ import UIKit
 class BudgetCell: UITableViewCell {
     
     @IBOutlet var budgetImageView: UIImageView!
-    @IBOutlet var bugdetTitleLabel: UILabel!
-    @IBOutlet var bugdetSubTitleLabel: UILabel!
+    @IBOutlet var bugdetTypeLabel: UILabel!
+    @IBOutlet var bugdetValueLabel: UILabel!
+    @IBOutlet var budgetTargetAmountLabel: UILabel!
+    @IBOutlet var budgetCurrentAmountLabel: UILabel!
+    @IBOutlet var budgetFrequencyLabel: UILabel!
+    @IBOutlet var budgetStartDateLabel: UILabel!
 
 }
 
