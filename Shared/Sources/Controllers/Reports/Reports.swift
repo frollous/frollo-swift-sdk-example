@@ -9,10 +9,18 @@
 import Foundation
 import FrolloSDK
 
+/// Represents a report item in a group report
 struct ReportItem {
     var date: String
     var amount: Decimal
     var name: String
+}
+
+/// Objects conforming to this can be displayed in a report items list
+protocol ReportItemDisplayable {
+    var reportItemDateText: String? { get }
+    var reportItemAmountText: String? { get }
+    var reportItemGroupNameText: String? { get }
 }
 
 extension ReportItem: ReportItemDisplayable {
@@ -29,28 +37,15 @@ extension ReportItem: ReportItemDisplayable {
     }
 }
 
-protocol ReportItemDisplayable {
-    var reportItemDateText: String? { get }
-    var reportItemAmountText: String? { get }
-    var reportItemGroupNameText: String? { get }
-}
-
-extension ReportItemDisplayable where Self: Reportable {
-    var reportItemGroupNameText: String? {
-        return Self.grouping.rawValue
-    }
-}
-
-protocol ReportItemsProvider {
-    var reportItems: [ReportItemDisplayable] { get }
-}
-
-extension ReportResponse: ReportItemsProvider {
+extension ReportResponse {
+    
+    /// The report items that will be displayed in the report items list
     var reportItems: [ReportItemDisplayable] {
         return groupReports.map{ ReportItem(date: date, amount: $0.value, name: $0.name) }
     }
 }
 
+/// Represents a way to handle form input
 protocol ReportFormRepresentable {
     var filtering: TransactionReportFilter { get }
     var grouping: ReportGrouping { get }
@@ -59,6 +54,7 @@ protocol ReportFormRepresentable {
 
 extension ReportFormRepresentable {
     
+    /// Will fetch results depending on the form input data
     func fetch(completion: @escaping RequestCompletion<[ReportItemDisplayable]>) {
         
         /// Will map the results from the fetch responses into a completion with displayable report items
