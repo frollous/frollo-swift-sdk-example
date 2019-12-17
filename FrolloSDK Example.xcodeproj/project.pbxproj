@@ -108,11 +108,11 @@
 		01E5BF90222DEACD003D85FD /* SetupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E5BF8F222DEACD003D85FD /* SetupManager.swift */; };
 		01E5BF91222DEACD003D85FD /* SetupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E5BF8F222DEACD003D85FD /* SetupManager.swift */; };
 		01E5BF93222DEB70003D85FD /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 01E5BF92222DEB70003D85FD /* Settings.bundle */; };
-		034BD7F8239F155B00142B7A /* TransactionsReportGroupingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034BD7F7239F155B00142B7A /* TransactionsReportGroupingViewController.swift */; };
 		034BD7FA239F168000142B7A /* Reports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034BD7F9239F168000142B7A /* Reports.swift */; };
 		03A79DFC23A84A85009C01C2 /* TransactionsReportTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A79DFB23A84A85009C01C2 /* TransactionsReportTableViewController.swift */; };
 		03A79E0623A84BBE009C01C2 /* ReportItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A79E0523A84BBE009C01C2 /* ReportItemTableViewCell.swift */; };
 		03A79E0923A850B6009C01C2 /* SelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A79E0823A850B6009C01C2 /* SelectionTableViewController.swift */; };
+		03A79E1323A8557B009C01C2 /* TransactionReportFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A79E1223A8557B009C01C2 /* TransactionReportFormViewModel.swift */; };
 		03B4711622825D9700DD773C /* TagsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B4711522825D9700DD773C /* TagsCollectionView.swift */; };
 		03B4711822829DD700DD773C /* UserTagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B4711722829DD700DD773C /* UserTagsViewController.swift */; };
 		03B4711922829DDB00DD773C /* UserTagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B4711722829DD700DD773C /* UserTagsViewController.swift */; };
@@ -255,12 +255,12 @@
 		01A722B822F01752006136D8 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		01E5BF8F222DEACD003D85FD /* SetupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupManager.swift; sourceTree = "<group>"; };
 		01E5BF92222DEB70003D85FD /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		034BD7F7239F155B00142B7A /* TransactionsReportGroupingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsReportGroupingViewController.swift; sourceTree = "<group>"; };
 		034BD7F9239F168000142B7A /* Reports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reports.swift; sourceTree = "<group>"; };
 		03A79DE123A712FA009C01C2 /* FrolloSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FrolloSDK.xcodeproj; path = "../frollo-ios-sdk/FrolloSDK.xcodeproj"; sourceTree = "<group>"; };
 		03A79DFB23A84A85009C01C2 /* TransactionsReportTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsReportTableViewController.swift; sourceTree = "<group>"; };
 		03A79E0523A84BBE009C01C2 /* ReportItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportItemTableViewCell.swift; sourceTree = "<group>"; };
 		03A79E0823A850B6009C01C2 /* SelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionTableViewController.swift; sourceTree = "<group>"; };
+		03A79E1223A8557B009C01C2 /* TransactionReportFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionReportFormViewModel.swift; sourceTree = "<group>"; };
 		03B4711522825D9700DD773C /* TagsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsCollectionView.swift; sourceTree = "<group>"; };
 		03B4711722829DD700DD773C /* UserTagsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTagsViewController.swift; sourceTree = "<group>"; };
 		03B4711A22829F1100DD773C /* UserTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTagCell.swift; sourceTree = "<group>"; };
@@ -526,15 +526,11 @@
 		018501FA220A46F300069D87 /* Reports */ = {
 			isa = PBXGroup;
 			children = (
+				03A79E1123A8551D009C01C2 /* Transactions */,
+				034BD7F9239F168000142B7A /* Reports.swift */,
 				01850201220A584700069D87 /* AccountBalancesViewController.swift */,
-				01850204220A849100069D87 /* CurrentTransactionsReportGroupingViewController.swift */,
-				0185020D220BABF400069D87 /* HistoryTransactionReportGroupingViewController.swift */,
-				03A79DFB23A84A85009C01C2 /* TransactionsReportTableViewController.swift */,
 				018501FE220A51DD00069D87 /* ReportsAccountListViewController.swift */,
 				018501FB220A472600069D87 /* ReportTypesViewController.swift */,
-				01850207220A86C500069D87 /* TransactionReportFormViewController.swift */,
-				034BD7F7239F155B00142B7A /* TransactionsReportGroupingViewController.swift */,
-				034BD7F9239F168000142B7A /* Reports.swift */,
 				03A79E0823A850B6009C01C2 /* SelectionTableViewController.swift */,
 			);
 			path = Reports;
@@ -590,6 +586,18 @@
 				03A79E0523A84BBE009C01C2 /* ReportItemTableViewCell.swift */,
 			);
 			path = Reports;
+			sourceTree = "<group>";
+		};
+		03A79E1123A8551D009C01C2 /* Transactions */ = {
+			isa = PBXGroup;
+			children = (
+				01850207220A86C500069D87 /* TransactionReportFormViewController.swift */,
+				03A79E1223A8557B009C01C2 /* TransactionReportFormViewModel.swift */,
+				01850204220A849100069D87 /* CurrentTransactionsReportGroupingViewController.swift */,
+				0185020D220BABF400069D87 /* HistoryTransactionReportGroupingViewController.swift */,
+				03A79DFB23A84A85009C01C2 /* TransactionsReportTableViewController.swift */,
+			);
+			path = Transactions;
 			sourceTree = "<group>";
 		};
 		03B4711F2282B76500DD773C /* Helpers */ = {
@@ -854,6 +862,7 @@
 				03A79E0923A850B6009C01C2 /* SelectionTableViewController.swift in Sources */,
 				017E593C2182D03C00DC56FF /* TransactionsViewController.swift in Sources */,
 				01A7229C22EA9481006136D8 /* GoalTargetViewController.swift in Sources */,
+				03A79E1323A8557B009C01C2 /* TransactionReportFormViewModel.swift in Sources */,
 				0135D32221A609BD00318142 /* MessageCell.swift in Sources */,
 				017E58CD217ECC2200DC56FF /* FlowManager.swift in Sources */,
 				03A79DFC23A84A85009C01C2 /* TransactionsReportTableViewController.swift in Sources */,
@@ -886,7 +895,6 @@
 				017E59422186906300DC56FF /* MerchantsViewController.swift in Sources */,
 				2F16C957223F1D7D005F178D /* FrolloSlider.swift in Sources */,
 				034BD7FA239F168000142B7A /* Reports.swift in Sources */,
-				034BD7F8239F155B00142B7A /* TransactionsReportGroupingViewController.swift in Sources */,
 				03A79E0623A84BBE009C01C2 /* ReportItemTableViewCell.swift in Sources */,
 				017E5935218291DA00DC56FF /* AccountsViewController.swift in Sources */,
 				03B471212282B77800DD773C /* DateFormatterExtensions.swift in Sources */,

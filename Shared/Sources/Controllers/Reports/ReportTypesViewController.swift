@@ -58,6 +58,9 @@ class ReportTypesViewController: UITableViewController {
                 navigationController?.pushViewController(viewController, animated: true)
             case .transaction:
                 let viewController = storyboard?.instantiateViewController(withIdentifier: "TransactionReportFormViewController") as! TransactionReportFormViewController
+                let viewModel = TransactionReportFormViewModel()
+                viewController.dataSource = viewModel
+                viewController.delegate = viewModel
                 viewController.current = true
                 navigationController?.pushViewController(viewController, animated: true)
         case .survey:

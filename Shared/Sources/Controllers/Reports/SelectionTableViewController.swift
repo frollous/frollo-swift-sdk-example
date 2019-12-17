@@ -13,17 +13,14 @@ protocol SelectionDisplayable {
 }
 
 protocol SelectionTableViewControllerDataSource {
-    func selectionTableViewController(_ selectionTableViewController: SelectionTableViewController, itemsForType: SelectionTableViewController.SelectionType) -> [SelectionDisplayable]
+    func selectionTableViewController(_ selectionTableViewController: SelectionTableViewController, itemsForType type: TransactionReportFormViewController.FormField) -> [SelectionDisplayable]
+}
+
+protocol SelectionTableViewControllerDelegate: AnyObject {
+    func selectionTableViewController(_ selectionTableViewController: SelectionTableViewController, formField: TransactionReportFormViewController.FormField, didSelectItemAt index: Int)
 }
 
 class SelectionTableViewController: UITableViewController {
-    
-    enum SelectionType {
-        case filter
-        case filterBy
-        case grouping
-        case period
-    }
     
     var dataSource: SelectionTableViewControllerDataSource? {
         didSet {
@@ -31,7 +28,9 @@ class SelectionTableViewController: UITableViewController {
         }
     }
     
-    var type: SelectionType?
+    weak var delegate: SelectionTableViewControllerDelegate?
+    
+    var type: TransactionReportFormViewController.FormField?
     
     var items: [SelectionDisplayable] {
         guard let type = type else { return [] }
@@ -57,6 +56,11 @@ class SelectionTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
         cell.textLabel?.text = items[indexPath.row].title
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let type = type else { return }
+        delegate?.selectionTableViewController(self, formField: type, didSelectItemAt: indexPath.row)
     }
 
 }

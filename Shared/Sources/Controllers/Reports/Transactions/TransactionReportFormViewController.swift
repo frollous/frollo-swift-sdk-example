@@ -11,17 +11,16 @@ import UIKit
 import FrolloSDK
 
 protocol TransactionReportFormViewControllerDataSource: AnyObject {
-    var transactionReportFormFilter: String? { set get }
-    var transactionReportFormFilterBy: String? { set get }
-    var transactionReportFormGrouping: String? { set get }
-    var transactionReportFormPeriod: String? { set get }
+    var transactionReportFormFilter: String? { get }
+    var transactionReportFormFilterBy: String? { get }
+    var transactionReportFormGrouping: String? { get }
+    var transactionReportFormPeriod: String? { get }
+    
+    func selectionItems(forType: TransactionReportFormViewController.FormField) -> [SelectionDisplayable]
 }
 
 protocol TransactionReportFormViewControllerDelegate: AnyObject {
-    func didSelectFilterAt(index: Int)
-    func didSelectFilterByAt(index: Int)
-    func didSelectGroupingAt(index: Int)
-    func didSelectPeriodAt(index: Int)
+    func didSelectIndex(index: Int, forField field: TransactionReportFormViewController.FormField)
 }
 
 class TransactionReportFormViewController: UITableViewController {
@@ -41,6 +40,8 @@ class TransactionReportFormViewController: UITableViewController {
         }
     }
     
+    weak var delegate: TransactionReportFormViewControllerDelegate?
+    
     @IBOutlet var filterLabel: UILabel!
     @IBOutlet var filterbyLabel: UILabel!
     @IBOutlet var groupingLabel: UILabel!
@@ -48,54 +49,40 @@ class TransactionReportFormViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        updateView()
     }
     
     func updateView() {
         filterLabel?.text = dataSource?.transactionReportFormFilter
         filterbyLabel?.text = dataSource?.transactionReportFormFilterBy
-        groupingLabel.text = dataSource?.transactionReportFormGrouping
-        periodLabel.text = dataSource?.transactionReportFormPeriod
-    }
-    
-    func selectionType(from formField: FormField) -> SelectionTableViewController.SelectionType {
-        switch formField {
-        case .filter:
-            return .filter
-        case .filterBy:
-            return .filterBy
-        case .grouping:
-            return .grouping
-        case .period:
-            return .period
-        }
+        groupingLabel?.text = dataSource?.transactionReportFormGrouping
+        periodLabel?.text = dataSource?.transactionReportFormPeriod
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let field = FormField(rawValue: indexPath.row) else { return }
-        showSelection(type: selectionType(from: field))
+        showSelection(type: field)
     }
     
-    func showSelection(type: SelectionTableViewController.SelectionType) {
+    func showSelection(type: TransactionReportFormViewController.FormField) {
         let viewController = storyboard?.instantiateViewController(withIdentifier: "SelectionTableViewController") as! SelectionTableViewController
         viewController.type = type
         viewController.dataSource = self
+        viewController.delegate = self
         navigationController?.pushViewController(viewController, animated: true)
     }
-
 }
 
 extension TransactionReportFormViewController: SelectionTableViewControllerDataSource {
     
-    struct MockSelection: SelectionDisplayable {
-        var title: String? {
-            return "hala"
-        }
+    func selectionTableViewController(_ selectionTableViewController: SelectionTableViewController, itemsForType type: TransactionReportFormViewController.FormField) -> [SelectionDisplayable] {
+        return dataSource?.selectionItems(forType: type) ?? []
     }
-    
-    func selectionTableViewController(_ selectionTableViewController: SelectionTableViewController, itemsForType: SelectionTableViewController.SelectionType) -> [SelectionDisplayable] {
-        return [MockSelection(), MockSelection()]
+}
+
+extension TransactionReportFormViewController: SelectionTableViewControllerDelegate {
+    func selectionTableViewController(_ selectionTableViewController: SelectionTableViewController, formField: TransactionReportFormViewController.FormField, didSelectItemAt index: Int) {
+        delegate?.didSelectIndex(index: index, forField: formField)
+        navigationController?.popViewController(animated: true)
     }
-    
-    
 }
