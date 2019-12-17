@@ -1687,99 +1687,67 @@
         <scene sceneID="vmr-BU-mkA">
             <objects>
                 <tableViewController storyboardIdentifier="TransactionReportFormViewController" id="B9m-yj-Fua" customClass="TransactionReportFormViewController" customModule="FrolloSDK_iOS_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="70R-8y-HvF">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="70R-8y-HvF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <sections>
-                            <tableViewSection id="r8Z-uc-qsh">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TypeCell" textLabel="WaQ-gb-Csu" style="IBUITableViewCellStyleDefault" id="aN5-25-M8n">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aN5-25-M8n" id="IOr-X1-IPD">
-                                            <rect key="frame" x="0.0" y="0.0" width="348" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" id="Rm8-DE-CCd" customClass="ReportFormItemTableViewCell" customModule="FrolloSDK_iOS_Example" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="85"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Rm8-DE-CCd" id="Mse-Pl-y4k">
+                                    <rect key="frame" x="0.0" y="0.0" width="348" height="85"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bKP-J5-8ti">
+                                            <rect key="frame" x="16" y="16" width="316" height="53"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Filter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WaQ-gb-Csu">
-                                                    <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ekV-Xl-Gfh">
+                                                    <rect key="frame" x="0.0" y="0.0" width="42" height="53"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="md7-dn-VCF">
+                                                    <rect key="frame" x="42" y="0.0" width="232" height="53"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JPd-ba-Wuf">
+                                                    <rect key="frame" x="274" y="0.0" width="42" height="53"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TypeCell" textLabel="QLC-1Y-ImR" style="IBUITableViewCellStyleDefault" id="lNM-VR-as4">
-                                        <rect key="frame" x="0.0" y="71.5" width="375" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lNM-VR-as4" id="SZA-tP-hkZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="348" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Filter By" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QLC-1Y-ImR">
-                                                    <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TypeCell" textLabel="Fbc-L7-gDQ" style="IBUITableViewCellStyleDefault" id="z7t-3J-iy7">
-                                        <rect key="frame" x="0.0" y="115" width="375" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="z7t-3J-iy7" id="deU-6T-oQV">
-                                            <rect key="frame" x="0.0" y="0.0" width="348" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Grouping" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fbc-L7-gDQ">
-                                                    <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TypeCell" textLabel="LFV-d3-2XI" style="IBUITableViewCellStyleDefault" id="fsI-VP-l0P">
-                                        <rect key="frame" x="0.0" y="158.5" width="375" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fsI-VP-l0P" id="2fe-iU-hNT">
-                                            <rect key="frame" x="0.0" y="0.0" width="348" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Period" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LFV-d3-2XI">
-                                                    <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="bKP-J5-8ti" firstAttribute="top" secondItem="Mse-Pl-y4k" secondAttribute="top" constant="16" id="KAh-av-SBf"/>
+                                        <constraint firstItem="bKP-J5-8ti" firstAttribute="leading" secondItem="Mse-Pl-y4k" secondAttribute="leading" constant="16" id="Ko6-Y6-pLM"/>
+                                        <constraint firstAttribute="trailing" secondItem="bKP-J5-8ti" secondAttribute="trailing" constant="16" id="h8v-2D-xRF"/>
+                                        <constraint firstAttribute="bottom" secondItem="bKP-J5-8ti" secondAttribute="bottom" constant="16" id="sbM-uR-YNV"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="titleLabel" destination="ekV-Xl-Gfh" id="FPX-Hm-Vlx"/>
+                                    <outlet property="valueLabel" destination="JPd-ba-Wuf" id="XRG-rc-rxM"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="B9m-yj-Fua" id="md9-Hi-lVM"/>
                             <outlet property="delegate" destination="B9m-yj-Fua" id="ZI7-LX-C35"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Reports" id="Xy2-xI-NNX">
-                        <barButtonItem key="rightBarButtonItem" title="Submit" id="gb5-30-Y10"/>
+                        <barButtonItem key="rightBarButtonItem" title="Submit" id="gb5-30-Y10">
+                            <connections>
+                                <action selector="submitDidPress" destination="B9m-yj-Fua" id="OtV-Hz-nqT"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-                    <connections>
-                        <outlet property="filterLabel" destination="WaQ-gb-Csu" id="TIQ-e6-b0O"/>
-                        <outlet property="filterbyLabel" destination="QLC-1Y-ImR" id="ydw-X6-zpF"/>
-                        <outlet property="groupingLabel" destination="Fbc-L7-gDQ" id="6n5-It-Ypg"/>
-                        <outlet property="periodLabel" destination="LFV-d3-2XI" id="ZeU-fi-qMO"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZsK-v8-rdx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1815,10 +1783,10 @@
             </objects>
             <point key="canvasLocation" x="1902" y="3835"/>
         </scene>
-        <!--Title-->
+        <!--Results-->
         <scene sceneID="yN7-uI-9kM">
             <objects>
-                <tableViewController id="7VG-1A-icM" customClass="TransactionsReportTableViewController" customModule="FrolloSDK_iOS_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="TransactionsReportTableViewController" id="7VG-1A-icM" customClass="TransactionsReportTableViewController" customModule="FrolloSDK_iOS_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="72R-bF-dJe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1874,7 +1842,7 @@
                             <outlet property="delegate" destination="7VG-1A-icM" id="099-BD-yBj"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="5y6-Rx-XB0"/>
+                    <navigationItem key="navigationItem" title="Results" id="5y6-Rx-XB0"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ax0-9w-xUi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -51,10 +51,13 @@ extension ReportResponse: ReportItemsProvider {
     }
 }
 
-struct ReportForm{
-    var filtering: TransactionReportFilter
-    var grouping: ReportGrouping
-    var period: Reports.Period
+protocol ReportFormRepresentable {
+    var filtering: TransactionReportFilter { get }
+    var grouping: ReportGrouping { get }
+    var period: Reports.Period { get }
+}
+
+extension ReportFormRepresentable {
     
     func fetch(completion: @escaping RequestCompletion<[ReportItemDisplayable]>) {
         

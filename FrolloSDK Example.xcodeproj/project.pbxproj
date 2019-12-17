@@ -127,6 +127,7 @@
 		03B471272283B0EF00DD773C /* SuggestedTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B471232283B0E100DD773C /* SuggestedTagCell.swift */; };
 		03B471292283B2B300DD773C /* SuggestedTagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B471282283B2B300DD773C /* SuggestedTagsViewController.swift */; };
 		03B4712A2283B2B300DD773C /* SuggestedTagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B471282283B2B300DD773C /* SuggestedTagsViewController.swift */; };
+		03D806D523A869EE003882E4 /* ReportFormItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D806D423A869EE003882E4 /* ReportFormItemTableViewCell.swift */; };
 		2F16C955223F00B2005F178D /* SurveyAnswerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F16C954223F00B2005F178D /* SurveyAnswerTableCell.swift */; };
 		2F16C957223F1D7D005F178D /* FrolloSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F16C956223F1D7D005F178D /* FrolloSlider.swift */; };
 		2F657DB9223B6FBD00471B85 /* Surveys.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F657DB8223B6FBD00471B85 /* Surveys.storyboard */; };
@@ -268,6 +269,7 @@
 		03B471202282B77800DD773C /* DateFormatterExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtensions.swift; sourceTree = "<group>"; };
 		03B471232283B0E100DD773C /* SuggestedTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedTagCell.swift; sourceTree = "<group>"; };
 		03B471282283B2B300DD773C /* SuggestedTagsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedTagsViewController.swift; sourceTree = "<group>"; };
+		03D806D423A869EE003882E4 /* ReportFormItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportFormItemTableViewCell.swift; sourceTree = "<group>"; };
 		2F16C954223F00B2005F178D /* SurveyAnswerTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyAnswerTableCell.swift; sourceTree = "<group>"; };
 		2F16C956223F1D7D005F178D /* FrolloSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrolloSlider.swift; sourceTree = "<group>"; };
 		2F657DB8223B6FBD00471B85 /* Surveys.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Surveys.storyboard; sourceTree = "<group>"; };
@@ -584,6 +586,7 @@
 			isa = PBXGroup;
 			children = (
 				03A79E0523A84BBE009C01C2 /* ReportItemTableViewCell.swift */,
+				03D806D423A869EE003882E4 /* ReportFormItemTableViewCell.swift */,
 			);
 			path = Reports;
 			sourceTree = "<group>";
@@ -850,6 +853,7 @@
 			files = (
 				01A722AC22EFB07C006136D8 /* GoalListCell.swift in Sources */,
 				03B4711B22829F1100DD773C /* UserTagCell.swift in Sources */,
+				03D806D523A869EE003882E4 /* ReportFormItemTableViewCell.swift in Sources */,
 				018501FF220A51DD00069D87 /* ReportsAccountListViewController.swift in Sources */,
 				01A722B522EFF40F006136D8 /* GoalPeriodCell.swift in Sources */,
 				013F1F7021784CB10043BF56 /* LoginViewController.swift in Sources */,

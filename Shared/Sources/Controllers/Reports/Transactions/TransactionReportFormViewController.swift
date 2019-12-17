@@ -11,26 +11,36 @@ import UIKit
 import FrolloSDK
 
 protocol TransactionReportFormViewControllerDataSource: AnyObject {
-    var transactionReportFormFilter: String? { get }
-    var transactionReportFormFilterBy: String? { get }
-    var transactionReportFormGrouping: String? { get }
-    var transactionReportFormPeriod: String? { get }
-    
     func selectionItems(forField field: TransactionReportFormViewController.FormField) -> [SelectionDisplayable]
     func selectedIndex(forField field: TransactionReportFormViewController.FormField) -> Int?
+    func selectedText(forField field: TransactionReportFormViewController.FormField) -> String?
 }
 
 protocol TransactionReportFormViewControllerDelegate: AnyObject {
     func didSelectIndex(index: Int, forField field: TransactionReportFormViewController.FormField)
+    func submitDidPress(completion: @escaping ([ReportItemDisplayable]) -> Void)
 }
 
 class TransactionReportFormViewController: UITableViewController {
     
-    enum FormField: Int {
+    enum FormField: Int, CaseIterable {
         case filter
         case filterBy
         case grouping
         case period
+        
+        var title: String {
+            switch self {
+            case .filter:
+                return "Filter"
+            case .filterBy:
+                return "Filter By"
+            case .grouping:
+                return "Grouping"
+            case .period:
+                return "Period"
+            }
+        }
     }
     
     public var current = false
@@ -43,26 +53,19 @@ class TransactionReportFormViewController: UITableViewController {
     
     weak var delegate: TransactionReportFormViewControllerDelegate?
     
-    @IBOutlet var filterLabel: UILabel!
-    @IBOutlet var filterbyLabel: UILabel!
-    @IBOutlet var groupingLabel: UILabel!
-    @IBOutlet var periodLabel: UILabel!
-
     override func viewDidLoad() {
         super.viewDidLoad()
         updateView()
     }
     
     func updateView() {
-        filterLabel?.text = dataSource?.transactionReportFormFilter
-        filterbyLabel?.text = dataSource?.transactionReportFormFilterBy
-        groupingLabel?.text = dataSource?.transactionReportFormGrouping
-        periodLabel?.text = dataSource?.transactionReportFormPeriod
+        tableView.reloadData()
     }
-
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let field = FormField(rawValue: indexPath.row) else { return }
-        showSelection(field: field)
+    
+    @IBAction func submitDidPress() {
+        delegate?.submitDidPress(completion: { (items) in
+            self.showReportResults(items: items)
+        })
     }
     
     func showSelection(field: TransactionReportFormViewController.FormField) {
@@ -72,6 +75,33 @@ class TransactionReportFormViewController: UITableViewController {
         viewController.dataSource = self
         viewController.delegate = self
         navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func showReportResults(items: [ReportItemDisplayable]) {
+        let viewController = storyboard?.instantiateViewController(withIdentifier: "TransactionsReportTableViewController") as! TransactionsReportTableViewController
+        viewController.data = items
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return FormField.allCases.count
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let field = FormField(rawValue: indexPath.row) else { return }
+        showSelection(field: field)
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! ReportFormItemTableViewCell
+        let field = FormField.allCases[indexPath.row]
+        cell.titleLabel.text = field.title
+        cell.valueLabel.text = dataSource?.selectedText(forField: field)
+        return cell
     }
 }
 

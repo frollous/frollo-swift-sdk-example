@@ -126,10 +126,6 @@ class TransactionReportFormViewModel {
         return ReportGrouping.allCases
     }
     
-}
-
-extension TransactionReportFormViewModel: TransactionReportFormViewControllerDataSource {
-    
     var transactionReportFormFilter: String? {
         return state.currentFilterEntity?.rawValue ?? "Select"
     }
@@ -145,6 +141,22 @@ extension TransactionReportFormViewModel: TransactionReportFormViewControllerDat
     
     var transactionReportFormPeriod: String? {
         return state.currentPeriod?.rawValue ?? "Select"
+    }
+    
+}
+
+extension TransactionReportFormViewModel: TransactionReportFormViewControllerDataSource {
+    func selectedText(forField field: TransactionReportFormViewController.FormField) -> String? {
+        switch field {
+        case .filter:
+            return transactionReportFormFilter
+        case .filterBy:
+            return transactionReportFormFilterBy
+        case .grouping:
+            return transactionReportFormGrouping
+        case .period:
+            return transactionReportFormPeriod
+        }
     }
     
     func selectionItems(forField field: TransactionReportFormViewController.FormField) -> [SelectionDisplayable] {
@@ -177,6 +189,16 @@ extension TransactionReportFormViewModel: TransactionReportFormViewControllerDat
 }
 
 extension TransactionReportFormViewModel: TransactionReportFormViewControllerDelegate {
+    func submitDidPress(completion: @escaping ([ReportItemDisplayable]) -> Void) {
+        fetch { (result) in
+            switch result {
+            case .success(let reports):
+                completion(reports)
+            case .failure(let error):
+                assertionFailure(error.localizedDescription)
+            }
+        }
+    }
     
     func didSelectIndex(index: Int, forField field: TransactionReportFormViewController.FormField) {
         switch field {
@@ -190,5 +212,46 @@ extension TransactionReportFormViewModel: TransactionReportFormViewControllerDel
         case .period:
             state.periodSelectedIndex = index
         }
+    }
+}
+
+extension TransactionReportFormViewModel: ReportFormRepresentable {
+    var filtering: TransactionReportFilter {
+        switch state.currentFilterEntity {
+        case .budgetCategory:
+            var id: Int64? = nil
+            if let index = state.filterBySelectedIndex {
+                id = budgetCategories[index].id
+            }
+            return .budgetCategory(id: id)
+        case .category:
+            var id: Int64? = nil
+            if let index = state.filterBySelectedIndex {
+                id = categories[index].transactionCategoryID
+            }
+            return .category(id: id)
+        case .merchant:
+            var id: Int64? = nil
+            if let index = state.filterBySelectedIndex {
+                id = merchants[index].merchantID
+            }
+            return .merchant(id: id)
+        case .tag:
+            var name: String? = nil
+            if let index = state.filterBySelectedIndex {
+                name = tags[index].name
+            }
+            return .tag(name: name)
+        case .none:
+            return .budgetCategory(id: nil)
+        }
+    }
+    
+    var grouping: ReportGrouping {
+        return state.currentGrouping ?? .transactionCategory
+    }
+    
+    var period: Reports.Period {
+        return state.currentPeriod ?? .monthly
     }
 }
