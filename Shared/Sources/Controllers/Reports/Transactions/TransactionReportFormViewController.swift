@@ -16,7 +16,8 @@ protocol TransactionReportFormViewControllerDataSource: AnyObject {
     var transactionReportFormGrouping: String? { get }
     var transactionReportFormPeriod: String? { get }
     
-    func selectionItems(forType: TransactionReportFormViewController.FormField) -> [SelectionDisplayable]
+    func selectionItems(forField field: TransactionReportFormViewController.FormField) -> [SelectionDisplayable]
+    func selectedIndex(forField field: TransactionReportFormViewController.FormField) -> Int?
 }
 
 protocol TransactionReportFormViewControllerDelegate: AnyObject {
@@ -61,12 +62,13 @@ class TransactionReportFormViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let field = FormField(rawValue: indexPath.row) else { return }
-        showSelection(type: field)
+        showSelection(field: field)
     }
     
-    func showSelection(type: TransactionReportFormViewController.FormField) {
+    func showSelection(field: TransactionReportFormViewController.FormField) {
         let viewController = storyboard?.instantiateViewController(withIdentifier: "SelectionTableViewController") as! SelectionTableViewController
-        viewController.type = type
+        viewController.field = field
+        viewController.selectedIndex = dataSource?.selectedIndex(forField: field)
         viewController.dataSource = self
         viewController.delegate = self
         navigationController?.pushViewController(viewController, animated: true)
@@ -75,14 +77,15 @@ class TransactionReportFormViewController: UITableViewController {
 
 extension TransactionReportFormViewController: SelectionTableViewControllerDataSource {
     
-    func selectionTableViewController(_ selectionTableViewController: SelectionTableViewController, itemsForType type: TransactionReportFormViewController.FormField) -> [SelectionDisplayable] {
-        return dataSource?.selectionItems(forType: type) ?? []
+    func selectionTableViewController(_ selectionTableViewController: SelectionTableViewController, itemsForField type: TransactionReportFormViewController.FormField) -> [SelectionDisplayable] {
+        return dataSource?.selectionItems(forField: type) ?? []
     }
 }
 
 extension TransactionReportFormViewController: SelectionTableViewControllerDelegate {
     func selectionTableViewController(_ selectionTableViewController: SelectionTableViewController, formField: TransactionReportFormViewController.FormField, didSelectItemAt index: Int) {
         delegate?.didSelectIndex(index: index, forField: formField)
+        updateView()
         navigationController?.popViewController(animated: true)
     }
 }

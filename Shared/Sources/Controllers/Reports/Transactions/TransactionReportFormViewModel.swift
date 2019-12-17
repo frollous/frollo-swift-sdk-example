@@ -77,7 +77,7 @@ class TransactionReportFormViewModel {
         }
         
         var currentGrouping: ReportGrouping? {
-            guard let index = filterBySelectedIndex else { return nil }
+            guard let index = groupingSelectedIndex else { return nil }
             return ReportGrouping.allCases[index]
         }
         
@@ -86,17 +86,16 @@ class TransactionReportFormViewModel {
             return Reports.Period.allCases[index]
         }
         
-        
-        mutating func setIndex(_ index: Int, forField field: TransactionReportFormViewController.FormField) {
+        func getSelectedIndex(forField field: TransactionReportFormViewController.FormField) -> Int? {
             switch field {
             case .filter:
-                filterSelectedIndex = index
+                return filterSelectedIndex
             case .filterBy:
-                filterBySelectedIndex = index
+                return filterBySelectedIndex
             case .grouping:
-                groupingSelectedIndex = index
+                return groupingSelectedIndex
             case .period:
-                periodSelectedIndex = index
+                return periodSelectedIndex
             }
         }
     }
@@ -130,13 +129,14 @@ class TransactionReportFormViewModel {
 }
 
 extension TransactionReportFormViewModel: TransactionReportFormViewControllerDataSource {
+    
     var transactionReportFormFilter: String? {
         return state.currentFilterEntity?.rawValue ?? "Select"
     }
     
     var transactionReportFormFilterBy: String? {
         guard let index = state.filterBySelectedIndex else { return "Select" }
-        return selectionItems(forType: .filterBy)[index].title
+        return selectionItems(forField: .filterBy)[index].title
     }
     
     var transactionReportFormGrouping: String? {
@@ -147,8 +147,8 @@ extension TransactionReportFormViewModel: TransactionReportFormViewControllerDat
         return state.currentPeriod?.rawValue ?? "Select"
     }
     
-    func selectionItems(forType: TransactionReportFormViewController.FormField) -> [SelectionDisplayable] {
-        switch forType {
+    func selectionItems(forField field: TransactionReportFormViewController.FormField) -> [SelectionDisplayable] {
+        switch field {
         case .filter:
             return FilterEntity.allCases
         case .filterBy:
@@ -170,11 +170,25 @@ extension TransactionReportFormViewModel: TransactionReportFormViewControllerDat
             return periods
         }
     }
+    
+    func selectedIndex(forField field: TransactionReportFormViewController.FormField) -> Int? {
+        return state.getSelectedIndex(forField: field)
+    }
 }
 
 extension TransactionReportFormViewModel: TransactionReportFormViewControllerDelegate {
     
     func didSelectIndex(index: Int, forField field: TransactionReportFormViewController.FormField) {
-        state.setIndex(index, forField: field)
+        switch field {
+        case .filter:
+            state = State()
+            state.filterSelectedIndex = index
+        case .filterBy:
+            state.filterBySelectedIndex = index
+        case .grouping:
+            state.groupingSelectedIndex = index
+        case .period:
+            state.periodSelectedIndex = index
+        }
     }
 }

@@ -13,7 +13,7 @@ protocol SelectionDisplayable {
 }
 
 protocol SelectionTableViewControllerDataSource {
-    func selectionTableViewController(_ selectionTableViewController: SelectionTableViewController, itemsForType type: TransactionReportFormViewController.FormField) -> [SelectionDisplayable]
+    func selectionTableViewController(_ selectionTableViewController: SelectionTableViewController, itemsForField type: TransactionReportFormViewController.FormField) -> [SelectionDisplayable]
 }
 
 protocol SelectionTableViewControllerDelegate: AnyObject {
@@ -30,11 +30,12 @@ class SelectionTableViewController: UITableViewController {
     
     weak var delegate: SelectionTableViewControllerDelegate?
     
-    var type: TransactionReportFormViewController.FormField?
+    var selectedIndex: Int?
+    var field: TransactionReportFormViewController.FormField?
     
     var items: [SelectionDisplayable] {
-        guard let type = type else { return [] }
-        return dataSource?.selectionTableViewController(self, itemsForType: type) ?? []
+        guard let field = field else { return [] }
+        return dataSource?.selectionTableViewController(self, itemsForField: field) ?? []
     }
 
     override func viewDidLoad() {
@@ -55,12 +56,18 @@ class SelectionTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
         cell.textLabel?.text = items[indexPath.row].title
+        if selectedIndex == indexPath.row {
+            cell.accessoryType = .checkmark
+        }
+        else {
+            cell.accessoryType = .none
+        }
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let type = type else { return }
-        delegate?.selectionTableViewController(self, formField: type, didSelectItemAt: indexPath.row)
+        guard let field = field else { return }
+        delegate?.selectionTableViewController(self, formField: field, didSelectItemAt: indexPath.row)
     }
 
 }
