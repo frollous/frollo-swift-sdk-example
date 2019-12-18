@@ -80,6 +80,7 @@ class BudgetCreateViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        createBudgetTableView.keyboardDismissMode = .interactive
         
         if update, let budgetID = budgetID {
             budget = Frollo.shared.budgets.budget(context: context, budgetID: budgetID)
@@ -357,7 +358,9 @@ extension BudgetCreateViewController: UITableViewDelegate, UITableViewDataSource
            tableView.deselectRow(at: indexPath, animated: true)
            
             self.view.endEditing(true)
-           let field = tableFields[indexPath.row]
+            hideDatePicker()
+        
+            let field = tableFields[indexPath.row]
         
             switch field {
                 case .type:
@@ -381,6 +384,10 @@ extension BudgetCreateViewController: UITableViewDelegate, UITableViewDataSource
 }
 
 extension BudgetCreateViewController: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        hideDatePicker()
+    }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
            let currentString = textField.text as NSString?
