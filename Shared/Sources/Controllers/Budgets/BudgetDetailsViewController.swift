@@ -12,7 +12,7 @@ import CoreData
 
 class BudgetDetailsViewController: TableViewController {
     
-    internal var budgetID: Int64 = -1
+    internal var budgetID: Int64?
     private var fetchedResultsController: NSFetchedResultsController<BudgetPeriod>!
     
     override func viewDidLoad() {
@@ -26,6 +26,10 @@ class BudgetDetailsViewController: TableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        guard let budgetID = budgetID else {
+            return
+        }
         
         Frollo.shared.budgets.refreshBudgetPeriods(budgetID: budgetID) { (result) in
             switch result {
@@ -78,6 +82,11 @@ class BudgetDetailsViewController: TableViewController {
     }
     
     private func deleteBudget() {
+        
+        guard let budgetID = budgetID else {
+            return
+        }
+        
         Frollo.shared.budgets.deleteBudget(budgetID: budgetID) { (result) in
             switch result {
                 case .failure(let error):

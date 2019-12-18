@@ -11,13 +11,34 @@ import FrolloSDK
 
 class BudgetCreateViewController: BaseViewController {
     
-    enum BudgetFields {
+    enum PopOption {
+        case frequencyPopup
+        case budgetTypePopup
+        case budgetCategoryPopup
+        
+        var title: String {
+            switch self {
+            case .frequencyPopup:
+                return "frequency"
+            case .budgetTypePopup:
+                return "Budget Type"
+            case .budgetCategoryPopup:
+                return "Budget Category"
+            }
+        }
+    }
+    
+    enum BudgetFields: CaseIterable {
         case frequency
         case imageURLString
         case periodAmount
         case type
         case typeValue
         case startDate
+        
+        static var updateFields : [BudgetFields] {
+            return [.imageURLString, .periodAmount]
+        }
     }
     
     @IBOutlet var saveButtonItem: UIBarButtonItem!
@@ -26,7 +47,7 @@ class BudgetCreateViewController: BaseViewController {
     @IBOutlet var datePicker: UIDatePicker!
     @IBOutlet var pickerContainerView: UIView!
     
-    var tableFields: [BudgetFields] = [.frequency, .imageURLString, .periodAmount, .type, .typeValue, .startDate]
+    
     var budgetFrequency: Budget.Frequency = .weekly
     var imageURLString: String?
     var type: Budget.BudgetType?
@@ -36,29 +57,23 @@ class BudgetCreateViewController: BaseViewController {
     
     var budgetStartDate: Date?
     var update = false
-    var budgetID: Int64 = -1
+    var budgetID: Int64?
     let context = Frollo.shared.database.viewContext
     var budget: Budget?
     
-    private let currencyFormatter: NumberFormatter = {
-           let numberFormatter = NumberFormatter()
-           numberFormatter.locale = Locale.autoupdatingCurrent
-           numberFormatter.numberStyle = .currency
-           numberFormatter.maximumFractionDigits = 0
-           return numberFormatter
-       }()
-    
-    private let dateFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale.autoupdatingCurrent
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        return dateFormatter
-    }()
+    var tableFields : [BudgetFields] {
+        if update {
+             return BudgetFields.updateFields
+        } else {
+             return BudgetFields.allCases
+        }
+       
+    }
     
     private func stripCurrencyString(string: String) -> String {
         let characterSet = CharacterSet.decimalDigits.inverted
         var strippedString = string.trimmingCharacters(in: characterSet)
-        strippedString = strippedString.replacingOccurrences(of: currencyFormatter.groupingSeparator, with: "")
+        strippedString = strippedString.replacingOccurrences(of: frolloCurrencyFormatter.groupingSeparator, with: "")
         return strippedString
     }
     
@@ -66,12 +81,11 @@ class BudgetCreateViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if update {
+        if update, let budgetID = budgetID {
             budget = Frollo.shared.budgets.budget(context: context, budgetID: budgetID)
             saveButtonItem.title = "Update"
             periodAmount = budget?.periodAmount as Decimal?
             imageURLString = budget?.imageURLString
-            tableFields = [.imageURLString, .periodAmount]
             createBudgetTableView.reloadData()
         }
     }
@@ -97,6 +111,10 @@ class BudgetCreateViewController: BaseViewController {
     // MARK: -  API calls
     
     func updateBudget() {
+        
+        guard let budgetID = budgetID else {
+            return
+        }
                    
         context.performAndWait {
             
@@ -128,7 +146,7 @@ class BudgetCreateViewController: BaseViewController {
         
         var startDateString : String?
         if let startDate = budgetStartDate {
-            startDateString = dateFormatter.string(from: startDate)
+            startDateString = frolloDateFormatter.string(from: startDate)
         }
         
         showProgress()
@@ -162,56 +180,48 @@ class BudgetCreateViewController: BaseViewController {
     
     // MARK: -  Popup Options
     
-    func showFrequencyOptions() {
-        let alertController = UIAlertController(title: "Frequency", message: nil, preferredStyle: .actionSheet)
+    func showPopup(popupOption: PopOption){
+        let alertController = UIAlertController(title: popupOption.title, message: nil, preferredStyle: .actionSheet)
         
-        for frequency in Budget.Frequency.allCases {
-            let alertAction = UIAlertAction(title: frequency.rawValue.capitalized, style: .default) { (action) in
-                self.budgetFrequency = frequency
-                
-                self.createBudgetTableView.reloadRows(at: [IndexPath(row: self.tableFields.firstIndex(of: .frequency) ?? 0, section: 0)], with: .automatic)
+        switch popupOption {
+        case .frequencyPopup:
+            for frequency in Budget.Frequency.allCases {
+                let alertAction = UIAlertAction(title: frequency.rawValue.capitalized, style: .default) { (action) in
+                    self.budgetFrequency = frequency
+                    
+                    self.createBudgetTableView.reloadRows(at: [IndexPath(row: self.tableFields.firstIndex(of: .frequency) ?? 0, section: 0)], with: .automatic)
+                }
+                alertController.addAction(alertAction)
             }
-            alertController.addAction(alertAction)
+        case .budgetTypePopup:
+            for budgetType in BudgetCreateType.allCases {
+                let alertAction = UIAlertAction(title: budgetType.rawValue.capitalized, style: .default) { (action) in
+                    self.budgetCreateType = budgetType
+                    self.createBudgetTableView.reloadData()
+                    self.showValuePopup()
+                }
+                alertController.addAction(alertAction)
+            }
+        case .budgetCategoryPopup:
+            for budgetCategory in BudgetCategory.allCases {
+                let alertAction = UIAlertAction(title: budgetCategory.rawValue.capitalized, style: .default) { (action) in
+                    self.budgetCreateType = .budgetCategory(budgetCategory: budgetCategory)
+                    self.createBudgetTableView.reloadData()
+                }
+                alertController.addAction(alertAction)
+            }
         }
         
         present(alertController, animated: true)
     }
     
-    func showBudgetTypeOptions() {
-        let alertController = UIAlertController(title: "Budget Type", message: nil, preferredStyle: .actionSheet)
-        
-        for budgetType in BudgetCreateType.allCases {
-            let alertAction = UIAlertAction(title: budgetType.rawValue.capitalized, style: .default) { (action) in
-                self.budgetCreateType = budgetType
-                self.createBudgetTableView.reloadData()
-                self.showValuePopup()
-            }
-            alertController.addAction(alertAction)
-        }
-        
-        present(alertController, animated: true)
-    }
-    
-    func showBudgetCategoryOptions() {
-        let alertController = UIAlertController(title: "Budget Category", message: nil, preferredStyle: .actionSheet)
-        
-        for budgetCategory in BudgetCategory.allCases {
-            let alertAction = UIAlertAction(title: budgetCategory.rawValue.capitalized, style: .default) { (action) in
-                self.budgetCreateType = .budgetCategory(budgetCategory: budgetCategory)
-                self.createBudgetTableView.reloadData()
-            }
-            alertController.addAction(alertAction)
-        }
-        
-        present(alertController, animated: true)
-    }
     
     // MARK: -  Navigations
     
     func showValuePopup() {
         switch budgetCreateType {
         case .budgetCategory:
-            showBudgetCategoryOptions()
+            showPopup(popupOption: .budgetCategoryPopup)
         case .category:
             showTransacationCategories()
         case .merchant:
@@ -220,16 +230,14 @@ class BudgetCreateViewController: BaseViewController {
     }
     
     func showTransacationCategories() {
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let transactionCategoriesViewController = mainStoryboard.instantiateViewController(withIdentifier: "TransactionCategoriesViewController") as! TransactionCategoriesViewController
+        let transactionCategoriesViewController = ViewControllers.transactionCategoriesViewController
         transactionCategoriesViewController.delegate = self
-         self.navigationController?.pushViewController(transactionCategoriesViewController, animated: true)
+        self.navigationController?.pushViewController(transactionCategoriesViewController, animated: true)
         
     }
     
     func showMerchants() {
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let merchantsViewController = mainStoryboard.instantiateViewController(withIdentifier: "MerchantsViewController") as! MerchantsViewController
+        let merchantsViewController = ViewControllers.merchantsViewController
         merchantsViewController.delegate = self
          self.navigationController?.pushViewController(merchantsViewController, animated: true)
         
@@ -243,9 +251,7 @@ class BudgetCreateViewController: BaseViewController {
         UIView.animate(withDuration: 0.25) {
             self.view.layoutIfNeeded()
         }
-        UIView.animate(withDuration: 0.25) {
-            self.view.layoutIfNeeded()
-        }
+
     }
     
     func showDatePicker() {        
@@ -305,7 +311,7 @@ extension BudgetCreateViewController: UITableViewDelegate, UITableViewDataSource
                cell.titleLabel.text = "Period Amount"
                
                if let periodAmount = periodAmount {
-                   cell.textField.text = currencyFormatter.string(for: periodAmount)
+                   cell.textField.text = frolloCurrencyFormatter.string(for: periodAmount)
                } else {
                    cell.textField.text = nil
                }
@@ -339,7 +345,7 @@ extension BudgetCreateViewController: UITableViewDelegate, UITableViewDataSource
                 cell.textLabel?.text = "Start Date"
                 
                 if let startDate = budgetStartDate {
-                    cell.detailTextLabel?.text = dateFormatter.string(from: startDate)
+                    cell.detailTextLabel?.text = frolloDateFormatter.string(from: startDate)
                 }
                 
                 return cell
@@ -355,10 +361,10 @@ extension BudgetCreateViewController: UITableViewDelegate, UITableViewDataSource
         
             switch field {
                 case .type:
-                    showBudgetTypeOptions()
+                    showPopup(popupOption: .budgetTypePopup)
             
                 case .frequency:
-                    showFrequencyOptions()
+                    showPopup(popupOption: .frequencyPopup)
                 
                 case .typeValue:
                     showValuePopup()
@@ -388,7 +394,7 @@ extension BudgetCreateViewController: UITextFieldDelegate {
             let value = NSDecimalNumber(string: strippedProposedString)
             
             if value != NSDecimalNumber.notANumber {
-                textField.text = currencyFormatter.string(from: value)
+                textField.text = frolloCurrencyFormatter.string(from: value)
                 periodAmount = value as Decimal
                 return false
             } else {
