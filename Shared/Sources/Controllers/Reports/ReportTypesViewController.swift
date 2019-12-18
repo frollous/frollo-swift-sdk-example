@@ -12,8 +12,7 @@ class ReportTypesViewController: UITableViewController {
     
     enum ReportType: CaseIterable {
         case accountBalance
-        case transactionCurrent
-        case transactionHistory
+        case transaction
     }
 
     override func viewDidLoad() {
@@ -41,11 +40,8 @@ class ReportTypesViewController: UITableViewController {
         switch ReportType.allCases[indexPath.row] {
             case .accountBalance:
                 cell.textLabel?.text = "Account Balances"
-            case .transactionCurrent:
-                cell.textLabel?.text = "Current Transaction Reports"
-            case .transactionHistory:
-                cell.textLabel?.text = "Historic Transaction Reports"
-
+            case .transaction:
+                cell.textLabel?.text = "Transaction Reports"
         }
 
         return cell
@@ -57,13 +53,12 @@ class ReportTypesViewController: UITableViewController {
             case .accountBalance:
                 let viewController = storyboard?.instantiateViewController(withIdentifier: "ReportsAccountListViewController") as! ReportsAccountListViewController
                 navigationController?.pushViewController(viewController, animated: true)
-            case .transactionCurrent:
-                let viewController = storyboard?.instantiateViewController(withIdentifier: "ReportTypeTransactionViewController") as! ReportTypeTransactionViewController
+            case .transaction:
+                let viewController = storyboard?.instantiateViewController(withIdentifier: "TransactionReportFormViewController") as! TransactionReportFormViewController
+                let viewModel = TransactionReportFormViewModel()
+                viewController.dataSource = viewModel
+                viewController.delegate = viewModel
                 viewController.current = true
-                navigationController?.pushViewController(viewController, animated: true)
-            case .transactionHistory:
-                let viewController = storyboard?.instantiateViewController(withIdentifier: "ReportTypeTransactionViewController") as! ReportTypeTransactionViewController
-                viewController.current = false
                 navigationController?.pushViewController(viewController, animated: true)
         }
     }
