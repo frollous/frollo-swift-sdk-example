@@ -52,5 +52,14 @@ class TableViewController: UITableViewController, NSFetchedResultsControllerDele
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
+    
 
+    
+    func showError(title: String? = "Error", details: String) {
+        let alertController = UIAlertController(title: title, message: details, preferredStyle: .alert)
+        let dismissAction = UIAlertAction(title: "OK", style: .cancel)
+        alertController.addAction(dismissAction)
+        
+        self.present(alertController, animated: true)
+    }
 }

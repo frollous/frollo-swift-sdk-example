@@ -35,7 +35,6 @@ class CurrentTransactionsReportGroupingViewController: UITableViewController {
 //            case .success:
 //                break
 //            }
-//
 //            self.reloadData()
 //        }
         
@@ -89,8 +88,8 @@ class CurrentTransactionsReportGroupingViewController: UITableViewController {
                 return merchants.count
             case .transactionCategory:
                 return transactionCategories.count
-        default:
-            return 0
+            default:
+                return 0
         }
     }
     
@@ -107,8 +106,8 @@ class CurrentTransactionsReportGroupingViewController: UITableViewController {
             case .transactionCategory:
                 let category = transactionCategories[indexPath.row]
                 cell.textLabel?.text = category.name
-        default:
-            break
+            default:
+                break
         }
 
         return cell

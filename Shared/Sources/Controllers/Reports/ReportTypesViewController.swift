@@ -13,7 +13,6 @@ class ReportTypesViewController: UITableViewController {
     enum ReportType: CaseIterable {
         case accountBalance
         case transaction
-        case survey
     }
 
     override func viewDidLoad() {
@@ -43,8 +42,6 @@ class ReportTypesViewController: UITableViewController {
                 cell.textLabel?.text = "Account Balances"
             case .transaction:
                 cell.textLabel?.text = "Transaction Reports"
-            case .survey:
-                cell.textLabel?.text = "Start a survey"
         }
 
         return cell
@@ -63,10 +60,6 @@ class ReportTypesViewController: UITableViewController {
                 viewController.delegate = viewModel
                 viewController.current = true
                 navigationController?.pushViewController(viewController, animated: true)
-        case .survey:
-                let storyboard = UIStoryboard(name: "Surveys", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "SurveyViewController")  as! SurveyViewController
-                self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 
