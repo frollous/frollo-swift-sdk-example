@@ -90,8 +90,6 @@ class HistoryTransactionReportGroupingViewController: UITableViewController {
                 return merchants.count
             case .transactionCategory:
                 return transactionCategories.count
-            case .transactionCategoryGroup:
-                return 0
         default:
             return 0
         }
@@ -110,8 +108,6 @@ class HistoryTransactionReportGroupingViewController: UITableViewController {
             case .transactionCategory:
                 let category = transactionCategories[indexPath.row]
                 cell.textLabel?.text = category.name
-            case .transactionCategoryGroup:
-                break
         default:
             break
         }
