@@ -801,6 +801,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/AppCenterAnalytics.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/AppCenterCrashes.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/AppCenterDistribute.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/AppAuth.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 			);
 			name = "Carthage Copy Frameworks";
 			outputPaths = (
