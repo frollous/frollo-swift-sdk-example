@@ -1117,18 +1117,19 @@
 				CODE_SIGN_ENTITLEMENTS = "FrolloSDK iOS Example/FrolloSDK iOS Example.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 90;
 				DEVELOPMENT_TEAM = 35YZT9MYCZ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/FrolloSDK iOS Example/Resources/Info.plist";
+				INFOPLIST_FILE = "FrolloSDK iOS Example/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = us.frollo.FrolloSDK.iOSExample;
+				PRODUCT_BUNDLE_IDENTIFIER = au.com.frollo.FrolloSDK.iOSExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1144,18 +1145,19 @@
 				CODE_SIGN_ENTITLEMENTS = "FrolloSDK iOS Example/FrolloSDK iOS Example.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 90;
 				DEVELOPMENT_TEAM = 35YZT9MYCZ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/FrolloSDK iOS Example/Resources/Info.plist";
+				INFOPLIST_FILE = "FrolloSDK iOS Example/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = us.frollo.FrolloSDK.iOSExample;
+				PRODUCT_BUNDLE_IDENTIFIER = au.com.frollo.FrolloSDK.iOSExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1174,7 +1176,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/tvOS",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/FrolloSDK tvOS Example/Resources/Info.plist";
+				INFOPLIST_FILE = "FrolloSDK tvOS Example/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1201,7 +1203,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/tvOS",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/FrolloSDK tvOS Example/Resources/Info.plist";
+				INFOPLIST_FILE = "FrolloSDK tvOS Example/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

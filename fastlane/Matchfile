@@ -1,0 +1,4 @@
+git_url "git@bitbucket.org:frollo1/certificates.git"
+
+# app_identifier "tools.fastlane.app" 
+username "ci@frollo.us" # Your Apple Developer Portal username
