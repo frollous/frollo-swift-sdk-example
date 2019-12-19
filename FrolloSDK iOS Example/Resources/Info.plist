@@ -26,6 +26,14 @@
 				<string>frollo-sdk-example</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>appcenter-d954b866-6110-433a-9b91-16b7b48b33d3</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>3</string>
