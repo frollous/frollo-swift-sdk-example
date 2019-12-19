@@ -8,6 +8,10 @@
 
 import UIKit
 
+import AppCenter
+import AppCenterAnalytics
+import AppCenterCrashes
+import AppCenterDistribute
 import FrolloSDK
 
 @UIApplicationMain
@@ -15,10 +19,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var flowManager: FlowManager?
     var window: UIWindow?
+    
+    private let appCenterID = "d954b866-6110-433a-9b91-16b7b48b33d3"
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         flowManager = FlowManager(window: window!)
+        
+        setupAppCenter()
         
         let startupViewController = window?.rootViewController as! StartupViewController
         startupViewController.flowManager = flowManager
@@ -58,7 +66,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        return Frollo.shared.oAuth2Authentication?.resumeAuthentication(url: url) ?? false
+        if url.scheme == "frollo-sdk-example" {
+            return Frollo.shared.oAuth2Authentication?.resumeAuthentication(url: url) ?? false
+        } else {
+            // Handle AppCenter auth
+            return MSDistribute.open(url)
+        }
+    }
+    
+    // MARK: - AppCenter
+    
+    private func setupAppCenter() {
+        #if DEBUG
+        MSAppCenter.start(appCenterID, withServices: [MSAnalytics.self, MSCrashes.self])
+        #else
+        MSAppCenter.start(appCenterID, withServices: [MSAnalytics.self, MSCrashes.self, MSDistribute.self])
+        MSDistribute.setEnabled(enableDistribute)
+        #endif
     }
 
 }

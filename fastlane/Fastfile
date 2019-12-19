@@ -1,0 +1,138 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+
+  desc "Bootstraps the environment with carthage dependencies (from cache if possible) and match certificates"
+  lane :bootstrap do
+    match(
+      git_branch: "enterprise",
+      type: "development",
+      team_id: ENV['TEAM_ID'],
+      app_identifier: ["au.com.frollo.FrolloSDK.iOSExample"],
+      force_for_new_devices: true
+    )
+
+    match(
+      git_branch: "enterprise",
+      type: "enterprise",
+      team_id: ENV['TEAM_ID'],
+      app_identifier: ["au.com.frollo.FrolloSDK.iOSExample"]
+    )
+  end
+
+  desc "Bootstraps just dependencies for carthage"
+  lane :dependencies do
+    carthage(
+      platform: "iOS",
+      cache_builds: true
+    )
+  end
+
+  desc "Update and publish carthage dependencies"
+  lane :update_dependencies do
+    carthage(
+      command: "update",
+      platform: "iOS",
+      cache_builds: true
+    )
+  end
+
+  private_lane :cisetup do
+    delete_keychain(
+      name: 'fastlane'
+    ) if File.exist? File.expand_path("~/Library/Keychains/fastlane-db")
+    
+    create_keychain(
+      name: 'fastlane',
+      password: ENV['KEYCHAIN_PASSWORD'],
+      unlock: true,
+      timeout: false
+    )
+
+    unlock_keychain(
+    	password: ENV['KEYCHAIN_PASSWORD']
+    )
+
+    setup_jenkins
+
+    ensure_git_status_clean
+
+    xcode_select "/Applications/Xcode.app"
+
+    dependencies
+  end
+  
+  desc "Deploy to AppCenter"
+  lane :deploy do
+    #cisetup
+
+    changelog = changelog_from_git_commits(
+        between: [ENV['GIT_PREVIOUS_SUCCESSFUL_COMMIT'] || "HEAD^^^^^", "HEAD"],
+        pretty: "- %s"
+    )
+    Actions.lane_context[SharedValues::FL_CHANGELOG] = changelog
+
+    build_number = number_of_commits
+    increment_build_number(build_number: build_number)
+
+    match(
+      git_branch: "enterprise",
+      type: "enterprise",
+      team_id: ENV['TEAM_ID'],
+      app_identifier: "au.com.frollo.FrolloSDK.iOSExample",
+      keychain_name: 'fastlane',
+      keychain_password: ENV['KEYCHAIN_PASSWORD'],
+      shallow_clone: true,
+      readonly: true
+    )
+
+    gym(
+      configuration: "Release",
+      export_xcargs: "-allowProvisioningUpdates",
+      export_options: {
+        method: "ad-hoc",
+        compileBitcode: false
+      },
+      output_name: "FrolloSDK iOS Example",
+      scheme: "FrolloSDK iOS Example",
+      clean: true
+    )
+
+    appcenter_upload(
+      api_token: ENV['APPCENTER_TOKEN'],
+      owner_name: "Frollo",
+      app_name: "SDK-Example-App",
+      ipa: "./output/FrolloSDK iOS Example.ipa",
+      destinations: "Frollo-Internal",
+      destination_type: "group",
+      notify_testers: false,
+      release_notes: changelog
+    )
+
+    slack(
+      message: ENV['APP_TARGET'] + " iOS SDK Example App " + ENV['APP_VERSION'] + " #" + build_number.to_s + " successfully integrated!",
+      success: true,
+      payload: {
+        "Jenkins" => "Build #" + ENV['BUILD_NUMBER'] + " - " + ENV['BUILD_URL'],
+        "Changelog" => changelog,
+      },
+      default_payloads: [:git_branch, :git_author, :test_result, :last_git_commit_message]
+    )
+  end
+
+end
