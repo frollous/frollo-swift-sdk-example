@@ -79,7 +79,7 @@ platform :ios do
   
   desc "Deploy to AppCenter"
   lane :deploy do
-    #cisetup
+    cisetup
 
     changelog = changelog_from_git_commits(
         between: [ENV['GIT_PREVIOUS_SUCCESSFUL_COMMIT'] || "HEAD^^^^^", "HEAD"],
