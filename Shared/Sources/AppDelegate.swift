@@ -81,7 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         MSAppCenter.start(appCenterID, withServices: [MSAnalytics.self, MSCrashes.self])
         #else
         MSAppCenter.start(appCenterID, withServices: [MSAnalytics.self, MSCrashes.self, MSDistribute.self])
-        MSDistribute.setEnabled(enableDistribute)
+        MSDistribute.setEnabled(true)
         #endif
     }
 
