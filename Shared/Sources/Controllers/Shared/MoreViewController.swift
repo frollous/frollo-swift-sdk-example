@@ -34,6 +34,11 @@ class MoreViewTableController: UITableViewController {
             let storyboard = UIStoryboard(name: "Budgets", bundle: nil)
             let budgetListViewController = storyboard.instantiateViewController(withIdentifier: "BudgetListViewController")
             self.navigationController?.pushViewController(budgetListViewController, animated: true)
+        } else if indexPath.item == 3 {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let transactionPaginationViewController = storyboard.instantiateViewController(withIdentifier: "TransactionPaginationViewController")
+            self.navigationController?.pushViewController(transactionPaginationViewController, animated: true)
+            
         }
         
     }

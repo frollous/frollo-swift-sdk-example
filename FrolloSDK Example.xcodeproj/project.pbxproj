@@ -136,6 +136,7 @@
 		03B471292283B2B300DD773C /* SuggestedTagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B471282283B2B300DD773C /* SuggestedTagsViewController.swift */; };
 		03B4712A2283B2B300DD773C /* SuggestedTagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B471282283B2B300DD773C /* SuggestedTagsViewController.swift */; };
 		03D806D523A869EE003882E4 /* ReportFormItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D806D423A869EE003882E4 /* ReportFormItemTableViewCell.swift */; };
+		1311C2FA2508703E008051E5 /* TransactionPaginationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1311C2F92508703E008051E5 /* TransactionPaginationViewController.swift */; };
 		1314DCBA239E038C00B9FD16 /* BudgetCreateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1314DCB9239E038C00B9FD16 /* BudgetCreateType.swift */; };
 		1314DCBB239E038C00B9FD16 /* BudgetCreateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1314DCB9239E038C00B9FD16 /* BudgetCreateType.swift */; };
 		133B024F23A9B1570067D6FA /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133B024E23A9B1570067D6FA /* GlobalConstants.swift */; };
@@ -267,6 +268,7 @@
 		03B471232283B0E100DD773C /* SuggestedTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedTagCell.swift; sourceTree = "<group>"; };
 		03B471282283B2B300DD773C /* SuggestedTagsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedTagsViewController.swift; sourceTree = "<group>"; };
 		03D806D423A869EE003882E4 /* ReportFormItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportFormItemTableViewCell.swift; sourceTree = "<group>"; };
+		1311C2F92508703E008051E5 /* TransactionPaginationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionPaginationViewController.swift; sourceTree = "<group>"; };
 		1314DCB9239E038C00B9FD16 /* BudgetCreateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetCreateType.swift; sourceTree = "<group>"; };
 		133B024E23A9B1570067D6FA /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		133B025123A9B5870067D6FA /* ViewControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllers.swift; sourceTree = "<group>"; };
@@ -473,6 +475,7 @@
 				017E593B2182D03C00DC56FF /* TransactionsViewController.swift */,
 				03B4711722829DD700DD773C /* UserTagsViewController.swift */,
 				03B471282283B2B300DD773C /* SuggestedTagsViewController.swift */,
+				1311C2F92508703E008051E5 /* TransactionPaginationViewController.swift */,
 			);
 			path = Aggregation;
 			sourceTree = "<group>";
@@ -904,6 +907,7 @@
 				015687B5218C1F4300C961B3 /* ProviderAccountCell.swift in Sources */,
 				133B024F23A9B1570067D6FA /* GlobalConstants.swift in Sources */,
 				0135D31F21A526B200318142 /* MessagesViewController.swift in Sources */,
+				1311C2FA2508703E008051E5 /* TransactionPaginationViewController.swift in Sources */,
 				017E59442186907B00DC56FF /* TransactionCategoriesViewController.swift in Sources */,
 				2F657DBC223B715800471B85 /* SurveyViewController.swift in Sources */,
 				01A722A922EE8A2F006136D8 /* GoalOptionViewController.swift in Sources */,
