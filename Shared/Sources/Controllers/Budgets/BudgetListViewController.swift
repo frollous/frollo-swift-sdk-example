@@ -18,7 +18,7 @@ class BudgetListViewController: TableViewController {
        super.viewDidLoad()
 
         let context = Frollo.shared.database.viewContext
-        fetchedResultsController = Frollo.shared.budgets.budgetsFetchedResultsController(context: context, sortedBy: [NSSortDescriptor(key: #keyPath(Budget.startDateString), ascending: true)])
+        fetchedResultsController = Frollo.shared.budgets.budgetsFetchedResultsController(context: context, current: true, trackingType: .debitCredit, sortedBy: [NSSortDescriptor(key: #keyPath(Budget.startDateString), ascending: true)], limit: 200)
         fetchedResultsController.delegate = self
 
    }

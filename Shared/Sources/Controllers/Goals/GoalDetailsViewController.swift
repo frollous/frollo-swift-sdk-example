@@ -156,13 +156,13 @@ class GoalDetailsViewController: TableViewController {
             cell.statusLabel.isHidden = false
             
             switch trackingStatus {
-                case .ahead:
+                case .above:
                     cell.statusLabel.text = "Ahead"
                     cell.statusLabel.textColor = UIColor.green
-                case .behind:
+                case .below:
                     cell.statusLabel.text = "Behind"
                     cell.statusLabel.textColor = UIColor.red
-                case .onTrack:
+                case .equal:
                     cell.statusLabel.text = "On Track"
                     cell.statusLabel.textColor = UIColor.orange
             }

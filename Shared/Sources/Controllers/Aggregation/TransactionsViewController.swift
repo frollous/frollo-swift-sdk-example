@@ -63,8 +63,7 @@ class TransactionsViewController: TableViewController, UISearchResultsUpdating, 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let fromDate = Date().addingTimeInterval(-7776000) //  3 months ago
-        Frollo.shared.aggregation.refreshTransactions(from: fromDate, to: Date())
+        Frollo.shared.aggregation.refreshTransactions(transactionFilter: TransactionFilter(size: 300), completion: nil)
         
         reloadData()
     }

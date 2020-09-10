@@ -154,15 +154,15 @@ class BudgetCreateViewController: BaseViewController {
         
         switch budgetCreateType {
         case .budgetCategory(let budgetCategory):
-            Frollo.shared.budgets.createBudgetCategoryBudget(budgetCategory: budgetCategory, frequency: budgetFrequency, periodAmount: budgetPeriodAmount, startDate: startDateString){ (result) in
+            Frollo.shared.budgets.createBudgetCategoryBudget(budgetCategory: budgetCategory, frequency: budgetFrequency, periodAmount: budgetPeriodAmount, startDate: startDateString, trackingType: .debitCredit){ (result) in
                 self.handleResult(result: result)
             }
         case .category(let categoryID):
-            Frollo.shared.budgets.createCategoryBudget(categoryID: categoryID, frequency: budgetFrequency, periodAmount: budgetPeriodAmount, startDate: startDateString){ (result) in
+            Frollo.shared.budgets.createCategoryBudget(categoryID: categoryID, frequency: budgetFrequency, periodAmount: budgetPeriodAmount, startDate: startDateString, trackingType: .debitCredit){ (result) in
                 self.handleResult(result: result)
             }
         case .merchant(let merchantID):
-            Frollo.shared.budgets.createMerchantBudget(merchantID: merchantID, frequency: budgetFrequency, periodAmount: budgetPeriodAmount, startDate: startDateString){ (result) in
+            Frollo.shared.budgets.createMerchantBudget(merchantID: merchantID, frequency: budgetFrequency, periodAmount: budgetPeriodAmount, startDate: startDateString, trackingType: .debitCredit){ (result) in
                 self.handleResult(result: result)
             }
         }

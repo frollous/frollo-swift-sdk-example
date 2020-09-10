@@ -199,7 +199,7 @@ extension TransactionReportFormViewModel: TransactionReportFormViewControllerDel
                     assertionFailure(error.localizedDescription)
                 }
             }
-            
+
         }
     }
     

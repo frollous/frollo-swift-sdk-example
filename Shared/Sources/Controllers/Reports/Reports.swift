@@ -55,10 +55,10 @@ protocol ReportFormRepresentable {
 extension ReportFormRepresentable {
     
     /// Will fetch results depending on the form input data
-    func fetch(completion: @escaping RequestCompletion<[ReportItemDisplayable]>) {
+    func fetch(completion: @escaping (Result<[ReportItemDisplayable], Error>) -> Void) {
         
         /// Will map the results from the fetch responses into a completion with displayable report items
-        func mapDisplayableItemsFromFetchCompletion<T: Reportable>(result: Result<ReportsResponse<T>, Error>) {
+        func mapDisplayableItemsFromFetchCompletion<T: Reportable>(result: Result<[ReportResponse<T>], Error>) {
             switch result {
             case .success(let response):
                 completion(.success(response.flatMap{ $0.reportItems }))

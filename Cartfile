@@ -1,6 +1,6 @@
 # git "frollo-ios-sdk" "2.0.0"
 
-git "git@bitbucket.org:frollo1/frollo-ios-sdk.git" "075078ed1087a70accc93dffaf945e52fb893bb4"
+github "frollous/frollo-swift-sdk" "develop"
 
 # AppCenter SDK
 github "microsoft/appcenter-sdk-apple" ~> 2.5.3
